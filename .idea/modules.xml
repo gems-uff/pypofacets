@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../MineracaoDeDadosTrabalho2PythonVsR/.idea/MineracaoDeDadosTrabalho2PythonVsR.iml" filepath="$PROJECT_DIR$/../MineracaoDeDadosTrabalho2PythonVsR/.idea/MineracaoDeDadosTrabalho2PythonVsR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PyPOFacets.iml" filepath="$PROJECT_DIR$/.idea/PyPOFacets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../arules/.idea/arules.iml" filepath="$PROJECT_DIR$/../arules/.idea/arules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../diff3d/.idea/diff3d.iml" filepath="$PROJECT_DIR$/../diff3d/.idea/diff3d.iml" />
+    </modules>
+  </component>
+</project>

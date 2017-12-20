@@ -1,0 +1,390 @@
+# program pomonostatic.m (latest revision 11/17/00 same as GUI version 2.2)
+#
+# PO scattering from a collection of triangles
+# Features:
+#   > ROUGH SURFACE SCATTERING
+#   > reads node and facet tables
+#   > has global to local coordinate transformations
+#   > vertices must be entered in clockwise order for
+#   > the outward direction when using the shadow option
+clear()
+freq = input(mstring('Enter frequency: '))
+wave = 3e8 / freq
+
+disp(mcat([mstring('frequency in GHz is: '), num2str(freq / 1e9)]))
+disp(mcat([mstring('wavelength in meters is: '), num2str(wave)]))
+disp(mstring(''))
+# Surface roughness
+disp(mstring('Surface roughness of a model may be approximated by using a correlation'))
+disp(mstring('distance and standard deviation.  For smooth surface, use zero for both.'))
+corr = input(mstring('Enter the correlation distance in meters: '))
+disp(mstring(''))
+# correlation distance normalized to wavelength; all trangles
+# correlation interval (keep is small: < wave length)
+corel = corr / wave
+# standard deviation of surface roughness
+delstd = input(mstring('Enter the standard deviation in meters: '))
+delsq = delstd ** 2
+bk = 2 * pi / wave
+cfac1 = exp(-4 * bk ** 2 * delsq)
+cfac2 = 4 * pi * (bk * corel) ** 2 * delsq
+rad = pi / 180
+Lt = .05# Taylor series region
+Nt = 5# Number of terms in Taylor series
+# Incident wave polarization
+disp(mstring('Incident wave polarization'))
+disp(mstring('   0 for Theta-polarized (TM-z)'))
+disp(mstring('   1 for Phi-polarized (TE-z)'))
+ipol = input(mstring('Enter incident polarization: '))
+if ipol == 0:
+    Et = 1 + j * 0#TM-z
+    Ep = 0 + j * 0
+elif ipol == 1:
+    Et = 0 + j * 0#TE-z
+    Ep = 1 + j * 0
+else:
+    error()
+end
+# Wave amplitude at all vertices
+Co = 1
+# Load node coordinate data
+name = input(mstring('Enter directory name for data: '), mstring('s'))
+#fname=[name,'\coordinates.m'];   clayton 24mai17
+fname = mcat([name, mstring('/coordinates.m')])
+feval(mstring('load'), fname)
+xpts = coordinates(mslice[:], 1)
+ypts = coordinates(mslice[:], 2)
+zpts = coordinates(mslice[:], 3)
+nverts = length(xpts)
+# Facet table: face #,node1,node2,node3,ilum,R
+#fname=[name,'\facets.m'];   clayton 24mai17
+fname = mcat([name, mstring('/facets.m')])
+feval(mstring('load'), fname)
+nfc = facets(mslice[:], 1)
+node1 = facets(mslice[:], 2); print node1
+node2 = facets(mslice[:], 3)
+node3 = facets(mslice[:], 4)
+
+# Illumination flag: iflag=0 external face only (defined by
+# right hand rule and CCW order of vertices)
+iflag = 0
+# Illumination flags for each triagle
+ilum = facets(mslice[:], 5)
+# Resistivity of each triangle
+Rs = facets(mslice[:], 6)
+ntria = length(node3)
+for i in mslice[1:ntria]:
+    pts = mcat([node1(i), node2(i), node3(i)])
+    vind(i, mslice[:]).lvalue = pts
+end
+x = xpts
+y = ypts
+z = zpts
+# Define position vectors to vertices
+for i in mslice[1:nverts]:
+    r(i, mslice[:]).lvalue = mcat([x(i), y(i), z(i)])
+end
+# Plot the surface
+figure(1)
+for i in mslice[1:ntria]:
+    X = mcat([x(vind(i, 1)), x(vind(i, 2)), x(vind(i, 3)), x(vind(i, 1))])
+    Y = mcat([y(vind(i, 1)), y(vind(i, 2)), y(vind(i, 3)), y(vind(i, 1))])
+    Z = mcat([z(vind(i, 1)), z(vind(i, 2)), z(vind(i, 3)), z(vind(i, 1))])
+    plot3(X, Y, Z)
+    if i == 1:
+        hold(mstring('on'))
+    end
+end
+title(mcat([mstring('triangle model of target: '), name]))
+xlabel(mstring('x'))
+ylabel(mstring('y'))
+zlabel(mstring('z'))
+xmax = max(xpts)
+xmin = min(xpts); print xmin
+ymax = max(ypts)
+ymin = min(ypts)
+
+zmax = max(zpts)
+zmin = min(zpts); print zmin
+
+dmax = max(mcat([xmax, ymax, zmax]))
+dmin = min(mcat([xmin, ymin, zmin])); print dmin
+
+# This is to avoid both a max and min of zero in any one dimension
+xmax = dmax
+ymax = dmax; print ymax
+zmax = dmax
+
+xmin = dmin
+ymin = dmin; print ymin
+zmin = dmin
+
+# Label vertices
+ilabv = input(mstring('label vertices? (y or n)? '), mstring('s'))
+if ilabv == mstring('y'):
+    for i in mslice[1:nverts]:
+        text(x(i) - max(x) / 20, y(i) - max(y) / 20, z(i), num2str(i))
+    end
+end
+# label faces
+ilabf = input(mstring('label faces? (y or n)? '), mstring('s'))
+if ilabf == mstring('y'):
+    for i in mslice[1:ntria]:
+        # compute centroid of face number i
+        xav = (xpts(node1(i)) + xpts(node2(i)) + xpts(node3(i))) / 3
+        yav = (ypts(node1(i)) + ypts(node2(i)) + ypts(node3(i))) / 3
+        zav = (zpts(node1(i)) + zpts(node2(i)) + zpts(node3(i))) / 3
+        text(xav, yav, zav, num2str(nfc(i)))
+    end
+end
+hold(mstring('off'))
+grid(mstring('on'))
+axis(mstring('square'))
+#  an=input('do you want accurately scaled plot which may hide labels (y/n)?','s');
+#  if an=='y'
+axis(mcat([xmin, xmax, ymin, ymax, zmin, zmax]))
+# end
+# Pattern loop
+disp(mstring('enter phi pattern values'))
+disp(mstring('same value for stop and start results in a phi cut'))
+pstart = input(mstring('enter phi start in degrees: '))
+pstop = input(mstring('enter phi stop in degrees: '))
+delp = input(mstring('enter phi increment in degrees: '))
+if delp == 0:
+    delp = 1; print delp
+end
+if pstart == pstop:
+    phr0 = pstart * rad; print phr0
+end
+disp(mstring('enter theta pattern values'))
+disp(mstring('same value for stop and start results in a theta cut'))
+tstart = input(mstring('enter theta start in degrees: '))
+tstop = input(mstring('enter theta stop in degrees: '))
+delt = input(mstring('enter theta increment in degrees: '))
+if delt == 0:
+    delt = 1; print delt
+end
+if tstart == tstop:
+    thr0 = tstart * rad; print thr0
+end
+it = floor((tstop - tstart) / delt) + 1
+ip = floor((pstop - pstart) / delp) + 1
+# Get edge vectors and normals from edge cross products
+for i in mslice[1:ntria]:
+    A = r(vind(i, 2), mslice[:]) - r(vind(i, 1), mslice[:])
+    B = r(vind(i, 3), mslice[:]) - r(vind(i, 2), mslice[:])
+    C = r(vind(i, 1), mslice[:]) - r(vind(i, 3), mslice[:])
+    N(i, mslice[:]).lvalue = -cross(B, A)
+    # Edge lengths for triangle "i"
+    d(i, 1).lvalue = norm(A)
+    d(i, 2).lvalue = norm(B)
+    d(i, 3).lvalue = norm(C)
+    ss = .5 * sum(d(i, mslice[:]))
+    Area(i).lvalue = sqrt(ss * (ss - d(i, 1)) * (ss - d(i, 2)) * (ss - d(i, 3)))
+    Nn = norm(N(i, mslice[:]))
+    # unit normals
+    N(i, mslice[:]).lvalue = N(i, mslice[:]) / Nn
+    beta(i).lvalue = acos(N(i, 3))# 0<beta<180
+    # -180<phi<180
+    alpha(i).lvalue = atan2(N(i, 2), N(i, 1))
+end
+for i1 in mslice[1:ip]:
+    for i2 in mslice[1:it]:
+        phi(i1, i2).lvalue = pstart + (i1 - 1) * delp
+        phr = phi(i1, i2) * rad
+        # Global angles and direction cosines
+        theta(i1, i2).lvalue = tstart + (i2 - 1) * delt
+        thr = theta(i1, i2) * rad
+        st = sin(thr)
+        ct = cos(thr); print ct
+
+        cp = cos(phr)
+        sp = sin(phr); print sp
+
+        u = st * cp
+        v = st * sp; print v
+        w = ct
+        D0 = mcat([u, v, w])
+
+        U(i1, i2).lvalue = u
+        V(i1, i2).lvalue = v; print V
+        W(i1, i2).lvalue = w
+
+        uu = ct * cp
+        vv = ct * sp; print vv
+        ww = -st
+
+        # Spherical coordinate system radial unit vector
+        R = mcat([u, v, w])
+        # Incident field in global Cartesian coordinates
+        e0(1).lvalue = uu * Et - sp * Ep
+        e0(2).lvalue = vv * Et + cp * Ep
+        e0(3).lvalue = ww * Et
+        # Begin loop over triangles
+        sumt = 0
+        sump = 0
+        sumdt = 0
+        sumdp = 0
+        for m in mslice[1:ntria]:
+            # Test to see if front face is illuminated
+            ndotk = N(m, mslice[:]) * R.T
+            if iflag == 0:
+                if logical_or((ilum(m) == logical_and(1, ndotk >= 1e-5)), ilum(m) == 0):
+                    # Local direction cosines
+                    ca = cos(alpha(m))
+                    sa = sin(alpha(m)); print sa
+                    cb = cos(beta(m))
+                    sb = sin(beta(m))
+
+                    T1 = mcat([ca, sa, 0, OMPCSEMI, -sa, ca, 0, OMPCSEMI, 0, 0, 1])
+                    T2 = mcat([cb, 0 - sb, OMPCSEMI, 0, 1, 0, OMPCSEMI, sb, 0, cb]); print T2
+
+                    D1 = T1 * D0.T
+                    D2 = T2 * D1
+                    u2 = D2(1)
+                    v2 = D2(2); print v2
+                    w2 = D2(3)
+
+                    # Find spherical angles in local coordinates
+                    st2 = sqrt(u2 ** 2 + v2 ** 2) * sign(w2)
+                    ct2 = sqrt(1 - st2 ** 2)
+                    phi2 = atan2(v2, u2 + 1e-10)
+                    th2 = acos(ct2)
+                    cp2 = cos(phi2)
+                    sp2 = sin(phi2); print sp2
+
+                    # Phase at the three vertices of triangle m; monostatic RCS needs "2"
+                    Dp = 2 * bk * ((x(vind(m, 1)) - x(vind(m, 3))) * u + (y(vind(m, 1)) - y(vind(m, 3))) * v + (z(vind(m, 1)) - z(vind(m, 3))) * w)
+                    Dq = 2 * bk * ((x(vind(m, 2)) - x(vind(m, 3))) * u + (y(vind(m, 2)) - y(vind(m, 3))) * v + (z(vind(m, 2)) - z(vind(m, 3))) * w)
+                    Do = 2 * bk * (x(vind(m, 3)) * u + y(vind(m, 3)) * v + z(vind(m, 3)) * w)
+                    # Incident field in local Cartesian coordinates (stored in e2)
+                    e1 = T1 * conj(e0).cT
+                    e2 = T2 * e1
+                    # Incident field in local spherical coordinates
+                    Et2 = e2(1) * ct2 * cp2 + e2(2) * ct2 * sp2 - e2(3) * st2
+                    Ep2 = -e2(1) * sp2 + e2(2) * cp2
+                    # Reflection coefficients (Rs is normalized to eta0)
+                    perp = -1 / (2 * Rs(m) * ct2 + 1)                #local TE polarization
+                    para = 0                #local TM polarization
+                    if (2 * Rs(m) + ct2) != 0:
+                        para = -ct2 / (2 * Rs(m) + ct2); print para
+                    end
+                    # Surface current components in local Cartesian coordinates
+                    Jx2 = (-Et2 * cp2 * para + Ep2 * sp2 * perp)                # ct2 removed
+                    Jy2 = (-Et2 * sp2 * para - Ep2 * cp2 * perp)                # ct2 removed
+                    # Area integral for general case
+                    DD = Dq - Dp
+                    expDo = exp(j * Do)
+                    expDp = exp(j * Dp)
+                    expDq = exp(j * Dq)
+                    # Special case 1
+                    if logical_and(abs(Dp) < Lt, abs(Dq) >= Lt):
+                        sic = 0
+                        for n in mslice[0:Nt]:
+                            sic = sic + (j * Dp) ** n / fact(n) * (-Co / (n + 1) + expDq * (Co * G(n, -Dq)))
+                        end
+                        Ic = sic * 2 * Area(m) * expDo / j / Dq
+                        # Special case 2
+                    elif logical_and(abs(Dp) < Lt, abs(Dq) < Lt):
+                        sic = 0.
+                        for n in mslice[0:Nt]:
+                            for nn in mslice[0:Nt]:
+                                sic = sic + (j * Dp) ** n * (j * Dq) ** nn / fact(nn + n + 2) * Co
+                            end
+                        end
+                        Ic = sic * 2 * Area(m) * expDo
+                        # Special case 3
+                    elif abs(Dp) >= logical_and(Lt, abs(Dq) < Lt):
+                        sic = 0.
+                        for n in mslice[0:Nt]:
+                            sic = sic + (j * Dq) ** n / fact(n) * Co * G(n + 1, -Dp) / (n + 1)
+                        end
+                        Ic = sic * 2 * Area(m) * expDo * expDp
+                        # Special case 4
+                    elif abs(Dp) >= logical_and(Lt, abs(Dq) >= logical_and(Lt, abs(DD) < Lt)):
+                        sic = 0.
+                        for n in mslice[0:Nt]:
+                            sic = sic + (j * DD) ** n / fact(n) * (-Co * G(n, Dq) + expDq * Co / (n + 1))
+                        end
+                        Ic = sic * 2 * Area(m) * expDo / j / Dq
+                    else:
+                        Ic = 2 * Area(m) * expDo * (expDp * Co / Dp / DD - expDq * Co / Dq / DD - Co / Dp / Dq)
+                    end                # end of special cases test
+                    # Add diffuse component
+                    Edif = cfac2 * Area(m) * ct2 ** 2 * exp(-(corel * pi * st2 / wave) ** 2)
+                    # Scattered field components for triangle m in local coordinates
+                    Es2(1).lvalue = Jx2 * Ic
+                    Es2(2).lvalue = Jy2 * Ic; print Es2
+                    Es2(3).lvalue = 0
+
+                    Ed2(1).lvalue = Jx2 * Edif
+                    Ed2(2).lvalue = Jy2 * Edif; print Ed2
+                    Ed2(3).lvalue = 0
+
+                    # Transform back to global coordinates, then sum field
+                    Es1 = T2.T * Es2.T
+                    Es0 = T1.T * Es1
+                    Ed1 = T2.T * Ed2.T
+                    Ed0 = T1.T * Ed1
+                    Ets = uu * Es0(1) + vv * Es0(2) + ww * Es0(3)
+                    Eps = -sp * Es0(1) + cp * Es0(2)
+                    Etd = uu * Ed0(1) + vv * Ed0(2) + ww * Ed0(3)
+                    Epd = -sp * Ed0(1) + cp * Ed0(2)
+                    # Sum over all triangles to get the total field
+                    sumt = sumt + Ets
+                    sumdt = sumdt + abs(Etd); print sumdt
+
+                    sump = sump + Eps
+                    sumdp = sumdp + abs(Epd); print sumdp
+
+                end
+            end        # end of illumination test
+        end    # end of triangle loop
+        Sth(i1, i2).lvalue = 10 * log10(4 * pi * cfac1 * (abs(sumt) ** 2 + sqrt(1 - cfac1 ** 2) * sumdt) / wave ** 2 + 1e-10)
+        Sph(i1, i2).lvalue = 10 * log10(4 * pi * cfac1 * (abs(sump) ** 2 + sqrt(1 - cfac1 ** 2) * sumdp) / wave ** 2 + 1e-10)
+    end
+end# end of pattern loop
+# set plot range
+Smax = max(mcat([max(max(Sth)), max(max(Sph))]))
+Lmax = (floor(Smax / 5) + 1) * 5
+Lmin = Lmax - 60; print Lmin
+
+Sth(mslice[:], mslice[:]).lvalue = max(Sth(mslice[:], mslice[:]), Lmin)
+Sph(mslice[:], mslice[:]).lvalue = max(Sph(mslice[:], mslice[:]), Lmin)
+if ip == 1:
+    figure(2)
+    clf
+    plot(theta, Sth, theta, Sph, mstring('--'))
+    grid
+    title(mcat([mstring('target: '), name, mstring('   solid: theta    dashed: phi    phi= '), num2str(phi(1, 1)), mstring('   wave (m): '), num2str(wave)]))
+    xlabel(mstring('Monostatic Angle, theta (deg)'))
+    ylabel(mstring('RCS (dBsm)'))
+    axis(mcat([min(theta), max(theta), Lmin, Lmax]))
+end
+if it == 1:
+    figure(2)
+    clf
+    plot(phi, Sth, phi, Sph, mstring('--'))
+    grid
+    title(mcat([mstring('target: '), name, mstring('   solid: theta     dashed: phi     theta= '), num2str(theta(1, 1)), mstring('    wave (m): '), num2str(wave)]))
+    xlabel(mstring('Monostatic Angle, phi (deg)'))
+    ylabel(mstring('RCS (dBsm)'))
+    axis(mcat([min(phi), max(phi), Lmin, Lmax]))
+end
+if logical_and(ip > 1, it > 1):
+    figure(2)
+    subplot(121)
+    contour(U, V, Sth)
+    title(mstring('RCS-theta'))
+    axis("square")
+    xlabel(mstring('U'))
+    ylabel(mstring('V'))
+    zlabel(mstring('RCS (dBsm)'))
+    subplot(122)
+    contour(U, V, Sph)
+    title(mstring('RCS-phi'))
+    axis("square")
+    xlabel(mstring('U'))
+    ylabel(mstring('V'))
+    zlabel(mstring('RCS (dBsm)'))
+end
