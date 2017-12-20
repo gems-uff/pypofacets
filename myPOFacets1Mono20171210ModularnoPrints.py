@@ -264,7 +264,7 @@ def main(name):
     # tstop = float(input("Entre com o valor de referencia do angulo theta final em graus:"))
     tstop = 360
     # delt = float(input("Entre com o passo do angulo theta em graus:"))
-    delt = 90
+    delt = 2
 
     # ***funcao 8***
     it, ip, delp, delt = calcular_refs_geometria_modelo(pstart, pstop, delp, tstart, tstop, delt, rad)
