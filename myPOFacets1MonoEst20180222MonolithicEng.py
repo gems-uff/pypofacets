@@ -1,5 +1,5 @@
-# myPOFacetsMono.py
-# Inspirado no programa POFacets noGUI v2.2 em MATLAB
+# myPOFacets1MonoEst20180222MonolithicEng.py : myPOFacetsMono.py translated
+# Inspired by the software POFacets noGUI v2.2 in MATLAB
 
 import math
 import numpy as np
@@ -9,18 +9,18 @@ import matplotlib.pyplot as plt
 
 print("PyPOFacets - v0.1")
 print("=================")
-# freq = float(input("Entre com a frequencia do radar em Hz:"))
+# freq = float(input("Enter the radar frequency in Hz:"))
 freq = 15000000
 print(freq)
-print("Frequencia radar em Hz:", freq, "Hz")
+print("The radar frequency in Hz:", freq, "Hz")
 c = 3e8
 wave = c / freq
 print(c)
-print("Comprimento de onda em metros:", wave, "m")
-# corr = float(input("Entre com a distancia de correlacao em metros:"))
+print("Wavelength in meters:", wave, "m")
+# corr = float(input("Enter the correlation distance in meters:"))
 corr = 0
 corel = corr / wave
-# delstd = float(input("Entre com o desvio padrao em metros:"))
+# delstd = float(input("Enter the standard deviation in meters:"))
 delstd = 0
 delsq = delstd ** 2
 bk = 2 * math.pi / wave
@@ -29,7 +29,7 @@ cfact2 = 4 * math.pi * (bk * corel) ** delsq
 rad = math.pi / 180
 Lt = 0.05
 Nt = 5
-# ipol = float(input("Entre com a polarizacao de onda incidente:"))
+# ipol = float(input("Enter the incident wave polarization:"))
 ipol = 0
 if ipol == 0:
     Et = 1 + 0j
@@ -40,7 +40,7 @@ elif ipol == 1:
 else:
     print("erro")
 Co = 1
-# name = input("Entre com o nome do diretorio do modelo:")
+# name = input("Enter the directory name for data:")
 # name = "/home/clayton/Documentos/POFACETS/pofacets2.2nogui/BOX"
 # name = "/home/clayton/Documentos/POFACETS/pofacets2.2nogui/PLATE"
 name = "/home/clayton/PycharmProjects/PyPOFacets/BOX"
@@ -117,17 +117,17 @@ for i in range(ntria):
 # Ya = [0, 0, 1, 0]
 # Za = [0, 1, 1, 0]
 #    ax.plot3D(Xa, Ya, Za)
-    ax.set_xlabel("testex")
-ax.set_title("teste")
+    ax.set_xlabel("testx")
+ax.set_title("test")
 plt.show()
 plt.close()
 
 # Oct 138 - Pattern Loop
-# pstart = float(input("Entre com o valor de referencia do angulo phi inicial em graus:"))
+# pstart = float(input("Enter the start phi angle in degrees:"))
 pstart = 0
-# pstop = float(input("Entre com o valor de referencia do angulo phi final em graus:"))
+# pstop = float(input("Enter the stop phi angle in degrees:"))
 pstop = 0
-# delp = float(input("Entre com o passo do angulo phi em graus:"))
+# delp = float(input("Enter the phi increment (step) in degrees:"))
 delp = 0
 
 if delp == 0:
@@ -135,11 +135,11 @@ if delp == 0:
 if pstart == pstop:
     phr0 = pstart*rad
 
-# tstart = float(input("Entre com o valor de referencia do angulo theta inicial em graus:"))
+# tstart = float(input("Enter the start theta angle in degrees:"))
 tstart = 0
-# tstop = float(input("Entre com o valor de referencia do angulo theta final em graus:"))
+# tstop = float(input("Enter the stop theta angle in degrees:"))
 tstop = 360
-# delt = float(input("Entre com o passo do angulo theta em graus:"))
+# delt = float(input("Enter the theta increment (step) in degrees:"))
 delt = 2
 
 if delt == 0:
@@ -259,7 +259,7 @@ for i1 in range(0, ip):
         sumdp = 0
         for m in range(ntria):
             # OctT 236
-            # Test to see if front face is illuminated: AFAZER
+            # Test to see if front face is illuminated: FUT
             # Local direction cosines
             ca = math.cos(alpha[m])
             sa = math.sin(alpha[m])
