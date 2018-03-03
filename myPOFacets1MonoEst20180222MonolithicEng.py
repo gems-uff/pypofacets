@@ -210,9 +210,9 @@ e0 = []
 # print("ok")
 print(ip)
 print(it)
-for i1 in range(0, ip):
+for i1 in range(0, int(ip)):
     # print("ok")
-    for i2 in range(0, it):
+    for i2 in range(0, int(it)):
         # print(i1)
         # print(i2)
         # phi.append(1)
