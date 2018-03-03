@@ -89,48 +89,24 @@ ntria = len(node3)
 print ntria
 vind = [[node1[i], node2[i], node3[i]]
         for i in range(ntria)]
-# vind = np.matrix([[node1[i], node2[i], node3[i]]
-#    for i in range(ntria)])
-# print vind
 x = xpts
 y = ypts
 z = zpts
 r = [[x[i], y[i], z[i]]
      for i in range(nverts)]
-# r = np.matrix([[x[i], y[i], z[i]]
-#    for i in range(nverts)])
-# print r
-# start plot
+
+# Start plot
 print "\n... start plot..."
 fig1 = plt.figure()
 ax = Axes3D(fig1)
-# print(x[int(vind[0][0])])
-# print(vind[0][0])
-# int(vind[0][0])
-# print(isinstance(int(vind[0][0]), float))
 for i in range(ntria):
-    # print(int(vind[i][0]))
-    # Xa = [x[int(vind[0][0])]]# , x[int(vind[i][1])], x[int(vind[i][2])], x[int(vind[i][0])]]
     Xa = [int(r[int(vind[i][0])-1][0]), int(r[int(vind[i][1])-1][0]), int(r[int(vind[i][2])-1][0]), int(r[int(vind[i][0])-1][0])]
-    print(Xa)
     Ya = [int(r[int(vind[i][0])-1][1]), int(r[int(vind[i][1])-1][1]), int(r[int(vind[i][2])-1][1]), int(r[int(vind[i][0])-1][1])]
-    # print(Ya)
     Za = [int(r[int(vind[i][0])-1][2]), int(r[int(vind[i][1])-1][2]), int(r[int(vind[i][2])-1][2]), int(r[int(vind[i][0])-1][2])]
-    # print(Za)
     ax.plot3D(Xa, Ya, Za)
     # ax.plot(Xa, Ya, Za) # same above
     # ax.plot_wireframe(Xa, Ya, Za) # one color
-
     # ax.plot_surface(Xa, Ya, Za) # does not work
-    # print(Xa)
-    #   for i in range(ntria)])
-    #    Xa = [x[i], x[i], x[i], x[i]]
-    #    Ya = [y(vind(i, 1)), y(vind(i, 2)), y(vind(i, 3)), y(vind(i, 1))]
-    #    Za = [z(vind(i, 1)), z(vind(i, 2)), z(vind(i, 3)), z(vind(i, 1))]
-    # Xa = [0, 1, 0, 0]
-    # Ya = [0, 0, 1, 0]
-    # Za = [0, 1, 1, 0]
-    #    ax.plot3D(Xa, Ya, Za)
     ax.set_xlabel("X Axis")
 ax.set_title("3D Model: " + input_model)
 plt.show()
@@ -183,21 +159,15 @@ it = math.floor((tstop-tstart)/delt)+1
 print(it)
 ip = math.floor((pstop-pstart)/delp)+1
 print(ip)
+params.close()
+
 print("last step")
-# areai = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-# print(areai)
 areai = []
 beta = []
 alpha = []
-# print(r[0][0])
-# Get edge vectors and normal from edge cross products - OctT 168
+
+# OctT 168 - Get edge vectors and normal from edge cross products
 for i in range(ntria):
-    # X = [x(vind(i, 1)) x(vind(i, 2)) x(vind(i, 3)) x(vind(i, 1))];
-    # Y = [y(vind(i, 1)) y(vind(i, 2)) y(vind(i, 3)) y(vind(i, 1))];
-    # Z = [z(vind(i, 1)) z(vind(i, 2)) z(vind(i, 3)) z(vind(i, 1))];
-    # Xa = [int(r[int(vind[i][0])-1][0]), int(r[int(vind[i][1])-1][0]), int(r[int(vind[i][2])-1][0]), int(r[int(vind[i][0])-1][0])]
-    # Ya = [int(r[int(vind[i][0])-1][1]), int(r[int(vind[i][1])-1][1]), int(r[int(vind[i][2])-1][1]), int(r[int(vind[i][0])-1][1])]
-    # Za = [int(r[int(vind[i][0])-1][2]), int(r[int(vind[i][1])-1][2]), int(r[int(vind[i][2])-1][2]), int(r[int(vind[i][0])-1][2])]
     A0 = ((r[int(vind[i][1])-1][0]) - (r[int(vind[i][0])-1][0]))
     A1 = ((r[int(vind[i][1])-1][1]) - (r[int(vind[i][0])-1][1]))
     A2 = ((r[int(vind[i][1])-1][2]) - (r[int(vind[i][0])-1][2]))
@@ -210,24 +180,14 @@ for i in range(ntria):
     C1 = ((r[int(vind[i][0]) - 1][1]) - (r[int(vind[i][2]) - 1][1]))
     C2 = ((r[int(vind[i][0]) - 1][2]) - (r[int(vind[i][2]) - 1][2]))
     C = [int(C0), int(C1), int(C2)]
-    # - r[int(vind[i][0])-1]
-    # print(A0)
-    # print(A1)
-    # print(C)
-    # print(B)
-    # print(A)
     N = -(np.cross(B,A))
     print(N)
-    # print(int(vind[i][1]))
 
-    # Edge lengths for triangle "i" OctT 184
+    # OctT 184 - Edge lengths for triangle "i"
     d = [np.linalg.norm(A), np.linalg.norm(B), np.linalg.norm(C)]
     ss = 0.5*sum(d)
-    # print(ss)
     areai.append(math.sqrt(ss*(ss-np.linalg.norm(A))*(ss-np.linalg.norm(B))*(ss-np.linalg.norm(C))))
-    # print(areai)
     Nn = np.linalg.norm(N)
-    # print(Nn)
     # unit normals
     N = N/Nn
     # 0 < beta < 180
@@ -239,24 +199,10 @@ theta = []
 D0 = []
 R = []
 e0 = []
-# print("ok")
-print(ip)
-print(it)
 for i1 in range(0, int(ip)):
-    # print("ok")
     for i2 in range(0, int(it)):
-        # print(i1)
-        # print(i2)
-        # phi.append(1)
-        # phi.append(2)
-        # print(phi)
-        # print(pstart, i1, delp)
         phi.append(pstart+i1*delp)
-        # print(phi)
-        # print(phi[i2])
         phr = phi[i2]*rad
-        # print(phr)
-        # print(phi[i1][i2])
         # Global angles and direction cosines
         theta.append(tstart+i2*delt)
         thr = theta[i2]*rad
@@ -267,10 +213,7 @@ for i1 in range(0, int(ip)):
         u = st*cp
         v = st*sp
         w = ct
-        # print(w)
         D0.append([u, v, w])
-        # print(D0)
-        # D0 = [u v w]
         U = u
         V = v
         W = w
@@ -281,9 +224,6 @@ for i1 in range(0, int(ip)):
         R.append([u, v, w])
         # Incident field in global Cartesian coordinates
         e0.append([(uu*Et-sp*Ep), (vv*Et+cp*Ep), (ww*Et)])
-        # print(e0)
-        # e0.append(vv*Et+cp*Ep)
-        # e0.append(ww*Et)
         # Begin loop over triangles
         sumt = 0
         sump = 0
@@ -299,15 +239,8 @@ for i1 in range(0, int(ip)):
             sb = math.sin(beta[m])
             T1 = []
             T1 = [[ca, sa, 0], [-sa, ca, 0], [0, 0, 1]]
-            # print(T1)
             T2 = []
             T2 = [[cb, 0, -sb], [0, 1, 0], [sb, 0, cb]]
-            # print(T2)
             Dzero = np.array(D0[i1])
-            # print(Dzero)
-            # print(Dzero.transpose())
             D1 = T1*Dzero.transpose()
             D2 = T2*D1
-            # print(D2)
-            # print([i1], [i2], D2)
-            # print(D0)
