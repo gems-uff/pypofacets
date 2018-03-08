@@ -203,9 +203,9 @@ theta = []
 D0 = []
 R = []
 e0 = []
-filename_R = "R_PyPOFacetsMonolithic_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+filename_R = "R_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
 print filename_R
-filename_E0 = "E0_PyPOFacetsMonolithic_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+filename_E0 = "E0_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
 print filename_E0
 fileR = open(filename_R, 'w')
 fileE0 = open(filename_E0, 'w')

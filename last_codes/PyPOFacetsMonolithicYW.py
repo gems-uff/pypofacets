@@ -1,15 +1,17 @@
-# PyPOFacetsMonolithicYW, Monostatic version
+# PyPOFacetsMonolithicYW - Monostatic version
 # Inspired by the software POFacets noGUI v2.2 in MATLAB
 
+import sys
 import math
 import numpy as np
 
+from datetime import datetime
+from timeit import default_timer as timer
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
 
-
-# @begin POFacets
+# @begin PyPOFacetsMonolithicYW
 # @in  name  @as Name
 # @in  fname @as CoordinatesFile  @URI file:{name}/coordinates.m
 # @in  fname2 @as FacetsFile  @URI file:{name}/facets.m
@@ -17,27 +19,41 @@ import matplotlib.pyplot as plt
 # @out e0 @as E0
 # @out T1 @as T1
 # @out R @as R
+start = timer()
+now = datetime.now().strftime("%Y%m%d%H%M%S")
+print now
 print("PyPOFacets - v0.1")
 print("=================")
-# freq = float(input("Enter the radar frequency in Hz:"))
-freq = 15000000
-print(freq)
-
+print "\nScript:", sys.argv[0]
+# Read and print 3D model package
+input_model = sys.argv[1]
+print "\n3D Model:", input_model
+# Read and print input data file: pattern -> input_data_file_xxx.dat
+input_data_file = sys.argv[2]
+print "\nInput data file:", input_data_file
+# Open input data file and gather parameters
+params = open(input_data_file, 'r')
+# 1: radar frequency
 # @begin CalculateWaveLength
 # :in:  freq :as: Frequency
 # :out: waveL :as: WaveLength
-print("The radar frequency in Hz:", freq, "Hz")
+params.readline()
+freq = int(params.readline())
+print "\nThe radar frequency in Hz:", freq, "Hz"
 c = 3e8
 wave = c / freq
-print(c)
-print("Wavelength in meters:", wave, "m")
+print "\nWavelength in meters:", wave, "m"
 # @end CalculateWaveLength
 
-# corr = float(input("Enter the correlation distance in meters:"))
-corr = 0
+# 2: correlation distance in meters
+params.readline()
+corr = int(params.readline())
+print "\nCorrelation distance in meters:", corr, "m"
 corel = corr / wave
-# delstd = float(input("Enter the standard deviation in meters:"))
-delstd = 0
+# 3: standard deviation in meters
+params.readline()
+delstd = int(params.readline())
+print "\nStandard deviation in meters:", delstd, "m"
 delsq = delstd ** 2
 bk = 2 * math.pi / wave
 cfact1 = math.exp(-4 * bk ** 2 * delsq)
@@ -45,13 +61,15 @@ cfact2 = 4 * math.pi * (bk * corel) ** delsq
 rad = math.pi / 180
 Lt = 0.05
 Nt = 5
-# ipol = float(input("Enter the incident wave polarization:"))
-ipol = 0
 
+# 4: incident wave polarization
 # @begin CalculateIncidentWavePolarization
 # :in: ipol :as: InputPolarization
 # @out Et
 # @out Ep
+params.readline()
+ipol = int(params.readline())
+print "\nIncident wave polarization:", ipol
 if ipol == 0:
     Et = 1 + 0j
     Ep = 0 + 0j
@@ -63,30 +81,27 @@ else:
 Co = 1
 # @end CalculateIncidentWavePolarization
 
-# name = input("Enter the directory name for data:")
-# name = "/home/clayton/Documentos/POFACETS/pofacets2.2nogui/BOX"
-# name = "/home/clayton/Documentos/POFACETS/pofacets2.2nogui/PLATE"
-#name = "/home/clayton/PycharmProjects/PyPOFacets/BOX"
-name = "BOX"
-
+# Processing 3D model
 # @begin ReadModelCoordinates
 # @in  name @as Name
 # @in  fname @as CoordinatesFile  @URI file:{name}/coordinates.m
 # @out xpts @as XPoints
 # @out ypts @as YPoints
 # @out zpts @as ZPoints
+print "\nProcessing 3D model..."
+name = input_model
 fname = name + "/coordinates.m"
-print(fname)
+print "\n...", fname
 coordinates = np.loadtxt(fname)
-print(coordinates)
+print coordinates
 xpts = coordinates[:, 0]
-print(xpts)
+print xpts
 ypts = coordinates[:, 1]
-print(ypts)
+print ypts
 zpts = coordinates[:, 2]
-print(zpts)
+print zpts
 nverts = len(xpts)
-print(nverts)
+print nverts
 # @end ReadModelCoordinates
 
 # @begin ReadFacetsModel
@@ -94,9 +109,9 @@ print(nverts)
 # @in  fname2 @as FacetsFile  @URI file:{name}/facets.m
 # @out facets @as Facets
 fname2 = name + "/facets.m"
-print(fname2)
+print "\n...", fname2
 facets = np.loadtxt(fname2)
-print(facets)
+print facets
 # @end ReadFacetsModel
 
 # @begin GenerateTransposeMatrix
@@ -106,27 +121,21 @@ print(facets)
 # @out node3 @as Node3
 # @out ntria @as NTria
 nfcv = facets[:, 0]
-print(nfcv)
+print nfcv
 node1 = facets[:, 1]
-print(node1)
+print node1
 node2 = facets[:, 2]
-print(node2)
+print node2
 node3 = facets[:, 3]
-print(node3)
+print node3
 iflag = 0
 ilum = facets[:, 4]
 Rs = facets[:, 5]
-
-
 ntria = len(node3)
-print(ntria)
+print ntria
 vind = [[node1[i], node2[i], node3[i]]
         for i in range(ntria)]
 # @end GenerateTransposeMatrix
-
-# vind = np.matrix([[node1[i], node2[i], node3[i]]
-#    for i in range(ntria)])
-print(vind)
 
 # @begin GenerateCoordinatesPoints
 # @in  xpts @as XPoints
@@ -138,68 +147,63 @@ y = ypts
 z = zpts
 r = [[x[i], y[i], z[i]]
      for i in range(nverts)]
-# r = np.matrix([[x[i], y[i], z[i]]
-#    for i in range(nverts)])
-print(r)
 # @end GenerateCoordinatesPoints
 
-
-# @begin Plot3dGraphModel
-# @in  node1 @as Node1
-# @in  node1 @as Node2
-# @in  node3 @as Node3
-# @in  r @as Points
-# @out plot @as Plot
+# Start plot
+# # @begin Plot3dGraphModel
+# # @in  node1 @as Node1
+# # @in  node1 @as Node2
+# # @in  node3 @as Node3
+# # @in  r @as Points
+# # @out plot @as Plot
 # start plot
-fig1 = plt.figure()
-ax = Axes3D(fig1)
-# print(x[int(vind[0][0])])
-# print(vind[0][0])
-# int(vind[0][0])
-# print(isinstance(int(vind[0][0]), float))
-print(x)
-for i in range(ntria):
-    # print(int(vind[i][0]))
-    # Xa = [x[int(vind[0][0])]]# , x[int(vind[i][1])], x[int(vind[i][2])], x[int(vind[i][0])]]
-    Xa = [int(r[int(vind[i][0])-1][0]), int(r[int(vind[i][1])-1][0]), int(r[int(vind[i][2])-1][0]), int(r[int(vind[i][0])-1][0])]
-    print(Xa)
-    Ya = [int(r[int(vind[i][0])-1][1]), int(r[int(vind[i][1])-1][1]), int(r[int(vind[i][2])-1][1]), int(r[int(vind[i][0])-1][1])]
-    # print(Ya)
-    Za = [int(r[int(vind[i][0])-1][2]), int(r[int(vind[i][1])-1][2]), int(r[int(vind[i][2])-1][2]), int(r[int(vind[i][0])-1][2])]
-    # print(Za)
-    # ax.plot3D(Xa, Ya, Za)
-    # ax.plot(Xa, Ya, Za)
-    ax.plot_wireframe(Xa, Ya, Za)
-
-    # ax.plot_surface(Xa, Ya, Za)
-    # print(Xa)
-#   for i in range(ntria)])
-#    Xa = [x[i], x[i], x[i], x[i]]
-#    Ya = [y(vind(i, 1)), y(vind(i, 2)), y(vind(i, 3)), y(vind(i, 1))]
-#    Za = [z(vind(i, 1)), z(vind(i, 2)), z(vind(i, 3)), z(vind(i, 1))]
-# Xa = [0, 1, 0, 0]
-# Ya = [0, 0, 1, 0]
-# Za = [0, 1, 1, 0]
-#    ax.plot3D(Xa, Ya, Za)
-    ax.set_xlabel("testx")
-ax.set_title("test")
-plt.show()
-plt.close()
-# @end Plot3dGraphModel
+# print "\n... start plot..."
+# fig1 = plt.figure()
+# ax = Axes3D(fig1)
+# for i in range(ntria):
+#     Xa = [int(r[int(vind[i][0])-1][0]), int(r[int(vind[i][1])-1][0]), int(r[int(vind[i][2])-1][0]), int(r[int(vind[i][0])-1][0])]
+#     Ya = [int(r[int(vind[i][0])-1][1]), int(r[int(vind[i][1])-1][1]), int(r[int(vind[i][2])-1][1]), int(r[int(vind[i][0])-1][1])]
+#     Za = [int(r[int(vind[i][0])-1][2]), int(r[int(vind[i][1])-1][2]), int(r[int(vind[i][2])-1][2]), int(r[int(vind[i][0])-1][2])]
+#     ax.plot3D(Xa, Ya, Za)
+#     # ax.plot(Xa, Ya, Za) # same above
+#     # ax.plot_wireframe(Xa, Ya, Za) # one color
+#     # ax.plot_surface(Xa, Ya, Za) # does not work
+#     ax.set_xlabel("X Axis")
+# ax.set_title("3D Model: " + input_model)
+# plt.show()
+# plt.close()
+# # @end Plot3dGraphModel
 
 # Oct 138 - Pattern Loop
-# pstart = float(input("Enter the start phi angle in degrees:"))
-pstart = 0
-# pstop = float(input("Enter the stop phi angle in degrees:"))
-pstop = 0
-# delp = float(input("Enter the phi increment (step) in degrees:"))
-delp = 0
-# tstart = float(input("Enter the start theta angle in degrees:"))
-tstart = 0
-# tstop = float(input("Enter the stop theta angle in degrees:"))
-tstop = 360
-# delt = float(input("Enter the theta increment (step) in degrees:"))
-delt = 2
+# 5: start phi angle in degrees
+params.readline()
+pstart = int(params.readline())
+print "\nStart phi angle in degrees:", pstart
+
+# 6: stop phi angle in degrees
+params.readline()
+pstop = int(params.readline())
+print "\nStop phi angle in degrees:", pstop
+
+# 7: phi increment (step) in degrees
+params.readline()
+delp = int(params.readline())
+print "\nPhi increment (step) in degrees:", delp
+
+# 8: start theta angle in degrees
+params.readline()
+tstart = int(params.readline())
+print "\nStart theta angle in degrees:", tstart
+
+# 9: stop theta angle in degrees
+params.readline()
+tstop = int(params.readline())
+print "\nStop theta angle in degrees:", tstop
+
+# 10: theta increment (step) in degrees
+params.readline()
+delt = int(params.readline())
+print "\nTheta increment (step) in degrees:", delt
 
 # @begin CalculateRefsGeometryModel
 # :in:  pstart :as: PStart
@@ -218,7 +222,6 @@ if delp == 0:
 if pstart == pstop:
     phr0 = pstart*rad
 
-
 if delt == 0:
     delt = 1
 if tstart == tstop:
@@ -228,9 +231,10 @@ it = math.floor((tstop-tstart)/delt)+1
 print(it)
 ip = math.floor((pstop-pstart)/delp)+1
 print(ip)
-print("last step")
 # @end CalculateRefsGeometryModel
+params.close()
 
+print("last step")
 # @begin CalculateEdgesAndNormalTriangles
 # @in  node1 @as Node1
 # @in  node1 @as Node2
@@ -239,20 +243,11 @@ print("last step")
 # :out: areai :as: AreaI
 # @out beta @as Beta
 # @out alpha @as Alpha
-# areai = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-# print(areai)
 areai = []
 beta = []
 alpha = []
-# print(r[0][0])
-# Get edge vectors and normal from edge cross products - OctT 168
+# OctT 168 - Get edge vectors and normal from edge cross products
 for i in range(ntria):
-    # X = [x(vind(i, 1)) x(vind(i, 2)) x(vind(i, 3)) x(vind(i, 1))];
-    # Y = [y(vind(i, 1)) y(vind(i, 2)) y(vind(i, 3)) y(vind(i, 1))];
-    # Z = [z(vind(i, 1)) z(vind(i, 2)) z(vind(i, 3)) z(vind(i, 1))];
-    # Xa = [int(r[int(vind[i][0])-1][0]), int(r[int(vind[i][1])-1][0]), int(r[int(vind[i][2])-1][0]), int(r[int(vind[i][0])-1][0])]
-    # Ya = [int(r[int(vind[i][0])-1][1]), int(r[int(vind[i][1])-1][1]), int(r[int(vind[i][2])-1][1]), int(r[int(vind[i][0])-1][1])]
-    # Za = [int(r[int(vind[i][0])-1][2]), int(r[int(vind[i][1])-1][2]), int(r[int(vind[i][2])-1][2]), int(r[int(vind[i][0])-1][2])]
     A0 = ((r[int(vind[i][1])-1][0]) - (r[int(vind[i][0])-1][0]))
     A1 = ((r[int(vind[i][1])-1][1]) - (r[int(vind[i][0])-1][1]))
     A2 = ((r[int(vind[i][1])-1][2]) - (r[int(vind[i][0])-1][2]))
@@ -265,31 +260,20 @@ for i in range(ntria):
     C1 = ((r[int(vind[i][0]) - 1][1]) - (r[int(vind[i][2]) - 1][1]))
     C2 = ((r[int(vind[i][0]) - 1][2]) - (r[int(vind[i][2]) - 1][2]))
     C = [int(C0), int(C1), int(C2)]
-    # - r[int(vind[i][0])-1]
-    # print(A0)
-    # print(A1)
-    # print(C)
-    # print(B)
-    # print(A)
     N = -(np.cross(B,A))
     print(N)
-    # print(int(vind[i][1]))
 
-    # Edge lengths for triangle "i" OctT 184
+    # OctT 184 - Edge lengths for triangle "i"
     d = [np.linalg.norm(A), np.linalg.norm(B), np.linalg.norm(C)]
     ss = 0.5*sum(d)
-    # print(ss)
     areai.append(math.sqrt(ss*(ss-np.linalg.norm(A))*(ss-np.linalg.norm(B))*(ss-np.linalg.norm(C))))
-    # print(areai)
     Nn = np.linalg.norm(N)
-    # print(Nn)
     # unit normals
     N = N/Nn
     # 0 < beta < 180
     beta.append(math.acos(N[2]))
     # -180 < phi < 180
     alpha.append(math.atan2(N[1],N[0]))
-
 # @end CalculateEdgesAndNormalTriangles
 
 phi = []
@@ -297,13 +281,71 @@ theta = []
 D0 = []
 R = []
 e0 = []
-# print("ok")
-print(ip)
-print(it)
+filename_R = "R_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+print filename_R
+filename_E0 = "E0_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+print filename_E0
+fileR = open(filename_R, 'w')
+fileE0 = open(filename_E0, 'w')
+fileR.write(now)
+fileR.write("\n")
+fileR.write(sys.argv[0])
+fileR.write("\n")
+fileR.write(sys.argv[1])
+fileR.write("\n")
+fileR.write(sys.argv[2])
+fileR.write("\n")
+fileR.write(str(freq))
+fileR.write("\n")
+fileR.write(str(corr))
+fileR.write("\n")
+fileR.write(str(delstd))
+fileR.write("\n")
+fileR.write(str(ipol))
+fileR.write("\n")
+fileR.write(str(pstart))
+fileR.write("\n")
+fileR.write(str(pstop))
+fileR.write("\n")
+fileR.write(str(delp))
+fileR.write("\n")
+fileR.write(str(tstart))
+fileR.write("\n")
+fileR.write(str(tstop))
+fileR.write("\n")
+fileR.write(str(delt))
+fileR.write("\n")
+fileE0.write(now)
+fileE0.write("\n")
+fileE0.write(sys.argv[0])
+fileE0.write("\n")
+fileE0.write(sys.argv[1])
+fileE0.write("\n")
+fileE0.write(sys.argv[2])
+fileE0.write("\n")
+fileE0.write(str(freq))
+fileE0.write("\n")
+fileE0.write(str(corr))
+fileE0.write("\n")
+fileE0.write(str(delstd))
+fileE0.write("\n")
+fileE0.write(str(ipol))
+fileE0.write("\n")
+fileE0.write(str(pstart))
+fileE0.write("\n")
+fileE0.write(str(pstop))
+fileE0.write("\n")
+fileE0.write(str(delp))
+fileE0.write("\n")
+fileE0.write(str(tstart))
+fileE0.write("\n")
+fileE0.write(str(tstop))
+fileE0.write("\n")
+fileE0.write(str(delt))
+fileE0.write("\n")
 for i1 in range(0, int(ip)):
-    # print("ok")
     for i2 in range(0, int(it)):
-
+        # Global angles and direction cosines
         # @begin CalculateGlobalAnglesAndDirections
         # @in  ip @as IP
         # @in  it @as IT
@@ -323,19 +365,8 @@ for i1 in range(0, int(ip)):
         # @out sp @as SP
         # @out cp @as CP
         # @out D0 @as D0
-        # print(i1)
-        # print(i2)
-        # phi.append(1)
-        # phi.append(2)
-        # print(phi)
-        # print(pstart, i1, delp)
         phi.append(pstart+i1*delp)
-        # print(phi)
-        # print(phi[i2])
         phr = phi[i2]*rad
-        # print(phr)
-        # print(phi[i1][i2])
-        # Global angles and direction cosines
         theta.append(tstart+i2*delt)
         thr = theta[i2]*rad
         st = math.sin(thr)
@@ -345,10 +376,7 @@ for i1 in range(0, int(ip)):
         u = st*cp
         v = st*sp
         w = ct
-        # print(w)
         D0.append([u, v, w])
-        # print(D0)
-        # D0 = [u v w]
         U = u
         V = v
         W = w
@@ -358,17 +386,19 @@ for i1 in range(0, int(ip)):
         # @end CalculateGlobalAnglesAndDirections
 
         # Spherical coordinate system radial unit vector
-
         # @begin CalculateSphericalCoordinateSystemRadialUnitVector
         # @in  u @as U
         # @in  v @as V
         # @in  w @as W
         # @out R @as R
+        fileR.write(str(i2))
+        fileR.write(" ")
+        fileR.write(str([u, v, w]))
+        fileR.write("\n")
         R.append([u, v, w])
         # @end CalculateSphericalCoordinateSystemRadialUnitVector
 
         # Incident field in global Cartesian coordinates
-
         # @begin CalculateIncidentFieldInGlobalCartesianCoordinates
         # @in  uu @as UU
         # @in  vv @as VV
@@ -378,6 +408,10 @@ for i1 in range(0, int(ip)):
         # @in  sp @as SP
         # @in  cp @as CP
         # @out e0 @as E0
+        fileE0.write(str(i2))
+        fileE0.write(" ")
+        fileE0.write(str([(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)]))
+        fileE0.write("\n")
         e0.append([(uu*Et-sp*Ep), (vv*Et+cp*Ep), (ww*Et)])
         # print(e0)
         # e0.append(vv*Et+cp*Ep)
@@ -393,7 +427,6 @@ for i1 in range(0, int(ip)):
             # OctT 236
             # Test to see if front face is illuminated: FUT
             # Local direction cosines
-
             # @begin CalculateIlumFaces
             # @in  ntria @as NTria
             # @in D0 @as D0
@@ -407,19 +440,15 @@ for i1 in range(0, int(ip)):
             sb = math.sin(beta[m])
             T1 = []
             T1 = [[ca, sa, 0], [-sa, ca, 0], [0, 0, 1]]
-            print(T1)
             T2 = []
             T2 = [[cb, 0, -sb], [0, 1, 0], [sb, 0, cb]]
-            # print(T2)
             Dzero = np.array(D0[i1])
-            # print(Dzero)
-            # print(Dzero.transpose())
             D1 = T1*Dzero.transpose()
             D2 = T2*D1
-            # print([i1], [i2], D2)
             # @end CalculateIlumFaces
+fileR.close()
+fileE0.close()
+end = timer()
+print end - start, "seg"
 
-
-# print(D0)
-
-# @end POFacets
+# @end PyPOFacetsMonolithicYW
