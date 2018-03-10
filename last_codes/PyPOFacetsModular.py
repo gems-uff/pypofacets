@@ -391,12 +391,12 @@ def main(name):
             sump = 0
             sumdt = 0
             sumdp = 0
-            for m in range(ntria):
+            # for m in range(ntria):
                 # OctT 236
                 # Test to see if front face is illuminated: FUT
                 # Local direction cosines
                 # ***function 13***
-                calculate_ilum_faces(m, D0, i1, alpha, beta)
+                # calculate_ilum_faces(m, D0, i1, alpha, beta)
     fileR.close()
     fileE0.close()
     end = timer()

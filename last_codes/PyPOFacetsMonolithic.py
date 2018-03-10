@@ -203,9 +203,9 @@ theta = []
 D0 = []
 R = []
 e0 = []
-filename_R = "R_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+filename_R = "R_PyPOFacetsMonolithic_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
 print filename_R
-filename_E0 = "E0_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+filename_E0 = "E0_PyPOFacetsMonolithic_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
 print filename_E0
 fileR = open(filename_R, 'w')
 fileE0 = open(filename_E0, 'w')
@@ -303,21 +303,21 @@ for i1 in range(0, int(ip)):
         sump = 0
         sumdt = 0
         sumdp = 0
-        for m in range(ntria):
+        # for m in range(ntria):
             # OctT 236
             # Test to see if front face is illuminated: FUT
             # Local direction cosines
-            ca = math.cos(alpha[m])
-            sa = math.sin(alpha[m])
-            cb = math.cos(beta[m])
-            sb = math.sin(beta[m])
-            T1 = []
-            T1 = [[ca, sa, 0], [-sa, ca, 0], [0, 0, 1]]
-            T2 = []
-            T2 = [[cb, 0, -sb], [0, 1, 0], [sb, 0, cb]]
-            Dzero = np.array(D0[i1])
-            D1 = T1*Dzero.transpose()
-            D2 = T2*D1
+            # ca = math.cos(alpha[m])
+            # sa = math.sin(alpha[m])
+            # cb = math.cos(beta[m])
+            # sb = math.sin(beta[m])
+            # T1 = []
+            # T1 = [[ca, sa, 0], [-sa, ca, 0], [0, 0, 1]]
+            # T2 = []
+            # T2 = [[cb, 0, -sb], [0, 1, 0], [sb, 0, cb]]
+            # Dzero = np.array(D0[i1])
+            # D1 = T1*Dzero.transpose()
+            # D2 = T2*D1
 fileR.close()
 fileE0.close()
 end = timer()

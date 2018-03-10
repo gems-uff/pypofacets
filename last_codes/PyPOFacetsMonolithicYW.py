@@ -423,29 +423,29 @@ for i1 in range(0, int(ip)):
         sump = 0
         sumdt = 0
         sumdp = 0
-        for m in range(ntria):
+        # for m in range(ntria):
             # OctT 236
             # Test to see if front face is illuminated: FUT
             # Local direction cosines
-            # @begin CalculateIlumFaces
+            # # @begin CalculateIlumFaces
             # @in  ntria @as NTria
             # @in D0 @as D0
             # @in ip @as IP
             # @in alpha @as Alpha
             # @in beta @as Beta
             # @out T1 @as T1
-            ca = math.cos(alpha[m])
-            sa = math.sin(alpha[m])
-            cb = math.cos(beta[m])
-            sb = math.sin(beta[m])
-            T1 = []
-            T1 = [[ca, sa, 0], [-sa, ca, 0], [0, 0, 1]]
-            T2 = []
-            T2 = [[cb, 0, -sb], [0, 1, 0], [sb, 0, cb]]
-            Dzero = np.array(D0[i1])
-            D1 = T1*Dzero.transpose()
-            D2 = T2*D1
-            # @end CalculateIlumFaces
+            # ca = math.cos(alpha[m])
+            # sa = math.sin(alpha[m])
+            # cb = math.cos(beta[m])
+            # sb = math.sin(beta[m])
+            # T1 = []
+            # T1 = [[ca, sa, 0], [-sa, ca, 0], [0, 0, 1]]
+            # T2 = []
+            # T2 = [[cb, 0, -sb], [0, 1, 0], [sb, 0, cb]]
+            # Dzero = np.array(D0[i1])
+            # D1 = T1*Dzero.transpose()
+            # D2 = T2*D1
+            # # @end CalculateIlumFaces
 fileR.close()
 fileE0.close()
 end = timer()
