@@ -4,8 +4,8 @@
 import math
 import numpy as np
 
-# from mpl_toolkits.mplot3d import Axes3D
-# import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 
 from timeit import default_timer as timer
 
@@ -264,7 +264,8 @@ def main(name):
     # tstop = float(input("Entre com o valor de referencia do angulo theta final em graus:"))
     tstop = 360
     # delt = float(input("Entre com o passo do angulo theta em graus:"))
-    delt = 2
+    # delt = 2
+    delt = 90
 
     # ***funcao 8***
     it, ip, delp, delt = calcular_refs_geometria_modelo(pstart, pstop, delp, tstart, tstop, delt, rad)
@@ -297,13 +298,13 @@ def main(name):
             sump = 0
             sumdt = 0
             sumdp = 0
-            for m in range(ntria):
+            #for m in range(ntria):
                 # OctT 236
                 # Test to see if front face is illuminated: AFAZER
                 # Local direction cosines
 
                 # ***funcao 13***
-                calcular_ilum_faces(m, D0, i1, alpha, beta)
+                # calcular_ilum_faces(m, D0, i1, alpha, beta)
 
     # print(np.transpose(e0))
 
