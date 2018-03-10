@@ -4,8 +4,8 @@
 import math
 import numpy as np
 
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
+# from mpl_toolkits.mplot3d import Axes3D
+# import matplotlib.pyplot as plt
 
 from timeit import default_timer as timer
 
@@ -250,7 +250,7 @@ def main(name):
     # inicio plot
 
     # ***funcao 7***
-    plotar_grafico_3d_modelo(node1, node2, node3, r)
+    # plotar_grafico_3d_modelo(node1, node2, node3, r)
 
     # Oct 138 - Pattern Loop
     # pstart = float(input("Entre com o valor de referencia do angulo phi inicial em graus:"))
