@@ -1,0 +1,23 @@
+digraph dependency {
+    rankdir=RL;
+    node[fontsize=20]
+    v_1_39 [label="407 time" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    v_1_40 [label="407 start" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    v_1_44 [label="408 type.now" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    v_1_47 [label="408 datetime.strftime" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    v_1_47 [label="408 datetime.strftime" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    v_1_48 [label="408 now" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    a_1 [label="input_data_file_002.dat" fillcolor="white" fontcolor="black" shape="box" style="rounded,filled"];
+    a_2 [label="BOX/coordinates.m" fillcolor="white" fontcolor="black" shape="box" style="rounded,filled"];
+    a_4 [label="BOX/facets.m" fillcolor="white" fontcolor="black" shape="box" style="rounded,filled"];
+    a_5 [label="R_PyPOFacetsModular_BOX_i ... 02.dat_20180310160401.dat" fillcolor="white" fontcolor="black" shape="box" style="rounded,filled"];
+    a_6 [label="E0_PyPOFacetsModular_BOX_ ... 02.dat_20180310160401.dat" fillcolor="white" fontcolor="black" shape="box" style="rounded,filled"];
+    v_1_2022 [label="417 main" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    v_1_50 [label="416 name" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    a_5 -> v_1_2022 [style="dashed"];
+    v_1_40 -> v_1_39 [style=""];
+    v_1_47 -> v_1_44 [style="dashed"];
+    a_6 -> v_1_2022 [style="dashed"];
+    v_1_48 -> v_1_47 [style=""];
+    v_1_2022 -> a_1 [style="dashed"];
+}
