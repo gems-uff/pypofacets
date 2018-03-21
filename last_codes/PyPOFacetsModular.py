@@ -49,7 +49,7 @@ def read_model_coordinates(input_model):
     fname = input_model + "/coordinates.m"
     print("Path and file model coordinates: ", fname)
     coordinates = np.around(np.loadtxt(fname)).astype(int)
-    print("Model points coordinates: ", coordinates)
+    print("Model points coordinates: \n", coordinates)
     return np.transpose(coordinates)
 
 
@@ -300,7 +300,7 @@ print("Number of model vertices: ", nverts)
 
 # ***function 5***
 facets = read_facets_model(input_model)
-print("Model faces information: ", facets)
+print("Model faces information: \n", facets)
 
 # ***function 6***
 nfcv, node1, node2, node3, ilum, Rs = generate_transpose_matrix(facets)
