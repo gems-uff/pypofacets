@@ -6,50 +6,46 @@ import math
 import numpy as np
 
 from datetime import datetime
-from timeit import default_timer as timer
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
-start = timer()
 now = datetime.now().strftime("%Y%m%d%H%M%S")
-print now
-print "PyPOFacets - v0.1"
-print "================="
-print "\nScript:", sys.argv[0]
+
 # Read and print 3D model package
 input_model = sys.argv[1]
-print "\n3D Model:", input_model
+print("\n3D Model:", input_model)
 # Read and print input data file: pattern -> input_data_file_xxx.dat
 input_data_file = sys.argv[2]
-print "\nInput data file:", input_data_file
+print("\nInput data file:", input_data_file)
+
+# Input
 # Open input data file and gather parameters
 params = open(input_data_file, 'r')
+param_list = []
+for line in params:
+    if not line.startswith("#"):
+        param_list.append(int(line))
+freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = param_list
+params.close()
+
 # 1: radar frequency
-params.readline()
-freq = int(params.readline())
-print "\nThe radar frequency in Hz:", freq, "Hz"
+print("\nThe radar frequency in Hz:", freq, "Hz")
 c = 3e8
-wave = c / freq
-print "\nWavelength in meters:", wave, "m"
+waveL = c / freq
+print("\nWavelength in meters:", waveL, "m")
 # 2: correlation distance in meters
-params.readline()
-corr = int(params.readline())
-print "\nCorrelation distance in meters:", corr, "m"
-corel = corr / wave
+print("\nCorrelation distance in meters:", corr, "m")
+corel = corr / waveL
 # 3: standard deviation in meters
-params.readline()
-delstd = int(params.readline())
-print "\nStandard deviation in meters:", delstd, "m"
+print("\nStandard deviation in meters:", delstd, "m")
 delsq = delstd ** 2
-bk = 2 * math.pi / wave
+bk = 2 * math.pi / waveL
 cfact1 = math.exp(-4 * bk ** 2 * delsq)
 cfact2 = 4 * math.pi * (bk * corel) ** delsq
 rad = math.pi / 180
 Lt = 0.05
 Nt = 5
 # 4: incident wave polarization
-params.readline()
-ipol = int(params.readline())
 print "\nIncident wave polarization:", ipol
 if ipol == 0:
     Et = 1 + 0j
@@ -120,18 +116,12 @@ r = [[x[i], y[i], z[i]]
 
 # Oct 138 - Pattern Loop
 # 5: start phi angle in degrees
-params.readline()
-pstart = int(params.readline())
 print "\nStart phi angle in degrees:", pstart
 
 # 6: stop phi angle in degrees
-params.readline()
-pstop = int(params.readline())
 print "\nStop phi angle in degrees:", pstop
 
 # 7: phi increment (step) in degrees
-params.readline()
-delp = int(params.readline())
 print "\nPhi increment (step) in degrees:", delp
 
 if delp == 0:
@@ -140,18 +130,12 @@ if pstart == pstop:
     phr0 = pstart*rad
 
 # 8: start theta angle in degrees
-params.readline()
-tstart = int(params.readline())
 print "\nStart theta angle in degrees:", tstart
 
 # 9: stop theta angle in degrees
-params.readline()
-tstop = int(params.readline())
 print "\nStop theta angle in degrees:", tstop
 
 # 10: theta increment (step) in degrees
-params.readline()
-delt = int(params.readline())
 print "\nTheta increment (step) in degrees:", delt
 
 if delt == 0:
@@ -160,12 +144,7 @@ if tstart == tstop:
     thr0 = tstart*rad
 
 it = math.floor((tstop-tstart)/delt)+1
-print(it)
 ip = math.floor((pstop-pstart)/delp)+1
-print(ip)
-params.close()
-
-print("last step")
 areai = []
 beta = []
 alpha = []
@@ -320,5 +299,3 @@ for i1 in range(0, int(ip)):
             # D2 = T2*D1
 fileR.close()
 fileE0.close()
-end = timer()
-print end - start, "seg"

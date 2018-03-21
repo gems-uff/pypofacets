@@ -1,5 +1,6 @@
 digraph dependency {
-    rankdir=RL;
+    rankdir=TB;
+    ranksep=16; 
     node[fontsize=20]
     v_1_24 [label="13 time" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
     v_1_25 [label="13 start" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
