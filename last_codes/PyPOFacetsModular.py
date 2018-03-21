@@ -291,6 +291,7 @@ Co = 1
 
 # Processing 3D model
 # ***function 4***
+print("\nProcessing 3D model...")
 xpts, ypts, zpts = read_model_coordinates(input_model)
 print("Coordinates x (model points): ", xpts)
 print("Coordinates y (model points): ", ypts)

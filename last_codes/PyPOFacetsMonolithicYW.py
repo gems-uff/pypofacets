@@ -6,7 +6,6 @@ import math
 import numpy as np
 
 from datetime import datetime
-from timeit import default_timer as timer
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
@@ -19,43 +18,42 @@ import matplotlib.pyplot as plt
 # @out e0 @as E0
 # @out T1 @as T1
 # @out R @as R
-start = timer()
-now = datetime.now().strftime("%Y%m%d%H%M%S")
-print now
-print("PyPOFacets - v0.1")
-print("=================")
-print "\nScript:", sys.argv[0]
+
 # Read and print 3D model package
 input_model = sys.argv[1]
-print "\n3D Model:", input_model
+print("\n3D Model:", input_model)
 # Read and print input data file: pattern -> input_data_file_xxx.dat
 input_data_file = sys.argv[2]
-print "\nInput data file:", input_data_file
+print("\nInput data file:", input_data_file)
+
+# Input
 # Open input data file and gather parameters
 params = open(input_data_file, 'r')
+param_list = []
+for line in params:
+    if not line.startswith("#"):
+        param_list.append(int(line))
+freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = param_list
+params.close()
+
 # 1: radar frequency
 # @begin CalculateWaveLength
 # :in:  freq :as: Frequency
 # :out: waveL :as: WaveLength
-params.readline()
-freq = int(params.readline())
-print "\nThe radar frequency in Hz:", freq, "Hz"
+print("\nThe radar frequency in Hz:", freq, "Hz")
 c = 3e8
-wave = c / freq
-print "\nWavelength in meters:", wave, "m"
+waveL = c / freq
+print("\nWavelength in meters:", waveL, "m")
 # @end CalculateWaveLength
 
 # 2: correlation distance in meters
-params.readline()
-corr = int(params.readline())
-print "\nCorrelation distance in meters:", corr, "m"
-corel = corr / wave
+print("\nCorrelation distance in meters:", corr, "m")
+corel = corr / waveL
+
 # 3: standard deviation in meters
-params.readline()
-delstd = int(params.readline())
-print "\nStandard deviation in meters:", delstd, "m"
+print("\nStandard deviation in meters:", delstd, "m")
 delsq = delstd ** 2
-bk = 2 * math.pi / wave
+bk = 2 * math.pi / waveL
 cfact1 = math.exp(-4 * bk ** 2 * delsq)
 cfact2 = 4 * math.pi * (bk * corel) ** delsq
 rad = math.pi / 180
@@ -67,9 +65,7 @@ Nt = 5
 # :in: ipol :as: InputPolarization
 # @out Et
 # @out Ep
-params.readline()
-ipol = int(params.readline())
-print "\nIncident wave polarization:", ipol
+print("\nIncident wave polarization:", ipol)
 if ipol == 0:
     Et = 1 + 0j
     Ep = 0 + 0j
@@ -88,30 +84,29 @@ Co = 1
 # @out xpts @as XPoints
 # @out ypts @as YPoints
 # @out zpts @as ZPoints
-print "\nProcessing 3D model..."
-name = input_model
-fname = name + "/coordinates.m"
-print "\n...", fname
+print("\nProcessing 3D model...")
+fname = input_model + "/coordinates.m"
+print("Path and file model coordinates: ", fname)
 coordinates = np.loadtxt(fname)
-print coordinates
+print("Model points coordinates: \n", coordinates)
 xpts = coordinates[:, 0]
-print xpts
+print("Coordinates x (model points): ", xpts)
 ypts = coordinates[:, 1]
-print ypts
+print("Coordinates y (model points): ", ypts)
 zpts = coordinates[:, 2]
-print zpts
+print("Coordinates z (model points): ", zpts)
 nverts = len(xpts)
-print nverts
+print("Number of model vertices: ", nverts)
 # @end ReadModelCoordinates
 
 # @begin ReadFacetsModel
 # @in  name @as Name
 # @in  fname2 @as FacetsFile  @URI file:{name}/facets.m
 # @out facets @as Facets
-fname2 = name + "/facets.m"
-print "\n...", fname2
+fname2 = input_model + "/facets.m"
+print("Path and file facets model: ", fname2)
 facets = np.loadtxt(fname2)
-print facets
+print("Model faces information: \n", facets)
 # @end ReadFacetsModel
 
 # @begin GenerateTransposeMatrix
@@ -121,18 +116,18 @@ print facets
 # @out node3 @as Node3
 # @out ntria @as NTria
 nfcv = facets[:, 0]
-print nfcv
+print("Numbering of the model faces in the file: ", nfcv)
 node1 = facets[:, 1]
-print node1
+print("First component of each face: ", node1)
 node2 = facets[:, 2]
-print node2
+print("Second component of each face: ", node2)
 node3 = facets[:, 3]
-print node3
+print("Third component of each face: ", node3)
 iflag = 0
 ilum = facets[:, 4]
 Rs = facets[:, 5]
 ntria = len(node3)
-print ntria
+print("Number of model faces: ", ntria)
 vind = [[node1[i], node2[i], node3[i]]
         for i in range(ntria)]
 # @end GenerateTransposeMatrix
@@ -176,34 +171,22 @@ r = [[x[i], y[i], z[i]]
 
 # Oct 138 - Pattern Loop
 # 5: start phi angle in degrees
-params.readline()
-pstart = int(params.readline())
-print "\nStart phi angle in degrees:", pstart
+print("\nStart phi angle in degrees:", pstart)
 
 # 6: stop phi angle in degrees
-params.readline()
-pstop = int(params.readline())
-print "\nStop phi angle in degrees:", pstop
+print("\nStop phi angle in degrees:", pstop)
 
 # 7: phi increment (step) in degrees
-params.readline()
-delp = int(params.readline())
-print "\nPhi increment (step) in degrees:", delp
+print("\nPhi increment (step) in degrees:", delp)
 
 # 8: start theta angle in degrees
-params.readline()
-tstart = int(params.readline())
-print "\nStart theta angle in degrees:", tstart
+print("\nStart theta angle in degrees:", tstart)
 
 # 9: stop theta angle in degrees
-params.readline()
-tstop = int(params.readline())
-print "\nStop theta angle in degrees:", tstop
+print("\nStop theta angle in degrees:", tstop)
 
 # 10: theta increment (step) in degrees
-params.readline()
-delt = int(params.readline())
-print "\nTheta increment (step) in degrees:", delt
+print("\nTheta increment (step) in degrees:", delt)
 
 # @begin CalculateRefsGeometryModel
 # :in:  pstart :as: PStart
@@ -228,13 +211,11 @@ if tstart == tstop:
     thr0 = tstart*rad
 
 it = math.floor((tstop-tstart)/delt)+1
-print(it)
+print("Number of horizontal rotations in the simulation: ", it)
 ip = math.floor((pstop-pstart)/delp)+1
-print(ip)
+print("Number of vertical rotations in the simulation: ", ip)
 # @end CalculateRefsGeometryModel
-params.close()
 
-print("last step")
 # @begin CalculateEdgesAndNormalTriangles
 # @in  node1 @as Node1
 # @in  node1 @as Node2
@@ -261,7 +242,7 @@ for i in range(ntria):
     C2 = ((r[int(vind[i][0]) - 1][2]) - (r[int(vind[i][2]) - 1][2]))
     C = [int(C0), int(C1), int(C2)]
     N = -(np.cross(B,A))
-    print(N)
+    # print("Refs. normal (bidim.): ", point, N)
 
     # OctT 184 - Edge lengths for triangle "i"
     d = [np.linalg.norm(A), np.linalg.norm(B), np.linalg.norm(C)]
@@ -281,68 +262,21 @@ theta = []
 D0 = []
 R = []
 e0 = []
+now = datetime.now().strftime("%Y%m%d%H%M%S")
 filename_R = "R_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
-print filename_R
+print(filename_R)
 filename_E0 = "E0_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
-print filename_E0
+print(filename_E0)
 fileR = open(filename_R, 'w')
 fileE0 = open(filename_E0, 'w')
-fileR.write(now)
-fileR.write("\n")
-fileR.write(sys.argv[0])
-fileR.write("\n")
-fileR.write(sys.argv[1])
-fileR.write("\n")
-fileR.write(sys.argv[2])
-fileR.write("\n")
-fileR.write(str(freq))
-fileR.write("\n")
-fileR.write(str(corr))
-fileR.write("\n")
-fileR.write(str(delstd))
-fileR.write("\n")
-fileR.write(str(ipol))
-fileR.write("\n")
-fileR.write(str(pstart))
-fileR.write("\n")
-fileR.write(str(pstop))
-fileR.write("\n")
-fileR.write(str(delp))
-fileR.write("\n")
-fileR.write(str(tstart))
-fileR.write("\n")
-fileR.write(str(tstop))
-fileR.write("\n")
-fileR.write(str(delt))
-fileR.write("\n")
-fileE0.write(now)
-fileE0.write("\n")
-fileE0.write(sys.argv[0])
-fileE0.write("\n")
-fileE0.write(sys.argv[1])
-fileE0.write("\n")
-fileE0.write(sys.argv[2])
-fileE0.write("\n")
-fileE0.write(str(freq))
-fileE0.write("\n")
-fileE0.write(str(corr))
-fileE0.write("\n")
-fileE0.write(str(delstd))
-fileE0.write("\n")
-fileE0.write(str(ipol))
-fileE0.write("\n")
-fileE0.write(str(pstart))
-fileE0.write("\n")
-fileE0.write(str(pstop))
-fileE0.write("\n")
-fileE0.write(str(delp))
-fileE0.write("\n")
-fileE0.write(str(tstart))
-fileE0.write("\n")
-fileE0.write(str(tstop))
-fileE0.write("\n")
-fileE0.write(str(delt))
-fileE0.write("\n")
+r_data = [
+        now, sys.argv[0], sys.argv[1], sys.argv[2],
+        freq, corr, delstd, ipol, pstart, pstop,
+        delp, tstart, tstop, delt
+    ]
+text = '\n'.join(map(str, r_data)) + '\n'
+fileR.write(text)
+fileE0.write(text)
 for i1 in range(0, int(ip)):
     for i2 in range(0, int(it)):
         # Global angles and direction cosines
@@ -448,7 +382,5 @@ for i1 in range(0, int(ip)):
             # # @end CalculateIlumFaces
 fileR.close()
 fileE0.close()
-end = timer()
-print end - start, "seg"
 
 # @end PyPOFacetsMonolithicYW

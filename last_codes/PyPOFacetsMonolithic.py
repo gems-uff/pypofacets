@@ -9,8 +9,6 @@ from datetime import datetime
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
-now = datetime.now().strftime("%Y%m%d%H%M%S")
-
 # Read and print 3D model package
 input_model = sys.argv[1]
 print("\n3D Model:", input_model)
@@ -33,9 +31,11 @@ print("\nThe radar frequency in Hz:", freq, "Hz")
 c = 3e8
 waveL = c / freq
 print("\nWavelength in meters:", waveL, "m")
+
 # 2: correlation distance in meters
 print("\nCorrelation distance in meters:", corr, "m")
 corel = corr / waveL
+
 # 3: standard deviation in meters
 print("\nStandard deviation in meters:", delstd, "m")
 delsq = delstd ** 2
@@ -45,6 +45,7 @@ cfact2 = 4 * math.pi * (bk * corel) ** delsq
 rad = math.pi / 180
 Lt = 0.05
 Nt = 5
+
 # 4: incident wave polarization
 print "\nIncident wave polarization:", ipol
 if ipol == 0:
@@ -58,37 +59,36 @@ else:
 Co = 1
 
 # Processing 3D model
-print "\nProcessing 3D model..."
-name = input_model
-fname = name + "/coordinates.m"
-print "\n...", fname
+print("\nProcessing 3D model...")
+fname = input_model + "/coordinates.m"
+print("Path and file model coordinates: ", fname)
 coordinates = np.loadtxt(fname)
-print coordinates
+print("Model points coordinates: \n", coordinates)
 xpts = coordinates[:, 0]
-print xpts
+print("Coordinates x (model points): ", xpts)
 ypts = coordinates[:, 1]
-print ypts
+print("Coordinates y (model points): ", ypts)
 zpts = coordinates[:, 2]
-print zpts
+print("Coordinates z (model points): ", zpts)
 nverts = len(xpts)
-print nverts
-fname2 = name + "/facets.m"
-print "\n...", fname2
+print("Number of model vertices: ", nverts)
+fname2 = input_model + "/facets.m"
+print("Path and file facets model: ", fname2)
 facets = np.loadtxt(fname2)
-print facets
+print("Model faces information: \n", facets)
 nfcv = facets[:, 0]
-print nfcv
+print("Numbering of the model faces in the file: ", nfcv)
 node1 = facets[:, 1]
-print node1
+print("First component of each face: ", node1)
 node2 = facets[:, 2]
-print node2
+print("Second component of each face: ", node2)
 node3 = facets[:, 3]
-print node3
+print("Third component of each face: ", node3)
 iflag = 0
 ilum = facets[:, 4]
 Rs = facets[:, 5]
 ntria = len(node3)
-print ntria
+print("Number of model faces: ", ntria)
 vind = [[node1[i], node2[i], node3[i]]
         for i in range(ntria)]
 x = xpts
@@ -102,9 +102,12 @@ r = [[x[i], y[i], z[i]]
 # fig1 = plt.figure()
 # ax = Axes3D(fig1)
 # for i in range(ntria):
-#     Xa = [int(r[int(vind[i][0])-1][0]), int(r[int(vind[i][1])-1][0]), int(r[int(vind[i][2])-1][0]), int(r[int(vind[i][0])-1][0])]
-#     Ya = [int(r[int(vind[i][0])-1][1]), int(r[int(vind[i][1])-1][1]), int(r[int(vind[i][2])-1][1]), int(r[int(vind[i][0])-1][1])]
-#     Za = [int(r[int(vind[i][0])-1][2]), int(r[int(vind[i][1])-1][2]), int(r[int(vind[i][2])-1][2]), int(r[int(vind[i][0])-1][2])]
+#     Xa = [int(r[int(vind[i][0])-1][0]), int(r[int(vind[i][1])-1][0]), int(r[int(vind[i][2])-1][0]),
+#     int(r[int(vind[i][0])-1][0])]
+#     Ya = [int(r[int(vind[i][0])-1][1]), int(r[int(vind[i][1])-1][1]), int(r[int(vind[i][2])-1][1]),
+#     int(r[int(vind[i][0])-1][1])]
+#     Za = [int(r[int(vind[i][0])-1][2]), int(r[int(vind[i][1])-1][2]), int(r[int(vind[i][2])-1][2]),
+#     int(r[int(vind[i][0])-1][2])]
 #     ax.plot3D(Xa, Ya, Za)
 #     # ax.plot(Xa, Ya, Za) # same above
 #     # ax.plot_wireframe(Xa, Ya, Za) # one color
@@ -116,13 +119,13 @@ r = [[x[i], y[i], z[i]]
 
 # Oct 138 - Pattern Loop
 # 5: start phi angle in degrees
-print "\nStart phi angle in degrees:", pstart
+print("\nStart phi angle in degrees:", pstart)
 
 # 6: stop phi angle in degrees
-print "\nStop phi angle in degrees:", pstop
+print("\nStop phi angle in degrees:", pstop)
 
 # 7: phi increment (step) in degrees
-print "\nPhi increment (step) in degrees:", delp
+print("\nPhi increment (step) in degrees:", delp)
 
 if delp == 0:
     delp = 1
@@ -130,13 +133,13 @@ if pstart == pstop:
     phr0 = pstart*rad
 
 # 8: start theta angle in degrees
-print "\nStart theta angle in degrees:", tstart
+print("\nStart theta angle in degrees:", tstart)
 
 # 9: stop theta angle in degrees
-print "\nStop theta angle in degrees:", tstop
+print("\nStop theta angle in degrees:", tstop)
 
 # 10: theta increment (step) in degrees
-print "\nTheta increment (step) in degrees:", delt
+print("\nTheta increment (step) in degrees:", delt)
 
 if delt == 0:
     delt = 1
@@ -144,7 +147,9 @@ if tstart == tstop:
     thr0 = tstart*rad
 
 it = math.floor((tstop-tstart)/delt)+1
+print("Number of horizontal rotations in the simulation: ", it)
 ip = math.floor((pstop-pstart)/delp)+1
+print("Number of vertical rotations in the simulation: ", ip)
 areai = []
 beta = []
 alpha = []
@@ -164,7 +169,7 @@ for i in range(ntria):
     C2 = ((r[int(vind[i][0]) - 1][2]) - (r[int(vind[i][2]) - 1][2]))
     C = [int(C0), int(C1), int(C2)]
     N = -(np.cross(B,A))
-    print(N)
+    # print("Refs. normal (bidim.): ", point, N)
 
     # OctT 184 - Edge lengths for triangle "i"
     d = [np.linalg.norm(A), np.linalg.norm(B), np.linalg.norm(C)]
@@ -182,68 +187,21 @@ theta = []
 D0 = []
 R = []
 e0 = []
+now = datetime.now().strftime("%Y%m%d%H%M%S")
 filename_R = "R_PyPOFacetsMonolithic_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
-print filename_R
+print(filename_R)
 filename_E0 = "E0_PyPOFacetsMonolithic_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
-print filename_E0
+print(filename_E0)
 fileR = open(filename_R, 'w')
 fileE0 = open(filename_E0, 'w')
-fileR.write(now)
-fileR.write("\n")
-fileR.write(sys.argv[0])
-fileR.write("\n")
-fileR.write(sys.argv[1])
-fileR.write("\n")
-fileR.write(sys.argv[2])
-fileR.write("\n")
-fileR.write(str(freq))
-fileR.write("\n")
-fileR.write(str(corr))
-fileR.write("\n")
-fileR.write(str(delstd))
-fileR.write("\n")
-fileR.write(str(ipol))
-fileR.write("\n")
-fileR.write(str(pstart))
-fileR.write("\n")
-fileR.write(str(pstop))
-fileR.write("\n")
-fileR.write(str(delp))
-fileR.write("\n")
-fileR.write(str(tstart))
-fileR.write("\n")
-fileR.write(str(tstop))
-fileR.write("\n")
-fileR.write(str(delt))
-fileR.write("\n")
-fileE0.write(now)
-fileE0.write("\n")
-fileE0.write(sys.argv[0])
-fileE0.write("\n")
-fileE0.write(sys.argv[1])
-fileE0.write("\n")
-fileE0.write(sys.argv[2])
-fileE0.write("\n")
-fileE0.write(str(freq))
-fileE0.write("\n")
-fileE0.write(str(corr))
-fileE0.write("\n")
-fileE0.write(str(delstd))
-fileE0.write("\n")
-fileE0.write(str(ipol))
-fileE0.write("\n")
-fileE0.write(str(pstart))
-fileE0.write("\n")
-fileE0.write(str(pstop))
-fileE0.write("\n")
-fileE0.write(str(delp))
-fileE0.write("\n")
-fileE0.write(str(tstart))
-fileE0.write("\n")
-fileE0.write(str(tstop))
-fileE0.write("\n")
-fileE0.write(str(delt))
-fileE0.write("\n")
+r_data = [
+        now, sys.argv[0], sys.argv[1], sys.argv[2],
+        freq, corr, delstd, ipol, pstart, pstop,
+        delp, tstart, tstop, delt
+    ]
+text = '\n'.join(map(str, r_data)) + '\n'
+fileR.write(text)
+fileE0.write(text)
 for i1 in range(0, int(ip)):
     for i2 in range(0, int(it)):
         phi.append(pstart+i1*delp)
