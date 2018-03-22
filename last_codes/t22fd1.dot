@@ -1,4 +1,0 @@
-digraph dependency {
-    rankdir=RL;
-    node[fontsize=20]
-}
