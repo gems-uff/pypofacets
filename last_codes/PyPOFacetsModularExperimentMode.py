@@ -2,7 +2,11 @@ import sys
 import math
 import numpy as np
 
+
 from datetime import datetime
+from contextlib import contextmanager
+
+RAD = math.pi / 180
 
 
 def read_param_input(input_data_file):
@@ -45,7 +49,7 @@ def read_facets_model(input_model):
 
 def generate_transpose_matrix(facets):
     nfcv, node1, node2, node3, ilum, Rs = np.transpose(facets)
-    return node1, node2, node3
+    return node1, node2, node3, ilum, Rs
 
 
 def generate_coordinates_points(xpts, ypts, zpts):
@@ -53,15 +57,15 @@ def generate_coordinates_points(xpts, ypts, zpts):
     return r
 
 
-def calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt, rad):
+def calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt):
     if delp == 0:
         delp = 1
     if pstart == pstop:
-        phr0 = pstart*rad
+        phr0 = pstart * RAD
     if delt == 0:
         delt = 1
     if tstart == tstop:
-        thr0 = tstart*rad
+        thr0 = tstart * RAD
     it = math.floor((tstop-tstart)/delt)+1
     ip = math.floor((pstop-pstart)/delp)+1
     return it, ip, delp, delt
@@ -94,106 +98,138 @@ def calculate_edges_and_normal_triangles(node1, node2, node3, r):
         alpha.append(math.atan2(N[1],N[0]))
     return areai, beta, alpha
 
-
-def calculate_global_angles_and_directions(i1, i2, ip, it, pstart, delp, rad, tstart, delt, phi, theta, D0):
-    phi.append(pstart + i1 * delp)
-    phr = phi[i2] * rad
-    theta.append(tstart + i2 * delt)
-    thr = theta[i2] * rad
-    st = math.sin(thr)
-    ct = math.cos(thr)
-    cp = math.cos(phr)
-    sp = math.sin(phr)
-    u = st * cp
-    v = st * sp
-    w = ct
-    D0.append([u, v, w])
-    U = u
-    V = v
-    W = w
-    uu = ct * cp
-    vv = ct * sp
-    ww = -st
-    return u, v, w, uu, vv, ww, sp, cp, D0
-
-
-def calculate_spherical_coordinate_system_radial_unit_vector(fileR, i2, u, v, w, R):
-    fileR.write(str(i2))
-    fileR.write(" ")
-    fileR.write(str([u, v, w]))
-    fileR.write("\n")
-    R.append([u, v, w])
-    return R
-
-
-def calculate_incident_field_in_global_cartesian_coordinates(fileE0, i2, uu, vv, ww, Et, Ep, sp, cp, e0):
-    fileE0.write(str(i2))
-    fileE0.write(" ")
-    fileE0.write(str([(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)]))
-    fileE0.write("\n")
-    e0.append([(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)])
-    return e0
-
-
-def assemble_generate_output_file(ip, it, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop):
-    phi = []
-    theta = []
-    D0 = []
-    R = []
-    e0 = []
+def prepare_output(input_model, input_data_file, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop):
     now = datetime.now().strftime("%Y%m%d%H%M%S")
-    filename_R = "R_PyPOFacetsModularExperimentMode_" + sys.argv[1] + "_" + sys.argv[2] + "_" + now + ".dat"
-    filename_E0 = "E0_PyPOFacetsModularExperimentMode_" + sys.argv[1] + "_" + sys.argv[2] + "_" + now + ".dat"
-    fileR = open(filename_R, 'w')
-    fileE0 = open(filename_E0, 'w')
+    filename_R = "R_PyPOFacetsModularExperimentMode_" + input_model + "_" + input_data_file + "_" + now + ".dat"
+    filename_E0 = "E0_PyPOFacetsModularExperimentMode_" + input_model + "_" + input_data_file + "_" + now + ".dat"
+    filename_plot = "plot_PyPOFacetsModularExperimentMode_" + input_model + "_" + input_data_file + "_" + now + ".png"
     r_data = [
         now, sys.argv[0], sys.argv[1], sys.argv[2],
         freq, corr, delstd, ipol, pstart, pstop,
         delp, tstart, tstop, delt
     ]
     text = '\n'.join(map(str, r_data)) + '\n'
-    fileR.write(text)
-    fileE0.write(text)
+    return filename_R, filename_E0, filename_plot, text
+
+
+def calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt):
+    i2s = []
+    D0 = []
+    phi = []
+    theta = []
+    E = []
     for i1 in range(0, int(ip)):
+        phi.append([])
+        theta.append([])
         for i2 in range(0, int(it)):
-            u, v, w, uu, vv, ww, sp, cp, D0 = calculate_global_angles_and_directions(i1, i2, ip, it, pstart, delp, rad,
-                                                                                     tstart, delt, phi, theta, D0)
-            R = calculate_spherical_coordinate_system_radial_unit_vector(fileR, i2, u, v, w, R)
-            e0 = calculate_incident_field_in_global_cartesian_coordinates(fileE0, i2, uu, vv, ww, Et, Ep, sp, cp, e0)
-    fileR.close()
-    fileE0.close()
-    return r_data
+            i2s.append((i1, i2))
+            phi[i1].append(pstart + i1 * delp)
+            phr = phi[i1][i2] * RAD
+            theta[i1].append(tstart + i2 * delt)
+            thr = theta[i1][i2] * RAD
+            st = math.sin(thr)
+            ct = math.cos(thr)
+            cp = math.cos(phr)
+            sp = math.sin(phr)
+            u = st * cp
+            v = st * sp
+            w = ct
+            D0.append([u, v, w])
+            U = u
+            V = v
+            W = w
+            uu = ct * cp
+            vv = ct * sp
+            ww = -st
+            E.append([uu, vv, ww, sp, cp])
+    return i2s, D0, E, phi, theta
+
+
+
+
+def calculate_spherical_coordinate_system_radial_unit_vector(i2s, D0, filename_R, common_data):
+    with open(filename_R, "w") as fileR:
+        fileR.write(common_data)
+        for (i1, i2), elements in zip(i2s, D0):
+            fileR.write(str(i2))
+            fileR.write(" ")
+            fileR.write(str(elements))
+            fileR.write("\n")
+
+
+def calculate_incident_field_in_global_cartesian_coordinates(i2s, E, Et, Ep, filename_E0, common_data):
+    e0 = []
+    with open(filename_E0, "w") as fileE0:
+        fileE0.write(common_data)
+        for (i1, i2), elements in zip(i2s, E):
+            uu, vv, ww, sp, cp = elements
+            incident_field = [(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)]
+            e0.append(incident_field)
+            fileE0.write(str(i2))
+            fileE0.write(" ")
+            fileE0.write(str(incident_field))
+            fileE0.write("\n")
+    return e0
+
+
+def illuminate_faces(i2s, R, E, E0, node3, xpts, ypts, zpts, ilum, Rs, areai, alpha, beta, corr, waveL):
+    """Not implemented"""
+    corel = corr / waveL
+    bk = 2 * math.pi / waveL
+    Lt = 0.05
+    Nt = 5
+    Co = 1
+    delsq = delstd ** 2
+    cfact1 = math.exp(-4 * bk ** 2 * delsq)
+    cfact2 = 4 * math.pi * (bk * corel) ** delsq
+    D0 = R
+
+    sth, sph = [], []
+
+    for (i1, i2), d0, e, e0 in zip(i2s, R, E, E0):
+        uu, vv, ww, sp, cp = e
+        u, v, w = d0
+        if len(sth) - 1 < i1:
+            sth.append([])
+            sph.append([])
+        #for m in range(len(node3)):  # for m in mslice[1:ntria]
+        #sth[i1].append(10 * ...)
+        #sph[i2].append(10 * ...)
+    return sth, sph
+
+def plot_range(sth, sph, phi, theta, filename_plot):
+    """Not implemented"""
+    with open(filename_plot, "w"):
+        pass
+
 
 
 input_model = sys.argv[1]
 input_data_file = sys.argv[2]
 
+
 freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = read_param_input(input_data_file)
 
 waveL = calculate_wavelength(freq)
 
-corel = corr / waveL
-delsq = delstd ** 2
-bk = 2 * math.pi / waveL
-cfact1 = math.exp(-4 * bk ** 2 * delsq)
-cfact2 = 4 * math.pi * (bk * corel) ** delsq
-rad = math.pi / 180
-Lt = 0.05
-Nt = 5
-
 Et, Ep = calculate_incident_wave_polarization(ipol)
-Co = 1
 
 xpts, ypts, zpts = read_model_coordinates(input_model)
 
 facets = read_facets_model(input_model)
 
-node1, node2, node3 = generate_transpose_matrix(facets)
+node1, node2, node3, ilum, Rs = generate_transpose_matrix(facets)
 
 points = generate_coordinates_points(xpts, ypts, zpts)
 
-it, ip, delp, delt = calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt, rad)
+it, ip, delp, delt = calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt)
 
 areai, beta, alpha = calculate_edges_and_normal_triangles(node1, node2, node3, points)
 
-result = assemble_generate_output_file(ip, it, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop)
+filename_R, filename_E0, filename_plot, common_data = prepare_output(input_model, input_data_file, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop)
+
+i2s, D0, E, phi, theta = calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt)
+calculate_spherical_coordinate_system_radial_unit_vector(i2s, D0, filename_R, common_data)
+E0 = calculate_incident_field_in_global_cartesian_coordinates(i2s, E, Et, Ep, filename_E0, common_data)
+sth, sph = illuminate_faces(i2s, D0, E, E0, node3, xpts, ypts, zpts, ilum, Rs, areai, alpha, beta, corr, waveL)
+plot_range(sth, sph, phi, theta, filename_plot)

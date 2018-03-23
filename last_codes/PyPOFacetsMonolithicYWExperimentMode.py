@@ -11,15 +11,15 @@ from datetime import datetime
 # @in  fname @as CoordinatesFile  @URI file:{InputModel}/coordinates.m
 # @in  fname2 @as FacetsFile  @URI file:{InputModel}/facets.m
 # @in  fname3 @as InputDataFile  @URI file:{InputDataFileName}
-# @out E0 @as E0
-# @out T1 @as T1
-# @out R @as R
+# @out r_file @as R_Output  @URI file:{R_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
+# @out e0_file @as E0_Output  @URI file:{E0_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
+# @out plot_file @as PlotOutput  @URI file:{plot_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.png}
 
 # @begin ReadParamInput
 # @in  input_data_file  @as InputDataFileName
 # @in  fname3 @as InputDataFile  @URI file:{input_data_file}
 # @out  freq @as Freq
-# :out:  corr :as: Corr
+# @out  corr @as Corr
 # @out  ipol @as InputPolarization
 # @out  pstart @as PStart
 # @out  pstop @as PStop
@@ -94,6 +94,8 @@ facets = np.loadtxt(fname2)
 # @out node1 @as Node1
 # @out node1 @as Node2
 # @out node3 @as Node3
+# @out ilum @as Ilum
+# @out Rs @as Rs
 nfcv = facets[:, 0]
 node1 = facets[:, 1]
 node2 = facets[:, 2]
@@ -125,7 +127,6 @@ r = [[x[i], y[i], z[i]]
 # @in  tstart @as TStart
 # @in  tstop @as TStop
 # @in  delt @as InputDelT
-# @in  rad @as Rad
 # @out it @as IT
 # @out ip @as IP
 # @out delp @as DelP
@@ -184,6 +185,8 @@ theta = []
 D0 = []
 R = []
 e0 = []
+sth = []
+sph = []
 now = datetime.now().strftime("%Y%m%d%H%M%S")
 filename_R = "R_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
 filename_E0 = "E0_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
@@ -198,17 +201,20 @@ text = '\n'.join(map(str, r_data)) + '\n'
 fileR.write(text)
 fileE0.write(text)
 for i1 in range(0, int(ip)):
+    phi.append([])
+    theta.append([])
+    sth.append([])
+    sph.append([])
     for i2 in range(0, int(it)):
         # @begin CalculateGlobalAnglesAndDirections
         # @in  ip @as IP
         # @in  it @as IT
-        # :in:  pstart :as: PStart
+        # @in  pstart @as PStart
         # @in  delp @as DelP
-        # :in:  rad :as: Rad
-        # :in:  tstart :as: TStart
+        # @in  tstart @as TStart
         # @in  delt @as DelT
-        # :in:  phi :as: Phi
-        # :in:  theta :as: Theta
+        # @in  phi @as Phi
+        # @in  theta @as Theta
         # @out u @as U
         # @out v @as V
         # @out w @as W
@@ -218,10 +224,12 @@ for i1 in range(0, int(ip)):
         # @out sp @as SP
         # @out cp @as CP
         # @out D0 @as D0
-        phi.append(pstart+i1*delp)
-        phr = phi[i2]*rad
-        theta.append(tstart+i2*delt)
-        thr = theta[i2]*rad
+        # @out phi @as Phi
+        # @out theta @as Theta
+        phi[i1].append(pstart+i1*delp)
+        phr = phi[i1][i2]*rad
+        theta[i2].append(tstart+i2*delt)
+        thr = theta[i1][i2]*rad
         st = math.sin(thr)
         ct = math.cos(thr)
         cp = math.cos(phr)
@@ -242,7 +250,11 @@ for i1 in range(0, int(ip)):
         # @in  u @as U
         # @in  v @as V
         # @in  w @as W
+        # @in  R @as R
+        # @in  input_model  @as InputModel
+        # @in  input_data_file  @as InputDataFileName
         # @out R @as R
+        # @out r_file @as R_Output  @URI file:{R_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
         fileR.write(str(i2))
         fileR.write(" ")
         fileR.write(str([u, v, w]))
@@ -258,13 +270,55 @@ for i1 in range(0, int(ip)):
         # @in  Ep @as Ep
         # @in  sp @as SP
         # @in  cp @as CP
+        # @in  e0 @as E0
+        # @in  input_model  @as InputModel
+        # @in  input_data_file  @as InputDataFileName
         # @out e0 @as E0
+        # @out e0_file @as E0_Output  @URI file:{E0_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
         fileE0.write(str(i2))
         fileE0.write(" ")
         fileE0.write(str([(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)]))
         fileE0.write("\n")
         e0.append([(uu*Et-sp*Ep), (vv*Et+cp*Ep), (ww*Et)])
         # @end CalculateIncidentFieldInGlobalCartesianCoordinates
+
+        # @begin IlluminateFaces
+        # @in  D0 @as D0
+        # @in  e0 @as E0
+        # @in  node3 @as Node3
+        # @in  xpts @as XPoints
+        # @in  ypts @as YPoints
+        # @in  zpts @as ZPoints
+        # @in  ilum @as Ilum
+        # @in  Rs @as Rs
+        # @in areai @as AreaI
+        # @in beta @as Beta
+        # @in alpha @as Alpha
+        # @in corr @as Corr
+        # @in waveL @as WaveLength
+        # @in sph @as Sph
+        # @in sth @as Sth
+        # @out sph @as Sph
+        # @out sth @as Sth
+
+        # Not implemented
+
+        # @end IlluminateFaces
+        
+
+# @begin PlotRange
+# @in  sph @as Sph
+# @in  sth @as Sth
+# @in  phi @as Phi
+# @in  theta @as Theta
+# @in  input_model  @as InputModel
+# @in  input_data_file  @as InputDataFileName
+# @out plot_file @as PlotOutput  @URI file:{plot_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.png}
+
+# Not implemented
+
+# @end PlotRange
+
 
             
 fileR.close()
