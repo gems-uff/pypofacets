@@ -45,7 +45,7 @@ def read_facets_model(input_model):
 
 def generate_transpose_matrix(facets):
     nfcv, node1, node2, node3, ilum, Rs = np.transpose(facets)
-    return nfcv, node1, node2, node3, ilum, Rs
+    return node1, node2, node3
 
 
 def generate_coordinates_points(xpts, ypts, zpts):
@@ -135,7 +135,7 @@ def calculate_incident_field_in_global_cartesian_coordinates(fileE0, i2, uu, vv,
     return e0
 
 
-def assemble_generate_output_file(corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop):
+def assemble_generate_output_file(ip, it, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop):
     phi = []
     theta = []
     D0 = []
@@ -185,17 +185,15 @@ Et, Ep = calculate_incident_wave_polarization(ipol)
 Co = 1
 
 xpts, ypts, zpts = read_model_coordinates(input_model)
-nverts = len(xpts)
 
 facets = read_facets_model(input_model)
 
-nfcv, node1, node2, node3, ilum, Rs = generate_transpose_matrix(facets)
-ntria = len(node3)
+node1, node2, node3 = generate_transpose_matrix(facets)
 
-r = generate_coordinates_points(xpts, ypts, zpts)
+points = generate_coordinates_points(xpts, ypts, zpts)
 
 it, ip, delp, delt = calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt, rad)
 
-areai, beta, alpha = calculate_edges_and_normal_triangles(node1, node2, node3, r)
+areai, beta, alpha = calculate_edges_and_normal_triangles(node1, node2, node3, points)
 
-result = assemble_generate_output_file(corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop)
+result = assemble_generate_output_file(ip, it, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop)

@@ -7,11 +7,26 @@ from datetime import datetime
 
 # @begin PyPOFacetsMonolithicYWExperimentMode
 # @in  input_model  @as InputModel
-# @in  fname @as CoordinatesFile  @URI file:{input_model}/coordinates.m
-# @in  fname2 @as FacetsFile  @URI file:{input_model}/facets.m
+# @in  input_data_file  @as InputDataFileName
+# @in  fname @as CoordinatesFile  @URI file:{InputModel}/coordinates.m
+# @in  fname2 @as FacetsFile  @URI file:{InputModel}/facets.m
+# @in  fname3 @as InputDataFile  @URI file:{InputDataFileName}
 # @out E0 @as E0
 # @out T1 @as T1
 # @out R @as R
+
+# @begin ReadParamInput
+# @in  input_data_file  @as InputDataFileName
+# @in  fname3 @as InputDataFile  @URI file:{input_data_file}
+# @out  freq @as Freq
+# :out:  corr :as: Corr
+# @out  ipol @as InputPolarization
+# @out  pstart @as PStart
+# @out  pstop @as PStop
+# @out  delp @as InputDelP
+# @out  tstart @as TStart
+# @out  tstop @as TStop
+# @out  delt @as InputDelT
 input_model = sys.argv[1]
 input_data_file = sys.argv[2]
 params = open(input_data_file, 'r')
@@ -21,10 +36,11 @@ for line in params:
         param_list.append(int(line))
 freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = param_list
 params.close()
+# @end ReadParamInput
 
 # @begin CalculateWaveLength
-# :in:  freq :as: Frequency
-# :out: waveL :as: WaveLength
+# @in  freq @as Freq
+# @out waveL @as WaveLength
 c = 3e8
 waveL = c / freq
 # @end CalculateWaveLength
@@ -39,7 +55,7 @@ Lt = 0.05
 Nt = 5
 
 # @begin CalculateIncidentWavePolarization
-# :in: ipol :as: InputPolarization
+# @in ipol @as InputPolarization
 # @out Et
 # @out Ep
 if ipol == 0:
@@ -78,7 +94,6 @@ facets = np.loadtxt(fname2)
 # @out node1 @as Node1
 # @out node1 @as Node2
 # @out node3 @as Node3
-# @out ntria @as NTria
 nfcv = facets[:, 0]
 node1 = facets[:, 1]
 node2 = facets[:, 2]
@@ -104,13 +119,13 @@ r = [[x[i], y[i], z[i]]
 # @end GenerateCoordinatesPoints
 
 # @begin CalculateRefsGeometryModel
-# :in:  pstart :as: PStart
-# :in:  pstop :as: PStop
-# :in:  delp :as: InputDelP
-# :in:  tstart :as: TStart
-# :in:  tstop :as: TStop
-# :in:  delt :as: InputDelT
-# :in:  rad :as: Rad
+# @in  pstart @as PStart
+# @in  pstop @as PStop
+# @in  delp @as InputDelP
+# @in  tstart @as TStart
+# @in  tstop @as TStop
+# @in  delt @as InputDelT
+# @in  rad @as Rad
 # @out it @as IT
 # @out ip @as IP
 # @out delp @as DelP
@@ -134,7 +149,7 @@ ip = math.floor((pstop-pstart)/delp)+1
 # @in  node1 @as Node2
 # @in  node3 @as Node3
 # @in  r @as Points
-# :out: areai :as: AreaI
+# @out areai @as AreaI
 # @out beta @as Beta
 # @out alpha @as Alpha
 areai = []
@@ -250,6 +265,8 @@ for i1 in range(0, int(ip)):
         fileE0.write("\n")
         e0.append([(uu*Et-sp*Ep), (vv*Et+cp*Ep), (ww*Et)])
         # @end CalculateIncidentFieldInGlobalCartesianCoordinates
+
+            
 fileR.close()
 fileE0.close()
 
