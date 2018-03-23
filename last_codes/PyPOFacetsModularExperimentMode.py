@@ -172,7 +172,7 @@ def calculate_incident_field_in_global_cartesian_coordinates(i2s, E, Et, Ep, fil
     return e0
 
 
-def illuminate_faces(i2s, R, E, E0, node3, xpts, ypts, zpts, ilum, Rs, areai, alpha, beta, corr, waveL):
+def illuminate_faces(i2s, R, E, E0, node3, xpts, ypts, zpts, ilum, Rs, areai, alpha, beta, delstd, corr, waveL):
     """Not implemented"""
     corel = corr / waveL
     bk = 2 * math.pi / waveL
@@ -231,5 +231,5 @@ filename_R, filename_E0, filename_plot, common_data = prepare_output(input_model
 i2s, D0, E, phi, theta = calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt)
 calculate_spherical_coordinate_system_radial_unit_vector(i2s, D0, filename_R, common_data)
 E0 = calculate_incident_field_in_global_cartesian_coordinates(i2s, E, Et, Ep, filename_E0, common_data)
-sth, sph = illuminate_faces(i2s, D0, E, E0, node3, xpts, ypts, zpts, ilum, Rs, areai, alpha, beta, corr, waveL)
+sth, sph = illuminate_faces(i2s, D0, E, E0, node3, xpts, ypts, zpts, ilum, Rs, areai, alpha, beta, delstd, corr, waveL)
 plot_range(sth, sph, phi, theta, filename_plot)

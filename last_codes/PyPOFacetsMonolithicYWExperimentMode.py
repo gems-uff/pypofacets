@@ -27,6 +27,7 @@ from datetime import datetime
 # @out  tstart @as TStart
 # @out  tstop @as TStop
 # @out  delt @as InputDelT
+# @out  delstd @as DelStd
 input_model = sys.argv[1]
 input_data_file = sys.argv[2]
 params = open(input_data_file, 'r')
@@ -298,6 +299,7 @@ for i1 in range(0, int(ip)):
         # @in waveL @as WaveLength
         # @in sph @as Sph
         # @in sth @as Sth
+        # @in delstd @as DelStd
         # @out sph @as Sph
         # @out sth @as Sth
 
