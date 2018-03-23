@@ -21,19 +21,7 @@ $ now vis -b
 $ now diff 1 2 -f --brief
 
 
-
-
-
-
-
-
-
 1 2: nada, só Tracker no run
 1 3 ou 2 4: método de execução
 2 9: arquivo de entrada
 4 11: arquivo de entrada
-
-
-
-
-
