@@ -20,3 +20,5 @@ now dataflow 5 -l > dataflow4monol4.dot
 
 
 now run -v myPOFacets1MonoEst20180222ModularNoPrintsSlicedEng.py
+
+du -h --max-depth=1

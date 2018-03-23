@@ -5,31 +5,29 @@ import numpy as np
 
 from datetime import datetime
 
-# @begin PyPOFacetsMonolithicYWExperimentMode
+# @begin PyPOFacetsMonolithicExperimentModeYW
 # @in  input_model  @as InputModel
-# @in  input_data_file  @as InputDataFileName
-# @in  fname @as CoordinatesFile  @URI file:{InputModel}/coordinates.m
-# @in  fname2 @as FacetsFile  @URI file:{InputModel}/facets.m
-# @in  fname3 @as InputDataFile  @URI file:{InputDataFileName}
-# @out r_file @as R_Output  @URI file:{R_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
-# @out e0_file @as E0_Output  @URI file:{E0_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
-# @out plot_file @as PlotOutput  @URI file:{plot_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.png}
-
-# @begin ReadParamInput
-# @in  input_data_file  @as InputDataFileName
-# @in  fname3 @as InputDataFile  @URI file:{input_data_file}
-# @out  freq @as Freq
-# @out  corr @as Corr
-# @out  ipol @as InputPolarization
-# @out  pstart @as PStart
-# @out  pstop @as PStop
-# @out  delp @as InputDelP
-# @out  tstart @as TStart
-# @out  tstop @as TStop
-# @out  delt @as InputDelT
-# @out  delstd @as DelStd
+# @in  input_data_file  @as InputDataFile
+# @in  fname @as CoordinatesFile  @URI file:{input_model}/coordinates.m
+# @in  fname2 @as FacetsFile  @URI file:{input_model}/facets.m
+# @out fileE0 @as FileE0
+# @out T1 @as T1
+# @out fileR @as FileR
 input_model = sys.argv[1]
 input_data_file = sys.argv[2]
+
+# @begin ReadInputParameters
+# @in  input_data_file @as InputDataFile
+# @out freq @as Frequency
+# @out corr @as CorrelationDistance
+# @out delstd @as StandardDeviation
+# @out ipol @as IncidentWavePolarization
+# @out pstart @as StartPhiAngle
+# @out pstop @as StopPhiAngle
+# @out delp @as PhiIncrement
+# @out tstart @as StartThetaAngle
+# @out tstop @as StopThetaAngle
+# @out delt @as ThetaIncrement
 params = open(input_data_file, 'r')
 param_list = []
 for line in params:
@@ -37,10 +35,10 @@ for line in params:
         param_list.append(int(line))
 freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = param_list
 params.close()
-# @end ReadParamInput
+# @end ReadInputParameters
 
 # @begin CalculateWaveLength
-# @in  freq @as Freq
+# @in  freq @as Frequency
 # @out waveL @as WaveLength
 c = 3e8
 waveL = c / freq
@@ -95,8 +93,7 @@ facets = np.loadtxt(fname2)
 # @out node1 @as Node1
 # @out node1 @as Node2
 # @out node3 @as Node3
-# @out ilum @as Ilum
-# @out Rs @as Rs
+# @out ntria @as NTria
 nfcv = facets[:, 0]
 node1 = facets[:, 1]
 node2 = facets[:, 2]
@@ -105,6 +102,7 @@ iflag = 0
 ilum = facets[:, 4]
 Rs = facets[:, 5]
 ntria = len(node3)
+
 vind = [[node1[i], node2[i], node3[i]]
         for i in range(ntria)]
 # @end GenerateTransposeMatrix
@@ -122,26 +120,25 @@ r = [[x[i], y[i], z[i]]
 # @end GenerateCoordinatesPoints
 
 # @begin CalculateRefsGeometryModel
-# @in  pstart @as PStart
-# @in  pstop @as PStop
-# @in  delp @as InputDelP
-# @in  tstart @as TStart
-# @in  tstop @as TStop
-# @in  delt @as InputDelT
-# @out it @as IT
-# @out ip @as IP
-# @out delp @as DelP
-# @out delt @as DelT
+# @in  pstart @as StartPhiAngle
+# @in  pstop @as StopPhiAngle
+# @in  delp @as PhiIncrement
+# @in  tstart @as StartThetaAngle
+# @in  tstop @as StopTethaAngle
+# @in  delt @as ThetaIncrement
+# @in  rad @as Radians
+# @out it @as ITHorizontalRotations
+# @out ip @as IPVerticalRotations
+# @out delp @as PhiIncrement
+# @out delt @as ThetaIncrement
 if delp == 0:
     delp = 1
 if pstart == pstop:
     phr0 = pstart*rad
-
 if delt == 0:
     delt = 1
 if tstart == tstop:
     thr0 = tstart*rad
-
 it = math.floor((tstop-tstart)/delt)+1
 ip = math.floor((pstop-pstart)/delp)+1
 # @end CalculateRefsGeometryModel
@@ -157,7 +154,6 @@ ip = math.floor((pstop-pstart)/delp)+1
 areai = []
 beta = []
 alpha = []
-
 for i in range(ntria):
     A0 = ((r[int(vind[i][1])-1][0]) - (r[int(vind[i][0])-1][0]))
     A1 = ((r[int(vind[i][1])-1][1]) - (r[int(vind[i][0])-1][1]))
@@ -181,39 +177,48 @@ for i in range(ntria):
     alpha.append(math.atan2(N[1],N[0]))
 # @end CalculateEdgesAndNormalTriangles
 
+# @begin AssembleGenerateOutputFile
+# @in freq @as Frequency
+# @in corr @as CorrelationDistance
+# @in delstd @as StandardDeviation
+# @in ipol @as IncidentWavePolarization
+# @in pstart @as StartPhiAngle
+# @in pstop @as StopPhiAngle
+# @in delp @as PhiIncrement
+# @in tstart @as StartThetaAngle
+# @in tstop @as StopThetaAngle
+# @in delt @as ThetaIncrement
+# @out fileR @as FileR
+# @out fileE0 @as FileE0
 phi = []
 theta = []
 D0 = []
 R = []
 e0 = []
-sth = []
-sph = []
 now = datetime.now().strftime("%Y%m%d%H%M%S")
-filename_R = "R_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
-filename_E0 = "E0_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+filename_R = "R_PyPOFacetsMonolithicExperimentMode_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+filename_E0 = "E0_PyPOFacetsMonolithicExperimentMode_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
 fileR = open(filename_R, 'w')
 fileE0 = open(filename_E0, 'w')
 r_data = [
-        now, sys.argv[0], sys.argv[1], sys.argv[2],
-        freq, corr, delstd, ipol, pstart, pstop,
-        delp, tstart, tstop, delt
-    ]
+    now, sys.argv[0], sys.argv[1], sys.argv[2],
+    freq, corr, delstd, ipol, pstart, pstop,
+    delp, tstart, tstop, delt
+]
 text = '\n'.join(map(str, r_data)) + '\n'
 fileR.write(text)
 fileE0.write(text)
+# @end AssembleGenerateOutputFile
 for i1 in range(0, int(ip)):
-    phi.append([])
-    theta.append([])
-    sth.append([])
-    sph.append([])
     for i2 in range(0, int(it)):
         # @begin CalculateGlobalAnglesAndDirections
-        # @in  ip @as IP
-        # @in  it @as IT
-        # @in  pstart @as PStart
-        # @in  delp @as DelP
-        # @in  tstart @as TStart
-        # @in  delt @as DelT
+        # @in  ip @as IPVerticalRotations
+        # @in  it @as ITHorizontalRotations
+        # @in  pstart @as StartPhiAngle
+        # @in  delp @as PhiIncrement
+        # @in  rad @as Radians
+        # @in  tstart @as StartThetaAngle
+        # @in  delt @as ThetaIncrement
         # @in  phi @as Phi
         # @in  theta @as Theta
         # @out u @as U
@@ -225,12 +230,10 @@ for i1 in range(0, int(ip)):
         # @out sp @as SP
         # @out cp @as CP
         # @out D0 @as D0
-        # @out phi @as Phi
-        # @out theta @as Theta
-        phi[i1].append(pstart+i1*delp)
-        phr = phi[i1][i2]*rad
-        theta[i2].append(tstart+i2*delt)
-        thr = theta[i1][i2]*rad
+        phi.append(pstart+i1*delp)
+        phr = phi[i2]*rad
+        theta.append(tstart+i2*delt)
+        thr = theta[i2]*rad
         st = math.sin(thr)
         ct = math.cos(thr)
         cp = math.cos(phr)
@@ -251,11 +254,8 @@ for i1 in range(0, int(ip)):
         # @in  u @as U
         # @in  v @as V
         # @in  w @as W
-        # @in  R @as R
-        # @in  input_model  @as InputModel
-        # @in  input_data_file  @as InputDataFileName
-        # @out R @as R
-        # @out r_file @as R_Output  @URI file:{R_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
+        # @in fileR @as FileR
+        # @out fileR @as FileR
         fileR.write(str(i2))
         fileR.write(" ")
         fileR.write(str([u, v, w]))
@@ -271,59 +271,15 @@ for i1 in range(0, int(ip)):
         # @in  Ep @as Ep
         # @in  sp @as SP
         # @in  cp @as CP
-        # @in  e0 @as E0
-        # @in  input_model  @as InputModel
-        # @in  input_data_file  @as InputDataFileName
-        # @out e0 @as E0
-        # @out e0_file @as E0_Output  @URI file:{E0_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
+        # @in fileE0 @as FileE0
+        # @out fileE0 @as FileE0
         fileE0.write(str(i2))
         fileE0.write(" ")
-        fileE0.write(str([(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)]))
+        fileE0.write(str([(uu*Et-sp*Ep), (vv*Et+cp*Ep), (ww*Et)]))
         fileE0.write("\n")
         e0.append([(uu*Et-sp*Ep), (vv*Et+cp*Ep), (ww*Et)])
         # @end CalculateIncidentFieldInGlobalCartesianCoordinates
-
-        # @begin IlluminateFaces
-        # @in  D0 @as D0
-        # @in  e0 @as E0
-        # @in  node3 @as Node3
-        # @in  xpts @as XPoints
-        # @in  ypts @as YPoints
-        # @in  zpts @as ZPoints
-        # @in  ilum @as Ilum
-        # @in  Rs @as Rs
-        # @in areai @as AreaI
-        # @in beta @as Beta
-        # @in alpha @as Alpha
-        # @in corr @as Corr
-        # @in waveL @as WaveLength
-        # @in sph @as Sph
-        # @in sth @as Sth
-        # @in delstd @as DelStd
-        # @out sph @as Sph
-        # @out sth @as Sth
-
-        # Not implemented
-
-        # @end IlluminateFaces
-        
-
-# @begin PlotRange
-# @in  sph @as Sph
-# @in  sth @as Sth
-# @in  phi @as Phi
-# @in  theta @as Theta
-# @in  input_model  @as InputModel
-# @in  input_data_file  @as InputDataFileName
-# @out plot_file @as PlotOutput  @URI file:{plot_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.png}
-
-# Not implemented
-
-# @end PlotRange
-
-
-            
 fileR.close()
 fileE0.close()
 
-# @end PyPOFacetsMonolithicYWExperimentMode
+# @end PyPOFacetsMonolithicExperimentModeYW
