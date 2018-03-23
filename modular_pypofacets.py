@@ -100,9 +100,9 @@ def calculate_edges_and_normal_triangles(node1, node2, node3, r):
 
 def prepare_output(input_model, input_data_file, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop):
     now = datetime.now().strftime("%Y%m%d%H%M%S")
-    filename_R = "R_PyPOFacetsModularExperimentMode_" + input_model + "_" + input_data_file + "_" + now + ".dat"
-    filename_E0 = "E0_PyPOFacetsModularExperimentMode_" + input_model + "_" + input_data_file + "_" + now + ".dat"
-    filename_plot = "plot_PyPOFacetsModularExperimentMode_" + input_model + "_" + input_data_file + "_" + now + ".png"
+    filename_R = "R_modular_pypofacets_" + now + ".dat"
+    filename_E0 = "E0_modular_pypofacets_" + now + ".dat"
+    filename_plot = "plot_modular_pypofacets_" + now + ".png"
     r_data = [
         now, sys.argv[0], sys.argv[1], sys.argv[2],
         freq, corr, delstd, ipol, pstart, pstop,

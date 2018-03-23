@@ -189,8 +189,8 @@ e0 = []
 sth = []
 sph = []
 now = datetime.now().strftime("%Y%m%d%H%M%S")
-filename_R = "R_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
-filename_E0 = "E0_PyPOFacetsMonolithicYW_"+sys.argv[1]+"_"+sys.argv[2]+"_"+now+".dat"
+filename_R = "R_yw_monolithic_pypofacets_"+now+".dat"
+filename_E0 = "E0_yw_monolithic_pypofacets_"+now+".dat"
 fileR = open(filename_R, 'w')
 fileE0 = open(filename_E0, 'w')
 r_data = [
@@ -202,10 +202,10 @@ text = '\n'.join(map(str, r_data)) + '\n'
 fileR.write(text)
 fileE0.write(text)
 for i1 in range(0, int(ip)):
-    phi.append([])
-    theta.append([])
-    sth.append([])
-    sph.append([])
+    # phi.append([])
+    # theta.append([])
+    # sth.append([])
+    # sph.append([])
     for i2 in range(0, int(it)):
         # @begin CalculateGlobalAnglesAndDirections
         # @in  ip @as IP
@@ -227,10 +227,16 @@ for i1 in range(0, int(ip)):
         # @out D0 @as D0
         # @out phi @as Phi
         # @out theta @as Theta
-        phi[i1].append(pstart+i1*delp)
-        phr = phi[i1][i2]*rad
-        theta[i2].append(tstart+i2*delt)
-        thr = theta[i1][i2]*rad
+
+        # phi[i1].append(pstart+i1*delp)
+        # phr = phi[i1][i2]*rad
+        # theta[i2].append(tstart+i2*delt)
+        # thr = theta[i1][i2]*rad
+
+        phi.append(pstart + i1 * delp)
+        phr = phi[i2] * rad
+        theta.append(tstart + i2 * delt)
+        thr = theta[i2] * rad
         st = math.sin(thr)
         ct = math.cos(thr)
         cp = math.cos(phr)
