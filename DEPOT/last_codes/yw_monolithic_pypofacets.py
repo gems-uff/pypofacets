@@ -4,28 +4,22 @@ import math
 import numpy as np
 
 from datetime import datetime
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
 
-RAD = math.pi / 180
-
-# @begin yw_monolithic_pypofacets
+# @begin PyPOFacetsMonolithicYWExperimentMode
 # @in  input_model  @as InputModel
 # @in  input_data_file  @as InputDataFileName
 # @in  fname @as CoordinatesFile  @URI file:{InputModel}/coordinates.m
 # @in  fname2 @as FacetsFile  @URI file:{InputModel}/facets.m
 # @in  fname3 @as InputDataFile  @URI file:{InputDataFileName}
-# @out r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
-# @out e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
-# @out plot_file @as PlotOutput  @URI file:{plot_yw_monolithic_pypofacets_{Timestamp}.png}
-
+# @out r_file @as R_Output  @URI file:{R_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
+# @out e0_file @as E0_Output  @URI file:{E0_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
+# @out plot_file @as PlotOutput  @URI file:{plot_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.png}
 
 # @begin ReadParamInput
 # @in  input_data_file  @as InputDataFileName
 # @in  fname3 @as InputDataFile  @URI file:{input_data_file}
 # @out  freq @as Freq
 # @out  corr @as Corr
-# @out  delstd @as Delstd
 # @out  ipol @as InputPolarization
 # @out  pstart @as PStart
 # @out  pstop @as PStop
@@ -33,6 +27,8 @@ RAD = math.pi / 180
 # @out  tstart @as TStart
 # @out  tstop @as TStop
 # @out  delt @as InputDelT
+# @out  delstd @as DelStd
+input_model = sys.argv[1]
 input_data_file = sys.argv[2]
 params = open(input_data_file, 'r')
 param_list = []
@@ -43,7 +39,6 @@ freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = param_list
 params.close()
 # @end ReadParamInput
 
-
 # @begin CalculateWaveLength
 # @in  freq @as Freq
 # @out waveL @as WaveLength
@@ -51,21 +46,27 @@ c = 3e8
 waveL = c / freq
 # @end CalculateWaveLength
 
+corel = corr / waveL
+delsq = delstd ** 2
+bk = 2 * math.pi / waveL
+cfact1 = math.exp(-4 * bk ** 2 * delsq)
+cfact2 = 4 * math.pi * (bk * corel) ** delsq
+rad = math.pi / 180
+Lt = 0.05
+Nt = 5
 
 # @begin CalculateIncidentWavePolarization
 # @in ipol @as InputPolarization
-# @in waveL @as WaveLength
-# @out et @as Et
-# @out ep @as Ep
+# @out Et
+# @out Ep
 if ipol == 0:
-    et = 1 + 0j
-    ep = 0 + 0j
+    Et = 1 + 0j
+    Ep = 0 + 0j
 elif ipol == 1:
-    et = 0 + 0j
-    ep = 1 + 0j
+    Et = 0 + 0j
+    Ep = 1 + 0j
 Co = 1
 # @end CalculateIncidentWavePolarization
-
 
 # @begin ReadModelCoordinates
 # @in  input_model @as InputModel
@@ -73,7 +74,6 @@ Co = 1
 # @out xpts @as XPoints
 # @out ypts @as YPoints
 # @out zpts @as ZPoints
-input_model = sys.argv[1]
 fname = input_model + "/coordinates.m"
 coordinates = np.loadtxt(fname)
 xpts = coordinates[:, 0]
@@ -81,7 +81,6 @@ ypts = coordinates[:, 1]
 zpts = coordinates[:, 2]
 nverts = len(xpts)
 # @end ReadModelCoordinates
-
 
 # @begin ReadFacetsModel
 # @in  input_model @as InputModel
@@ -91,17 +90,24 @@ fname2 = input_model + "/facets.m"
 facets = np.loadtxt(fname2)
 # @end ReadFacetsModel
 
-
 # @begin GenerateTransposeMatrix
 # @in  facets @as Facets
 # @out node1 @as Node1
 # @out node1 @as Node2
 # @out node3 @as Node3
+# @out ilum @as Ilum
+# @out Rs @as Rs
+nfcv = facets[:, 0]
 node1 = facets[:, 1]
 node2 = facets[:, 2]
 node3 = facets[:, 3]
+iflag = 0
+ilum = facets[:, 4]
+Rs = facets[:, 5]
+ntria = len(node3)
+vind = [[node1[i], node2[i], node3[i]]
+        for i in range(ntria)]
 # @end GenerateTransposeMatrix
-
 
 # @begin GenerateCoordinatesPoints
 # @in  xpts @as XPoints
@@ -114,31 +120,6 @@ z = zpts
 r = [[x[i], y[i], z[i]]
      for i in range(nverts)]
 # @end GenerateCoordinatesPoints
-
-
-# @begin PlotModel
-# @in  node1 @as Node1
-# @in  node1 @as Node2
-# @in  node3 @as Node3
-# @in  r @as Points
-# @out plot_file @as PlotOutput  @URI file:{plot_yw_monolithic_pypofacets_{Timestamp}.png}
-ntria = len(node3)
-vind = [[node1[i], node2[i], node3[i]]
-        for i in range(ntria)]
-now = datetime.now().strftime("%Y%m%d%H%M%S")
-fig1 = plt.figure()
-ax = Axes3D(fig1)
-for i in range(ntria):
-    Xa = [int(r[int(vind[i][0])-1][0]), int(r[int(vind[i][1])-1][0]), int(r[int(vind[i][2])-1][0]), int(r[int(vind[i][0])-1][0])]
-    Ya = [int(r[int(vind[i][0])-1][1]), int(r[int(vind[i][1])-1][1]), int(r[int(vind[i][2])-1][1]), int(r[int(vind[i][0])-1][1])]
-    Za = [int(r[int(vind[i][0])-1][2]), int(r[int(vind[i][1])-1][2]), int(r[int(vind[i][2])-1][2]), int(r[int(vind[i][0])-1][2])]
-    ax.plot3D(Xa, Ya, Za)
-    ax.set_xlabel("X Axis")
-ax.set_title("3D Model: " + input_model)
-plt.savefig("plot_monolithic_pypofacets_" + now + ".png")
-plt.close()
-# @end PlotModel
-
 
 # @begin CalculateRefsGeometryModel
 # @in  pstart @as PStart
@@ -154,33 +135,60 @@ plt.close()
 if delp == 0:
     delp = 1
 if pstart == pstop:
-    phr0 = pstart*RAD
+    phr0 = pstart*rad
 
 if delt == 0:
     delt = 1
 if tstart == tstop:
-    thr0 = tstart*RAD
+    thr0 = tstart*rad
 
 it = math.floor((tstop-tstart)/delt)+1
 ip = math.floor((pstop-pstart)/delp)+1
 # @end CalculateRefsGeometryModel
 
+# @begin CalculateEdgesAndNormalTriangles
+# @in  node1 @as Node1
+# @in  node1 @as Node2
+# @in  node3 @as Node3
+# @in  r @as Points
+# @out areai @as AreaI
+# @out beta @as Beta
+# @out alpha @as Alpha
+areai = []
+beta = []
+alpha = []
 
-# @begin PrepareOutput
-# @in  input_model  @as InputModel
-# @in  input_data_file  @as InputDataFileName
-# @in  freq @as Freq
-# @in  corr @as Corr
-# @in  delstd @as Delstd
-# @in  ipol @as InputPolarization
-# @in  pstart @as PStart
-# @in  pstop @as PStop
-# @in  delp @as InputDelP
-# @in  tstart @as TStart
-# @in  tstop @as TStop
-# @in  delt @as InputDelT
-# @out r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
-# @out e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
+for i in range(ntria):
+    A0 = ((r[int(vind[i][1])-1][0]) - (r[int(vind[i][0])-1][0]))
+    A1 = ((r[int(vind[i][1])-1][1]) - (r[int(vind[i][0])-1][1]))
+    A2 = ((r[int(vind[i][1])-1][2]) - (r[int(vind[i][0])-1][2]))
+    A = [int(A0), int(A1), int(A2)]
+    B0 = ((r[int(vind[i][2]) - 1][0]) - (r[int(vind[i][1]) - 1][0]))
+    B1 = ((r[int(vind[i][2]) - 1][1]) - (r[int(vind[i][1]) - 1][1]))
+    B2 = ((r[int(vind[i][2]) - 1][2]) - (r[int(vind[i][1]) - 1][2]))
+    B = [int(B0), int(B1), int(B2)]
+    C0 = ((r[int(vind[i][0]) - 1][0]) - (r[int(vind[i][2]) - 1][0]))
+    C1 = ((r[int(vind[i][0]) - 1][1]) - (r[int(vind[i][2]) - 1][1]))
+    C2 = ((r[int(vind[i][0]) - 1][2]) - (r[int(vind[i][2]) - 1][2]))
+    C = [int(C0), int(C1), int(C2)]
+    N = -(np.cross(B,A))
+    d = [np.linalg.norm(A), np.linalg.norm(B), np.linalg.norm(C)]
+    ss = 0.5*sum(d)
+    areai.append(math.sqrt(ss*(ss-np.linalg.norm(A))*(ss-np.linalg.norm(B))*(ss-np.linalg.norm(C))))
+    Nn = np.linalg.norm(N)
+    N = N/Nn
+    beta.append(math.acos(N[2]))
+    alpha.append(math.atan2(N[1],N[0]))
+# @end CalculateEdgesAndNormalTriangles
+
+phi = []
+theta = []
+D0 = []
+R = []
+e0 = []
+sth = []
+sph = []
+now = datetime.now().strftime("%Y%m%d%H%M%S")
 filename_R = "R_yw_monolithic_pypofacets_"+now+".dat"
 filename_E0 = "E0_yw_monolithic_pypofacets_"+now+".dat"
 fileR = open(filename_R, 'w')
@@ -193,14 +201,11 @@ r_data = [
 text = '\n'.join(map(str, r_data)) + '\n'
 fileR.write(text)
 fileE0.write(text)
-# @end PrepareOutput
-
-
-phi = []
-theta = []
-R = []
-e0 = []
 for i1 in range(0, int(ip)):
+    # phi.append([])
+    # theta.append([])
+    # sth.append([])
+    # sph.append([])
     for i2 in range(0, int(it)):
         # @begin CalculateGlobalAnglesAndDirections
         # @in  ip @as IP
@@ -219,12 +224,19 @@ for i1 in range(0, int(ip)):
         # @out ww @as WW
         # @out sp @as SP
         # @out cp @as CP
+        # @out D0 @as D0
         # @out phi @as Phi
         # @out theta @as Theta
+
+        # phi[i1].append(pstart+i1*delp)
+        # phr = phi[i1][i2]*rad
+        # theta[i2].append(tstart+i2*delt)
+        # thr = theta[i1][i2]*rad
+
         phi.append(pstart + i1 * delp)
-        phr = phi[i2] * RAD
+        phr = phi[i2] * rad
         theta.append(tstart + i2 * delt)
-        thr = theta[i2] * RAD
+        thr = theta[i2] * rad
         st = math.sin(thr)
         ct = math.cos(thr)
         cp = math.cos(phr)
@@ -232,21 +244,24 @@ for i1 in range(0, int(ip)):
         u = st*cp
         v = st*sp
         w = ct
+        D0.append([u, v, w])
+        U = u
+        V = v
+        W = w
         uu = ct*cp
         vv = ct*sp
         ww = -st
         # @end CalculateGlobalAnglesAndDirections
 
         # @begin CalculateSphericalCoordinateSystemRadialUnitVector
-        # @in  ip @as IP
-        # @in  it @as IT
         # @in  u @as U
         # @in  v @as V
         # @in  w @as W
         # @in  R @as R
-        # @in  r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
+        # @in  input_model  @as InputModel
+        # @in  input_data_file  @as InputDataFileName
         # @out R @as R
-        # @out r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
+        # @out r_file @as R_Output  @URI file:{R_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
         fileR.write(str(i2))
         fileR.write(" ")
         fileR.write(str([u, v, w]))
@@ -255,27 +270,66 @@ for i1 in range(0, int(ip)):
         # @end CalculateSphericalCoordinateSystemRadialUnitVector
 
         # @begin CalculateIncidentFieldInGlobalCartesianCoordinates
-        # @in  ip @as IP
-        # @in  it @as IT
         # @in  uu @as UU
         # @in  vv @as VV
         # @in  ww @as WW
-        # @in  ep @as Et
-        # @in  ep @as Ep
+        # @in  Et @as Et
+        # @in  Ep @as Ep
         # @in  sp @as SP
         # @in  cp @as CP
         # @in  e0 @as E0
-        # @in e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
+        # @in  input_model  @as InputModel
+        # @in  input_data_file  @as InputDataFileName
         # @out e0 @as E0
-        # @out e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
+        # @out e0_file @as E0_Output  @URI file:{E0_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.dat}
         fileE0.write(str(i2))
         fileE0.write(" ")
-        fileE0.write(str([(uu * et - sp * ep), (vv * et + cp * ep), (ww * et)]))
+        fileE0.write(str([(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)]))
         fileE0.write("\n")
-        e0.append([(uu * et - sp * ep), (vv * et + cp * ep), (ww * et)])
+        e0.append([(uu*Et-sp*Ep), (vv*Et+cp*Ep), (ww*Et)])
         # @end CalculateIncidentFieldInGlobalCartesianCoordinates
 
+        # @begin IlluminateFaces
+        # @in  D0 @as D0
+        # @in  e0 @as E0
+        # @in  node3 @as Node3
+        # @in  xpts @as XPoints
+        # @in  ypts @as YPoints
+        # @in  zpts @as ZPoints
+        # @in  ilum @as Ilum
+        # @in  Rs @as Rs
+        # @in areai @as AreaI
+        # @in beta @as Beta
+        # @in alpha @as Alpha
+        # @in corr @as Corr
+        # @in waveL @as WaveLength
+        # @in sph @as Sph
+        # @in sth @as Sth
+        # @in delstd @as DelStd
+        # @out sph @as Sph
+        # @out sth @as Sth
+
+        # Not implemented
+
+        # @end IlluminateFaces
+        
+
+# @begin PlotRange
+# @in  sph @as Sph
+# @in  sth @as Sth
+# @in  phi @as Phi
+# @in  theta @as Theta
+# @in  input_model  @as InputModel
+# @in  input_data_file  @as InputDataFileName
+# @out plot_file @as PlotOutput  @URI file:{plot_PyPOFacetsMonolithicYW_{InputModel}_{InputDataFileName}_{Timestamp}.png}
+
+# Not implemented
+
+# @end PlotRange
+
+
+            
 fileR.close()
 fileE0.close()
 
-# @end yw_monolithic_pypofacets
+# @end PyPOFacetsMonolithicYWExperimentMode
