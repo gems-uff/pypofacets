@@ -58,7 +58,6 @@ if not os.path.exists(output_dir):
 # @out  tstart @as TStart
 # @out  tstop @as TStop
 # @out  delt @as InputDelT
-input_data_file = sys.argv[2]
 params = open(input_data_file, 'r')
 param_list = []
 for line in params:
@@ -98,7 +97,6 @@ elif ipol == 1:
 # @out ypts @as YPoints
 # @out zpts @as ZPoints
 # @out nverts @as Nverts
-input_model = sys.argv[1]
 fname = input_model + "/coordinates.m"
 coordinates = np.loadtxt(fname)
 xpts = coordinates[:, 0]
@@ -211,7 +209,7 @@ ip = math.floor((pstop-pstart)/delp)+1
 # @out e0_file @as E0_Output  @URI file:{{OutputDir}/E0.dat}
 # @out r_file @as R_Output  @URI file:{{OutputDir}/R.dat}
 r_data = [
-        time, sys.argv[0], sys.argv[1], sys.argv[2],
+        time, program_name, input_data_file, input_model,
         freq, corr, delstd, ipol, pstart, pstop,
         delp, tstart, tstop, delt
     ]
@@ -256,6 +254,7 @@ for i1 in range(0, int(ip)):
         # @in  D0 @as D0
         # @in  output_dir @as OutputDir
         # @out r_file @as R_Output  @URI file:{{OutputDir}/R.dat}
+        u, v, w = D0
         fileR.write(str(i2))
         fileR.write(" ")
         fileR.write(str(D0))

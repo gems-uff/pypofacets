@@ -1,15 +1,31 @@
 import sys
 import math
 import numpy as np
+import os
 
 from datetime import datetime
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
 RAD = math.pi / 180
+FILENAME_R = "R.dat"
+FILENAME_E0 = "E0.dat"
+FILENAME_PLOT = "plot.png"
 
 
-input_data_file = sys.argv[2]
+argv = sys.argv
+time = datetime.now().strftime("%Y%m%d%H%M%S")
+program_name = argv[0]
+input_data_file = argv[2]
+input_model = argv[1]
+if len(argv) < 4:
+    output_dir = os.path.join("output", "monolithic", str(time))
+else:
+    output_dir = argv[3]
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+
 params = open(input_data_file, 'r')
 param_list = []
 for line in params:
@@ -31,7 +47,6 @@ elif ipol == 1:
     ep = 1 + 0j
 
 
-input_model = sys.argv[1]
 fname = input_model + "/coordinates.m"
 coordinates = np.loadtxt(fname)
 xpts = coordinates[:, 0]
@@ -69,7 +84,7 @@ for i in range(ntria):
     ax.plot3D(Xa, Ya, Za)
     ax.set_xlabel("X Axis")
 ax.set_title("3D Model: " + input_model)
-plt.savefig("plot_monolithic_pypofacets_" + now + ".png")
+plt.savefig(os.path.join(output_dir, FILENAME_PLOT))
 plt.close()
 
 
@@ -87,18 +102,17 @@ it = math.floor((tstop-tstart)/delt)+1
 ip = math.floor((pstop-pstart)/delp)+1
 
 
-filename_R = "R_monolithic_pypofacets_" + now + ".dat"
-filename_E0 = "E0_monolithic_pypofacets_" + now + ".dat"
-fileR = open(filename_R, 'w')
-fileE0 = open(filename_E0, 'w')
 r_data = [
-        now, sys.argv[0], sys.argv[1], sys.argv[2],
+        now, program_name, input_data_file, input_model,
         freq, corr, delstd, ipol, pstart, pstop,
         delp, tstart, tstop, delt
     ]
-text = '\n'.join(map(str, r_data)) + '\n'
-fileR.write(text)
-fileE0.write(text)
+header = '\n'.join(map(str, r_data)) + '\n'
+fileR = open(os.path.join(output_dir, FILENAME_R), 'w')
+fileE0 = open(os.path.join(output_dir, FILENAME_E0), 'w')
+
+fileR.write(header)
+fileE0.write(header)
 
 
 phi = []
@@ -115,16 +129,14 @@ for i1 in range(0, int(ip)):
         ct = math.cos(thr)
         cp = math.cos(phr)
         sp = math.sin(phr)
-        u = st*cp
-        v = st*sp
-        w = ct
-        uu = ct*cp
-        vv = ct*sp
-        ww = -st
+        D0 = [st*cp, st*sp, ct]
+        E = [ct*cp, ct*sp, -st, sp, cp]
+        u, v, w = D0
         fileR.write(str(i2))
         fileR.write(" ")
         fileR.write(str([u, v, w]))
         fileR.write("\n")
+        uu, vv, ww, sp, cp = E
         fileE0.write(str(i2))
         fileE0.write(" ")
         fileE0.write(str([(uu * et - sp * ep), (vv * et + cp * ep), (ww * et)]))
