@@ -2,25 +2,50 @@
 import sys
 import math
 import numpy as np
+import os
 
 from datetime import datetime
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
 RAD = math.pi / 180
+FILENAME_R = "R.dat"
+FILENAME_E0 = "E0.dat"
+FILENAME_PLOT = "plot.png"
+
 
 # @begin yw_monolithic_pypofacets
-# @in  input_model  @as InputModel
-# @in  input_data_file  @as InputDataFileName
+# @in  argv  @as Arguments
 # @in  fname @as CoordinatesFile  @URI file:{InputModel}/coordinates.m
 # @in  fname2 @as FacetsFile  @URI file:{InputModel}/facets.m
 # @in  fname3 @as InputDataFile  @URI file:{InputDataFileName}
-# @out r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
-# @out e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
-# @out plot_file @as PlotOutput  @URI file:{plot_yw_monolithic_pypofacets_{Timestamp}.png}
+# @out r_file @as R_Output  @URI file:{{OutputDir}/R.dat}
+# @out e0_file @as E0_Output  @URI file:{{OutputDir}/E0.dat}
+# @out plot_file @as PlotOutput  @URI file:{{OutputDir}/plot.png}
 
 
-# @begin ReadParamInput
+# @begin ReadArgs
+# @in  argv  @as Arguments
+# @out time  @as Time
+# @out program_name  @as ProgramName
+# @out input_model  @as InputModel
+# @out input_data_file  @as InputDataFileName
+# @out output_dir  @as OutputDir
+argv = sys.argv
+time = datetime.now().strftime("%Y%m%d%H%M%S")
+program_name = argv[0]
+input_data_file = argv[2]
+input_model = argv[1]
+if len(argv) < 4:
+    output_dir = os.path.join("output", "yw_monolithic", str(time))
+else:
+    output_dir = argv[3]
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+# @end ReadArgs
+
+
+# @begin ReadDataFileInput
 # @in  input_data_file  @as InputDataFileName
 # @in  fname3 @as InputDataFile  @URI file:{input_data_file}
 # @out  freq @as Freq
@@ -41,7 +66,7 @@ for line in params:
         param_list.append(int(line))
 freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = param_list
 params.close()
-# @end ReadParamInput
+# @end ReadDataFileInput
 
 
 # @begin CalculateWaveLength
@@ -95,7 +120,7 @@ facets = np.loadtxt(fname2)
 # @begin GenerateTransposeMatrix
 # @in  facets @as Facets
 # @out node1 @as Node1
-# @out node1 @as Node2
+# @out node2 @as Node2
 # @out node3 @as Node3
 node1 = facets[:, 1]
 node2 = facets[:, 2]
@@ -122,11 +147,11 @@ r = [[x[i], y[i], z[i]]
 # @in  node1 @as Node2
 # @in  node3 @as Node3
 # @in  r @as Points
-# @out plot_file @as PlotOutput  @URI file:{plot_yw_monolithic_pypofacets_{Timestamp}.png}
+# @in  output_dir @as OutputDir
+# @out plot_file @as PlotOutput  @URI file:{{OutputDir}/plot.png}
 ntria = len(node3)
 vind = [[node1[i], node2[i], node3[i]]
         for i in range(ntria)]
-now = datetime.now().strftime("%Y%m%d%H%M%S")
 fig1 = plt.figure()
 ax = Axes3D(fig1)
 for i in range(ntria):
@@ -136,7 +161,7 @@ for i in range(ntria):
     ax.plot3D(Xa, Ya, Za)
     ax.set_xlabel("X Axis")
 ax.set_title("3D Model: " + input_model)
-plt.savefig("plot_yw_monolithic_pypofacets_" + now + ".png")
+plt.savefig(os.path.join(output_dir, FILENAME_PLOT))
 plt.close()
 # @end PlotModel
 
@@ -168,32 +193,35 @@ ip = math.floor((pstop-pstart)/delp)+1
 
 
 # @begin PrepareOutput
-# @in  freq @as Freq
+# @in  time @as Time
+# @in  program_name @as ProgramName
+# @in  input_data_file @as InputDataFileName
+# @in  input_model @as InputModel
+# @in  output_dir @as OutputDir
 # @in  corr @as Corr
+# @in  delp @as InputDelP
 # @in  delstd @as Delstd
+# @in  delt @as InputDelT
+# @in  freq @as Freq
 # @in  ipol @as InputPolarization
 # @in  pstart @as PStart
 # @in  pstop @as PStop
-# @in  delp @as InputDelP
 # @in  tstart @as TStart
 # @in  tstop @as TStop
-# @in  delt @as InputDelT
-# @out r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
-# @out e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
-filename_R = "R_yw_monolithic_pypofacets_"+now+".dat"
-filename_E0 = "E0_yw_monolithic_pypofacets_"+now+".dat"
-fileR = open(filename_R, 'w')
-fileE0 = open(filename_E0, 'w')
+# @out e0_file @as E0_Output  @URI file:{{OutputDir}/E0.dat}
+# @out r_file @as R_Output  @URI file:{{OutputDir}/R.dat}
 r_data = [
-        now, sys.argv[0], sys.argv[1], sys.argv[2],
+        time, sys.argv[0], sys.argv[1], sys.argv[2],
         freq, corr, delstd, ipol, pstart, pstop,
         delp, tstart, tstop, delt
     ]
-text = '\n'.join(map(str, r_data)) + '\n'
-fileR.write(text)
-fileE0.write(text)
-# @end PrepareOutput
+header = '\n'.join(map(str, r_data)) + '\n'
+fileR = open(os.path.join(output_dir, FILENAME_R), 'w')
+fileE0 = open(os.path.join(output_dir, FILENAME_E0), 'w')
 
+fileE0.write(header)
+fileR.write(header)
+# @end PrepareOutput
 
 phi = []
 theta = []
@@ -208,18 +236,8 @@ for i1 in range(0, int(ip)):
         # @in  delp @as DelP
         # @in  tstart @as TStart
         # @in  delt @as DelT
-        # @in  phi @as Phi
-        # @in  theta @as Theta
-        # @out u @as U
-        # @out v @as V
-        # @out w @as W
-        # @out uu @as UU
-        # @out vv @as VV
-        # @out ww @as WW
-        # @out sp @as SP
-        # @out cp @as CP
-        # @out phi @as Phi
-        # @out theta @as Theta
+        # @out D0 @as D0
+        # @out E @as E
         phi.append(pstart + i1 * delp)
         phr = phi[i2] * RAD
         theta.append(tstart + i2 * delt)
@@ -228,40 +246,31 @@ for i1 in range(0, int(ip)):
         ct = math.cos(thr)
         cp = math.cos(phr)
         sp = math.sin(phr)
-        u = st*cp
-        v = st*sp
-        w = ct
-        uu = ct*cp
-        vv = ct*sp
-        ww = -st
+        D0 = [st*cp, st*sp, ct]
+        E = [ct*cp, ct*sp, -st, sp, cp]
         # @end CalculateGlobalAnglesAndDirections
 
         # @begin CalculateSphericalCoordinateSystemRadialUnitVector
         # @in  ip @as IP
         # @in  it @as IT
-        # @in  u @as U
-        # @in  v @as V
-        # @in  w @as W
-        # @in  r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
-        # @out r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
+        # @in  D0 @as D0
+        # @in  output_dir @as OutputDir
+        # @out r_file @as R_Output  @URI file:{{OutputDir}/R.dat}
         fileR.write(str(i2))
         fileR.write(" ")
-        fileR.write(str([u, v, w]))
+        fileR.write(str(D0))
         fileR.write("\n")
         # @end CalculateSphericalCoordinateSystemRadialUnitVector
 
         # @begin CalculateIncidentFieldInGlobalCartesianCoordinates
         # @in  ip @as IP
         # @in  it @as IT
-        # @in  uu @as UU
-        # @in  vv @as VV
-        # @in  ww @as WW
-        # @in  ep @as Et
+        # @in  E @as E
+        # @in  et @as Et
         # @in  ep @as Ep
-        # @in  sp @as SP
-        # @in  cp @as CP
-        # @in e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
-        # @out e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
+        # @in  output_dir @as OutputDir
+        # @out e0_file @as E0_Output  @URI file:{{OutputDir}/E0.dat}
+        uu, vv, ww, sp, cp = E
         fileE0.write(str(i2))
         fileE0.write(" ")
         fileE0.write(str([(uu * et - sp * ep), (vv * et + cp * ep), (ww * et)]))
