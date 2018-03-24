@@ -1,0 +1,226 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=yw_monolithic_pypofacets
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+ReadParamInput
+CalculateWaveLength
+CalculateIncidentWavePolarization
+ReadModelCoordinates
+ReadFacetsModel
+GenerateTransposeMatrix
+GenerateCoordinatesPoints
+PlotModel
+CalculateRefsGeometryModel
+PrepareOutput
+
+/* Style for nodes representing composite programs (sub-workflows) in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Helvetica]
+
+/* Nodes representing composite programs (sub-workflows) in workflow */
+CalculateGlobalAnglesAndDirections
+CalculateSphericalCoordinateSystemRadialUnitVector
+CalculateIncidentFieldInGlobalCartesianCoordinates
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+R_Output [shape=record rankdir=LR label="{<f0> R_Output |<f1> file\:\{R_yw_monolithic_pypofacets_\{Timestamp\}.dat\}}"];
+E0_Output [shape=record rankdir=LR label="{<f0> E0_Output |<f1> file\:\{E0_yw_monolithic_pypofacets_\{Timestamp\}.dat\}}"];
+PlotOutput [shape=record rankdir=LR label="{<f0> PlotOutput |<f1> file\:\{plot_yw_monolithic_pypofacets_\{Timestamp\}.png\}}"];
+InputDataFileName
+InputDataFile [shape=record rankdir=LR label="{<f0> InputDataFile |<f1> file\:\{InputDataFileName\}}"];
+Freq
+InputPolarization
+WaveLength
+InputModel
+CoordinatesFile [shape=record rankdir=LR label="{<f0> CoordinatesFile |<f1> file\:\{InputModel\}/coordinates.m}"];
+FacetsFile [shape=record rankdir=LR label="{<f0> FacetsFile |<f1> file\:\{InputModel\}/facets.m}"];
+Facets
+XPoints
+YPoints
+ZPoints
+Nverts
+Node1
+Node2
+Node3
+Points
+PStart
+PStop
+InputDelP
+TStart
+TStop
+InputDelT
+Corr
+Delstd
+IP
+IT
+DelP
+DelT
+Phi
+Theta
+U
+V
+W
+UU
+VV
+WW
+Et
+Ep
+SP
+CP
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+
+/* Edges representing connections between programs and channels */
+ReadParamInput -> Freq
+ReadParamInput -> Corr
+ReadParamInput -> Delstd
+ReadParamInput -> InputPolarization
+ReadParamInput -> PStart
+ReadParamInput -> PStop
+ReadParamInput -> InputDelP
+ReadParamInput -> TStart
+ReadParamInput -> TStop
+ReadParamInput -> InputDelT
+InputDataFileName -> ReadParamInput
+InputDataFile -> ReadParamInput
+CalculateWaveLength -> WaveLength
+Freq -> CalculateWaveLength
+CalculateIncidentWavePolarization -> Et
+CalculateIncidentWavePolarization -> Ep
+InputPolarization -> CalculateIncidentWavePolarization
+WaveLength -> CalculateIncidentWavePolarization
+ReadModelCoordinates -> XPoints
+ReadModelCoordinates -> YPoints
+ReadModelCoordinates -> ZPoints
+ReadModelCoordinates -> Nverts
+InputModel -> ReadModelCoordinates
+CoordinatesFile -> ReadModelCoordinates
+ReadFacetsModel -> Facets
+InputModel -> ReadFacetsModel
+FacetsFile -> ReadFacetsModel
+GenerateTransposeMatrix -> Node1
+GenerateTransposeMatrix -> Node2
+GenerateTransposeMatrix -> Node3
+Facets -> GenerateTransposeMatrix
+GenerateCoordinatesPoints -> Points
+XPoints -> GenerateCoordinatesPoints
+YPoints -> GenerateCoordinatesPoints
+ZPoints -> GenerateCoordinatesPoints
+Nverts -> GenerateCoordinatesPoints
+PlotModel -> PlotOutput
+Node1 -> PlotModel
+Node2 -> PlotModel
+Node3 -> PlotModel
+Points -> PlotModel
+CalculateRefsGeometryModel -> IT
+CalculateRefsGeometryModel -> IP
+CalculateRefsGeometryModel -> DelP
+CalculateRefsGeometryModel -> DelT
+PStart -> CalculateRefsGeometryModel
+PStop -> CalculateRefsGeometryModel
+InputDelP -> CalculateRefsGeometryModel
+TStart -> CalculateRefsGeometryModel
+TStop -> CalculateRefsGeometryModel
+InputDelT -> CalculateRefsGeometryModel
+PrepareOutput -> R_Output
+PrepareOutput -> E0_Output
+Freq -> PrepareOutput
+Corr -> PrepareOutput
+Delstd -> PrepareOutput
+InputPolarization -> PrepareOutput
+PStart -> PrepareOutput
+PStop -> PrepareOutput
+InputDelP -> PrepareOutput
+TStart -> PrepareOutput
+TStop -> PrepareOutput
+InputDelT -> PrepareOutput
+CalculateGlobalAnglesAndDirections -> U
+CalculateGlobalAnglesAndDirections -> V
+CalculateGlobalAnglesAndDirections -> W
+CalculateGlobalAnglesAndDirections -> UU
+CalculateGlobalAnglesAndDirections -> VV
+CalculateGlobalAnglesAndDirections -> WW
+CalculateGlobalAnglesAndDirections -> SP
+CalculateGlobalAnglesAndDirections -> CP
+CalculateGlobalAnglesAndDirections -> Phi
+CalculateGlobalAnglesAndDirections -> Theta
+IP -> CalculateGlobalAnglesAndDirections
+IT -> CalculateGlobalAnglesAndDirections
+PStart -> CalculateGlobalAnglesAndDirections
+DelP -> CalculateGlobalAnglesAndDirections
+TStart -> CalculateGlobalAnglesAndDirections
+DelT -> CalculateGlobalAnglesAndDirections
+Phi -> CalculateGlobalAnglesAndDirections
+Theta -> CalculateGlobalAnglesAndDirections
+CalculateSphericalCoordinateSystemRadialUnitVector -> R_Output
+IP -> CalculateSphericalCoordinateSystemRadialUnitVector
+IT -> CalculateSphericalCoordinateSystemRadialUnitVector
+U -> CalculateSphericalCoordinateSystemRadialUnitVector
+V -> CalculateSphericalCoordinateSystemRadialUnitVector
+W -> CalculateSphericalCoordinateSystemRadialUnitVector
+R_Output -> CalculateSphericalCoordinateSystemRadialUnitVector
+CalculateIncidentFieldInGlobalCartesianCoordinates -> E0_Output
+IP -> CalculateIncidentFieldInGlobalCartesianCoordinates
+IT -> CalculateIncidentFieldInGlobalCartesianCoordinates
+UU -> CalculateIncidentFieldInGlobalCartesianCoordinates
+VV -> CalculateIncidentFieldInGlobalCartesianCoordinates
+WW -> CalculateIncidentFieldInGlobalCartesianCoordinates
+Et -> CalculateIncidentFieldInGlobalCartesianCoordinates
+Ep -> CalculateIncidentFieldInGlobalCartesianCoordinates
+SP -> CalculateIncidentFieldInGlobalCartesianCoordinates
+CP -> CalculateIncidentFieldInGlobalCartesianCoordinates
+E0_Output -> CalculateIncidentFieldInGlobalCartesianCoordinates
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+InputModel_input_port [label=""]
+InputDataFileName_input_port [label=""]
+CoordinatesFile_input_port [label=""]
+FacetsFile_input_port [label=""]
+InputDataFile_input_port [label=""]
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+R_Output_output_port [label=""]
+E0_Output_output_port [label=""]
+PlotOutput_output_port [label=""]
+
+/* Edges from input ports to channels */
+InputModel_input_port -> InputModel
+InputDataFileName_input_port -> InputDataFileName
+CoordinatesFile_input_port -> CoordinatesFile
+FacetsFile_input_port -> FacetsFile
+InputDataFile_input_port -> InputDataFile
+
+/* Edges from channels to output ports */
+R_Output -> R_Output_output_port
+E0_Output -> E0_Output_output_port
+PlotOutput -> PlotOutput_output_port
+
+/* End of top-level graph */
+}

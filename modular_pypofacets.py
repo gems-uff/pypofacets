@@ -86,7 +86,7 @@ def plot_model(node1, node2, node3, r):
         ax.plot3D(Xa, Ya, Za)
         ax.set_xlabel("X Axis")
     ax.set_title("3D Model: " + input_model)
-    plt.savefig("plot_monolithic_pypofacets_" + now + ".png")
+    plt.savefig("plot_modular_pypofacets_" + now + ".png")
     plt.close()
 
 
