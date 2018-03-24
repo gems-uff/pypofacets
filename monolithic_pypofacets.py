@@ -29,7 +29,6 @@ if ipol == 0:
 elif ipol == 1:
     et = 0 + 0j
     ep = 1 + 0j
-Co = 1
 
 
 input_model = sys.argv[1]
@@ -126,11 +125,9 @@ for i1 in range(0, int(ip)):
         fileR.write(" ")
         fileR.write(str([u, v, w]))
         fileR.write("\n")
-        R.append([u, v, w])
         fileE0.write(str(i2))
         fileE0.write(" ")
         fileE0.write(str([(uu * et - sp * ep), (vv * et + cp * ep), (ww * et)]))
         fileE0.write("\n")
-        e0.append([(uu * et - sp * ep), (vv * et + cp * ep), (ww * et)])
 fileR.close()
 fileE0.close()

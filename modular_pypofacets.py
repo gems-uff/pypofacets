@@ -2,9 +2,9 @@ import sys
 import math
 import numpy as np
 
-
 from datetime import datetime
-from contextlib import contextmanager
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 
 RAD = math.pi / 180
 
@@ -25,20 +25,25 @@ def calculate_wavelength(freq):
     return waveL
 
 
-def calculate_incident_wave_polarization(ipol):
+def calculate_incident_wave_polarization(ipol, waveL):
     if ipol == 0:
-        Et = 1 + 0j
-        Ep = 0 + 0j
+        et = 1 + 0j
+        ep = 0 + 0j
     elif ipol == 1:
-        Et = 0 + 0j
-        Ep = 1 + 0j
-    return (Et, Ep)
+        et = 0 + 0j
+        ep = 1 + 0j
+    return (et, ep)
 
 
 def read_model_coordinates(input_model):
     fname = input_model + "/coordinates.m"
     coordinates = np.around(np.loadtxt(fname)).astype(int)
-    return np.transpose(coordinates)
+    xpts = coordinates[:, 0]
+    ypts = coordinates[:, 1]
+    zpts = coordinates[:, 2]
+    nverts = len(xpts)
+    return xpts, ypts, zpts, nverts
+
 
 
 def read_facets_model(input_model):
@@ -48,13 +53,41 @@ def read_facets_model(input_model):
 
 
 def generate_transpose_matrix(facets):
-    nfcv, node1, node2, node3, ilum, Rs = np.transpose(facets)
-    return node1, node2, node3, ilum, Rs
+    node1 = facets[:, 1]
+    node2 = facets[:, 2]
+    node3 = facets[:, 3]
+    return node1, node2, node3
 
 
-def generate_coordinates_points(xpts, ypts, zpts):
-    r = list(zip(xpts, ypts, zpts))
+def generate_coordinates_points(xpts, ypts, zpts, nverts):
+    # r = list(zip(xpts, ypts, zpts))
+    x = xpts
+    y = ypts
+    z = zpts
+    r = [[x[i], y[i], z[i]]
+         for i in range(nverts)]
     return r
+
+
+def plot_model(node1, node2, node3, r):
+    ntria = len(node3)
+    vind = [[node1[i], node2[i], node3[i]]
+            for i in range(ntria)]
+    now = datetime.now().strftime("%Y%m%d%H%M%S")
+    fig1 = plt.figure()
+    ax = Axes3D(fig1)
+    for i in range(ntria):
+        Xa = [int(r[int(vind[i][0]) - 1][0]), int(r[int(vind[i][1]) - 1][0]), int(r[int(vind[i][2]) - 1][0]),
+              int(r[int(vind[i][0]) - 1][0])]
+        Ya = [int(r[int(vind[i][0]) - 1][1]), int(r[int(vind[i][1]) - 1][1]), int(r[int(vind[i][2]) - 1][1]),
+              int(r[int(vind[i][0]) - 1][1])]
+        Za = [int(r[int(vind[i][0]) - 1][2]), int(r[int(vind[i][1]) - 1][2]), int(r[int(vind[i][2]) - 1][2]),
+              int(r[int(vind[i][0]) - 1][2])]
+        ax.plot3D(Xa, Ya, Za)
+        ax.set_xlabel("X Axis")
+    ax.set_title("3D Model: " + input_model)
+    plt.savefig("plot_monolithic_pypofacets_" + now + ".png")
+    plt.close()
 
 
 def calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt):
@@ -71,52 +104,28 @@ def calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt):
     return it, ip, delp, delt
 
 
-def calculate_edges_and_normal_triangles(node1, node2, node3, r):
-    areai = []
-    beta = []
-    alpha = []
-    for point in zip(node1, node2, node3):
-        A0 = ((r[point[1] - 1][0]) - (r[point[0] - 1][0]))
-        A1 = ((r[point[1] - 1][1]) - (r[point[0] - 1][1]))
-        A2 = ((r[point[1] - 1][2]) - (r[point[0] - 1][2]))
-        A = [A0, A1, A2]
-        B0 = ((r[point[2] - 1][0]) - (r[point[1] - 1][0]))
-        B1 = ((r[point[2] - 1][1]) - (r[point[1] - 1][1]))
-        B2 = ((r[point[2] - 1][2]) - (r[point[1] - 1][2]))
-        B = [B0, B1, B2]
-        C0 = ((r[point[0] - 1][0]) - (r[point[2] - 1][0]))
-        C1 = ((r[point[0] - 1][1]) - (r[point[2] - 1][1]))
-        C2 = ((r[point[0] - 1][2]) - (r[point[2] - 1][2]))
-        C = [C0, C1, C2]
-        N = -(np.cross(B,A))
-        d = [np.linalg.norm(A), np.linalg.norm(B), np.linalg.norm(C)]
-        ss = 0.5*sum(d)
-        areai.append(math.sqrt(ss*(ss-np.linalg.norm(A))*(ss-np.linalg.norm(B))*(ss-np.linalg.norm(C))))
-        Nn = np.linalg.norm(N)
-        N = N/Nn
-        beta.append(math.acos(N[2]))
-        alpha.append(math.atan2(N[1],N[0]))
-    return areai, beta, alpha
-
-def prepare_output(input_model, input_data_file, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop):
+def prepare_output(corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop):
     now = datetime.now().strftime("%Y%m%d%H%M%S")
     filename_R = "R_modular_pypofacets_" + now + ".dat"
     filename_E0 = "E0_modular_pypofacets_" + now + ".dat"
-    filename_plot = "plot_modular_pypofacets_" + now + ".png"
+    fileR = open(filename_R, 'w')
+    fileE0 = open(filename_E0, 'w')
     r_data = [
-        now, sys.argv[0], sys.argv[1], sys.argv[2],
-        freq, corr, delstd, ipol, pstart, pstop,
-        delp, tstart, tstop, delt
-    ]
+            now, sys.argv[0], sys.argv[1], sys.argv[2],
+            freq, corr, delstd, ipol, pstart, pstop,
+            delp, tstart, tstop, delt
+        ]
     text = '\n'.join(map(str, r_data)) + '\n'
-    return filename_R, filename_E0, filename_plot, text
+    fileR.write(text)
+    fileE0.write(text)
+    return fileR, fileE0
 
 
-def calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt):
+def calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt, phi, theta):
     i2s = []
     D0 = []
-    phi = []
-    theta = []
+    # phi = []
+    # theta = []
     E = []
     for i1 in range(0, int(ip)):
         phi.append([])
@@ -135,9 +144,6 @@ def calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt):
             v = st * sp
             w = ct
             D0.append([u, v, w])
-            U = u
-            V = v
-            W = w
             uu = ct * cp
             vv = ct * sp
             ww = -st
@@ -145,91 +151,56 @@ def calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt):
     return i2s, D0, E, phi, theta
 
 
+def calculate_spherical_coordinate_system_radial_unit_vector(i2s, D0):
+    for (i1, i2), elements in zip(i2s, D0):
+        fileR.write(str(i2))
+        fileR.write(" ")
+        fileR.write(str(elements))
+        fileR.write("\n")
+    fileR.close()
 
 
-def calculate_spherical_coordinate_system_radial_unit_vector(i2s, D0, filename_R, common_data):
-    with open(filename_R, "w") as fileR:
-        fileR.write(common_data)
-        for (i1, i2), elements in zip(i2s, D0):
-            fileR.write(str(i2))
-            fileR.write(" ")
-            fileR.write(str(elements))
-            fileR.write("\n")
+def calculate_incident_field_in_global_cartesian_coordinates(i2s, E, Et, Ep):
+    for (i1, i2), elements in zip(i2s, E):
+        uu, vv, ww, sp, cp = elements
+        incident_field = [(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)]
+        fileE0.write(str(i2))
+        fileE0.write(" ")
+        fileE0.write(str(incident_field))
+        fileE0.write("\n")
+    fileE0.close()
 
 
-def calculate_incident_field_in_global_cartesian_coordinates(i2s, E, Et, Ep, filename_E0, common_data):
-    e0 = []
-    with open(filename_E0, "w") as fileE0:
-        fileE0.write(common_data)
-        for (i1, i2), elements in zip(i2s, E):
-            uu, vv, ww, sp, cp = elements
-            incident_field = [(uu * Et - sp * Ep), (vv * Et + cp * Ep), (ww * Et)]
-            e0.append(incident_field)
-            fileE0.write(str(i2))
-            fileE0.write(" ")
-            fileE0.write(str(incident_field))
-            fileE0.write("\n")
-    return e0
-
-
-def illuminate_faces(i2s, R, E, E0, node3, xpts, ypts, zpts, ilum, Rs, areai, alpha, beta, delstd, corr, waveL):
-    """Not implemented"""
-    corel = corr / waveL
-    bk = 2 * math.pi / waveL
-    Lt = 0.05
-    Nt = 5
-    Co = 1
-    delsq = delstd ** 2
-    cfact1 = math.exp(-4 * bk ** 2 * delsq)
-    cfact2 = 4 * math.pi * (bk * corel) ** delsq
-    D0 = R
-
-    sth, sph = [], []
-
-    for (i1, i2), d0, e, e0 in zip(i2s, R, E, E0):
-        uu, vv, ww, sp, cp = e
-        u, v, w = d0
-        if len(sth) - 1 < i1:
-            sth.append([])
-            sph.append([])
-        #for m in range(len(node3)):  # for m in mslice[1:ntria]
-        #sth[i1].append(10 * ...)
-        #sph[i2].append(10 * ...)
-    return sth, sph
-
-def plot_range(sth, sph, phi, theta, filename_plot):
-    """Not implemented"""
-    with open(filename_plot, "w"):
-        pass
-
-
-
-input_model = sys.argv[1]
 input_data_file = sys.argv[2]
-
 
 freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = read_param_input(input_data_file)
 
 waveL = calculate_wavelength(freq)
 
-Et, Ep = calculate_incident_wave_polarization(ipol)
+et, ep = calculate_incident_wave_polarization(ipol, waveL)
 
-xpts, ypts, zpts = read_model_coordinates(input_model)
+input_model = sys.argv[1]
+
+xpts, ypts, zpts, nverts = read_model_coordinates(input_model)
 
 facets = read_facets_model(input_model)
 
-node1, node2, node3, ilum, Rs = generate_transpose_matrix(facets)
+node1, node2, node3 = generate_transpose_matrix(facets)
 
-points = generate_coordinates_points(xpts, ypts, zpts)
+points = generate_coordinates_points(xpts, ypts, zpts, nverts)
+
+plot_model(node1, node2, node3, points)
 
 it, ip, delp, delt = calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt)
 
-areai, beta, alpha = calculate_edges_and_normal_triangles(node1, node2, node3, points)
+fileR, fileE0 = prepare_output(corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop)
 
-filename_R, filename_E0, filename_plot, common_data = prepare_output(input_model, input_data_file, corr, delp, delstd, delt, freq, ipol, pstart, pstop, tstart, tstop)
+phi = []
 
-i2s, D0, E, phi, theta = calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt)
-calculate_spherical_coordinate_system_radial_unit_vector(i2s, D0, filename_R, common_data)
-E0 = calculate_incident_field_in_global_cartesian_coordinates(i2s, E, Et, Ep, filename_E0, common_data)
-sth, sph = illuminate_faces(i2s, D0, E, E0, node3, xpts, ypts, zpts, ilum, Rs, areai, alpha, beta, delstd, corr, waveL)
-plot_range(sth, sph, phi, theta, filename_plot)
+theta = []
+
+i2s, D0, E, phi, theta = calculate_global_angles_and_directions(ip, it, pstart, delp, tstart, delt, phi, theta)
+
+calculate_spherical_coordinate_system_radial_unit_vector(i2s, D0)
+
+calculate_incident_field_in_global_cartesian_coordinates(i2s, E, et, ep)

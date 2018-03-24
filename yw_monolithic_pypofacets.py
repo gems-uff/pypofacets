@@ -63,7 +63,6 @@ if ipol == 0:
 elif ipol == 1:
     et = 0 + 0j
     ep = 1 + 0j
-Co = 1
 # @end CalculateIncidentWavePolarization
 
 
@@ -73,6 +72,7 @@ Co = 1
 # @out xpts @as XPoints
 # @out ypts @as YPoints
 # @out zpts @as ZPoints
+# @out nverts @as Nverts
 input_model = sys.argv[1]
 fname = input_model + "/coordinates.m"
 coordinates = np.loadtxt(fname)
@@ -107,6 +107,7 @@ node3 = facets[:, 3]
 # @in  xpts @as XPoints
 # @in  ypts @as YPoints
 # @in  zpts @as ZPoints
+# @in nverts @as Nverts
 # @out r @as Points
 x = xpts
 y = ypts
@@ -135,7 +136,7 @@ for i in range(ntria):
     ax.plot3D(Xa, Ya, Za)
     ax.set_xlabel("X Axis")
 ax.set_title("3D Model: " + input_model)
-plt.savefig("plot_monolithic_pypofacets_" + now + ".png")
+plt.savefig("plot_yw_monolithic_pypofacets_" + now + ".png")
 plt.close()
 # @end PlotModel
 
@@ -167,8 +168,6 @@ ip = math.floor((pstop-pstart)/delp)+1
 
 
 # @begin PrepareOutput
-# @in  input_model  @as InputModel
-# @in  input_data_file  @as InputDataFileName
 # @in  freq @as Freq
 # @in  corr @as Corr
 # @in  delstd @as Delstd
@@ -243,15 +242,12 @@ for i1 in range(0, int(ip)):
         # @in  u @as U
         # @in  v @as V
         # @in  w @as W
-        # @in  R @as R
         # @in  r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
-        # @out R @as R
         # @out r_file @as R_Output  @URI file:{R_yw_monolithic_pypofacets_{Timestamp}.dat}
         fileR.write(str(i2))
         fileR.write(" ")
         fileR.write(str([u, v, w]))
         fileR.write("\n")
-        R.append([u, v, w])
         # @end CalculateSphericalCoordinateSystemRadialUnitVector
 
         # @begin CalculateIncidentFieldInGlobalCartesianCoordinates
@@ -264,15 +260,12 @@ for i1 in range(0, int(ip)):
         # @in  ep @as Ep
         # @in  sp @as SP
         # @in  cp @as CP
-        # @in  e0 @as E0
         # @in e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
-        # @out e0 @as E0
         # @out e0_file @as E0_Output  @URI file:{E0_yw_monolithic_pypofacets_{Timestamp}.dat}
         fileE0.write(str(i2))
         fileE0.write(" ")
         fileE0.write(str([(uu * et - sp * ep), (vv * et + cp * ep), (ww * et)]))
         fileE0.write("\n")
-        e0.append([(uu * et - sp * ep), (vv * et + cp * ep), (ww * et)])
         # @end CalculateIncidentFieldInGlobalCartesianCoordinates
 
 fileR.close()
