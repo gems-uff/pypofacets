@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../diff3d" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../noworkflow" vcs="Git" />
   </component>
 </project>

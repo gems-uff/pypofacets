@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/PyPOFacets.iml" filepath="$PROJECT_DIR$/.idea/PyPOFacets.iml" />
       <module fileurl="file://$PROJECT_DIR$/../arules/.idea/arules.iml" filepath="$PROJECT_DIR$/../arules/.idea/arules.iml" />
       <module fileurl="file://$PROJECT_DIR$/../diff3d/.idea/diff3d.iml" filepath="$PROJECT_DIR$/../diff3d/.idea/diff3d.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../noworkflow/.idea/noworkflow.iml" filepath="$PROJECT_DIR$/../noworkflow/.idea/noworkflow.iml" />
     </modules>
   </component>
 </project>

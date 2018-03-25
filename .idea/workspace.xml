@@ -2,113 +2,315 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cba2b335-c71f-43d9-80ec-c78129eb3e26" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BOX/WS_FTP.LOG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BOX/coordinates.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BOX/facets.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BOX/pencil1.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307001127.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ModularYW.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ModularYW.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MonolithicYW.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MonolithicYW.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PLATE/FACETS.M" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PLATE/WS_FTP.LOG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PLATE/coordinates.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PyPOFacetsMonolithic.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307001127.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Solver.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cilindro1.stl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cubo.stl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dataflow1.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/input_data_file.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/input_data_file_001.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/BOX/WS_FTP.LOG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/BOX/coordinates.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/BOX/facets.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/BOX/pencil1.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005505.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005654.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005818.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/PLATE/WS_FTP.LOG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/PLATE/coordinates.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/PLATE/facets.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/PyPOFacetsModular.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/PyPOFacetsMonolithic.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/PyPOFacetsMonolithicYW.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005505.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005654.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005818.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow11.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow11.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow11l.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow11l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow12.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow12.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow12l.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow12l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow1o.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow1o.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow1o.ps" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow1o.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow1ol.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow1ol.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow1ov2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow21.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow21.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow21l.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow21l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow22.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow22.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow22l.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow22l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow2o.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow2o.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow2ol.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow2ol.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow31.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow31.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow31l.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow31l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow32.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow32l.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow32l.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow3o.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow3o.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow3ol.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/dataflow3ol.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/input_data_file_001.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/myfile.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/prev/PyPOFacetsModularPrev.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/prev/PyPOFacetsMonolithicPrev.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lastCopies/prev/PyPOFacetsMonolithicYWPrev.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lista.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1Mono20170607.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1Mono20170620.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1Mono20171114.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1Mono20171114v2.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1Mono20171210Modular.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1Mono20171210ModularnoPrints.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1Mono20171210ModularnoPrintsSliced.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1MonoEst20180222ModularNoPrintsSlicedEng.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1MonoEst20180222MonolithicEng.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1MonoEst20180224ModularNoPrintsSlicedYW.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacets1MonoEst20180224MonolithicYW.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/myPOFacetsMono.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/piramideclarabinary.stl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pomonostatic" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/t11.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testeContaLinhas.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testePlot.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testePlot2.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testePlot3.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testeSTL.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testeescrita.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testes.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yw.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/DidacticModeCodes/PyPOFacetsModularDidacticMode.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/DidacticModeCodes/PyPOFacetsMonolithicDidacticMode.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/DidacticModeCodes/PyPOFacetsMonolithicYWDidacticMode.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/DidacticModeCodes/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/STLModels/cilindro1.stl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/STLModels/cubo.stl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/STLModels/piramideclarabinary.stl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/YW/ModularYW.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/YW/ModularYW.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/YW/MonolithicYW.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/YW/MonolithicYW.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/YW/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/YW/myPOFacets1MonoEst20180224ModularNoPrintsSlicedYW.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/YW/myPOFacets1MonoEst20180224MonolithicYW.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/YW/yw.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/outputdotYW.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/outputdotYW.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t1monodd.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t1monodd1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t1monodd2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t2monod1d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t2monod1d1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t2monod1d2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t3monod2d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t3monod2d1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t3monod2d2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t4moduldd.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t4moduldd1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t4moduldd2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t5moduld1d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t5moduld1d1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t5moduld1d2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t6moduld2d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t6moduld2d1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/current_experiment_output/t6moduld2d2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow11.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow11l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow12.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow12l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow1o.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow1ol.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow21.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow21l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow22.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow22l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow2o.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow2ol.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow31.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow31l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow32.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow32l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow3o.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflow3ol.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodularV2_t1_tracer_p_d_1_input_data_file_002_2.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodularV2_t1_tracer_p_d_2_input_data_file_002_2.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodularV2_t1_tracer_p_input_data_file_002_2.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t1_tracer_p_d_1_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t1_tracer_p_d_2_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t1_tracer_p_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t1_tracer_p_input_data_file_002_2.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t3_tracer_d_2_d_1_p_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t3_tracer_d_2_d_2_p_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t3_tracer_d_2_p_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t4_tracer_d_1_d_1_p_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t4_tracer_d_1_d_2_p_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Modular/dataflowpypofacetsmodular_t4_tracer_d_1_p_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow11.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow11l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow12.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow12l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow1o.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow1ol.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow21.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow21l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow22.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow22l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow2o.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow2ol.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow31.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow31l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow32.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow32l.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow3o.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflow3ol.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/dataflowpypofacetsmonolithic_t2_tracer_p_input_data_file_002.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/dots/dots_Monolithic/teste.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/modular_pypofacets.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/monolithic_pypofacets.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsModular_BOX_input_data_file_001.dat_20180308040633.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsModular_BOX_input_data_file_001.dat_20180308041137.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsModular_BOX_input_data_file_001.dat_20180308041452.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310160401.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310194306.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310200138.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310214750.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310215022.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005505.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005654.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005818.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/E0_PyPOFacetsMonolithic_BOX_input_data_file_002.dat_20180310162057.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsModular_BOX_input_data_file_001.dat_20180308040633.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsModular_BOX_input_data_file_001.dat_20180308041137.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsModular_BOX_input_data_file_001.dat_20180308041452.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310160401.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310194306.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310200138.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310214750.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsModular_BOX_input_data_file_002.dat_20180310215022.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005505.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005654.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180307005818.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/output_files/R_PyPOFacetsMonolithic_BOX_input_data_file_002.dat_20180310162057.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow11.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow11l.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow12l.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow21.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow21.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow21.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow21l.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow21l.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow21l.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow22.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow22.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow22.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow22l.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow22l.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow22l.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow2o.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow2o.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow2o.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow2ol.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow2ol.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow2ol.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow31.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflow31l.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodularV2_t1_tracer_p_d_1_input_data_file_002_2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodularV2_t1_tracer_p_d_2_input_data_file_002_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodularV2_t1_tracer_p_d_2_input_data_file_002_2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodularV2_t1_tracer_p_input_data_file_002_2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t1_tracer_p_d_1_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t1_tracer_p_d_2_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t1_tracer_p_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t1_tracer_p_input_data_file_002_2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t3_tracer_d_2_d_1_p_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t3_tracer_d_2_d_2_p_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t3_tracer_d_2_p_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t4_tracer_d_1_d_1_p_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t4_tracer_d_1_d_2_p_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Modular/dataflowpypofacetsmodular_t4_tracer_d_1_p_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow11.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow11l.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow12l.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow1o.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow1o.ps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow1o.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow1ol.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow1ov2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow1ov3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow21.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow21l.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow22.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow22l.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow2o.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow2ol.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow31.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow31l.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow32l.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow3o.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflow3ol.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflowpypofacetsmonolithic_t2_tracer_p_input_data_file_002.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflowpypofacetsmonolithic_t2_tracer_p_input_data_file_0022.xcf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/pics/pics_Monolithic/dataflowpypofacetsmonolithicyw.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/BOX/WS_FTP.LOG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/BOX/coordinates.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/BOX/facets.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/BOX/pencil1.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/PyPOFacetsModularPrev.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/PyPOFacetsModularPrev2.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/PyPOFacetsMonolithicPrev.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/PyPOFacetsMonolithicYWPrev.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/prev/input_data_file_002.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/t23_modificado.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/yw.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/last_codes/yw_monolithic_pypofacets.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/Solver.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/lista.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1Mono20170607.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1Mono20170620.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1Mono20171114.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1Mono20171114v2.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1Mono20171210Modular.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1Mono20171210ModularnoPrints.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1Mono20171210ModularnoPrintsSliced.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1MonoEst20180222ModularNoPrintsSlicedEng.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1MonoEst20180222MonolithicEng.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/myPOFacetsMono.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/testeContaLinhas.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/testePlot.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/testePlot2.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/testePlot3.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/testeSTL.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/testeescrita.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/old_codes/testes.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/E0_modular_pypofacets_20180324011330.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/E0_modular_pypofacets_20180324011447.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/E0_modular_pypofacets_20180324011646.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/E0_monolithic_pypofacets_20180324010511.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/R_modular_pypofacets_20180324011330.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/R_modular_pypofacets_20180324011447.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/R_modular_pypofacets_20180324011646.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/R_monolithic_pypofacets_20180324010511.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/experiments.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/plot_modular_pypofacets_20180324011328.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/plot_modular_pypofacets_20180324011446.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/plot_modular_pypofacets_20180324011644.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/plot_monolithic_pypofacets_20180324010511.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t1monodd.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t1monodd.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t1monodd_modif.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t1monodd_modif.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t1monodd_modif.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t2moduldd.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t2moduldd1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t2moduldd2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t3moduld1d.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t3moduld1d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t3moduld1d1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t3moduld1d2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t4moduld2d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t4moduld2d1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/t4moduld2d2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/yw.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/yw.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/outputs_run/yw.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/dataflow_d.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/dataflow_p.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/dataflow_p.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/dataflow_s.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/dataflow_s.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/diff_trial1_trial3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/diff_trial8_trial9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/output_d.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/output_p.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/output_s.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/print_graph_noMatch.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/trial1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/trial3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/trial9_modular_noprints.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/pics_2017/trial9_modular_noprints_sum.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEPOT/yw_monolithic_pypofacets_lastCl.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEVS/_experiments22mar18" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEVS/experimentos_artigo_escience_clayton" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEVS/pomonostaticMLab" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DEVS/tips.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/E0_modular_pypofacets_20180324011330.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/E0_modular_pypofacets_20180324011447.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/E0_modular_pypofacets_20180324011646.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/E0_monolithic_pypofacets_20180324010511.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/R_modular_pypofacets_20180324011330.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/R_modular_pypofacets_20180324011447.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/R_modular_pypofacets_20180324011646.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/R_monolithic_pypofacets_20180324010511.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/experiments.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/plot_modular_pypofacets_20180324011328.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/plot_modular_pypofacets_20180324011446.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/plot_modular_pypofacets_20180324011644.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/plot_monolithic_pypofacets_20180324010511.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t1monodd.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t1monodd.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t1monodd_modif.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t1monodd_modif.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t1monodd_modif.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t2moduldd.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t2moduldd1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t2moduldd2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t3moduld1d.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t3moduld1d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t3moduld1d1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t3moduld1d2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t4moduld2d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t4moduld2d1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/t4moduld2d2.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/yw.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/yw.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/outputs_run/yw.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t1_monolithic_d_d.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t1_monolithic_d_d.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t1_monolithic_d_d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t1_monolithic_d_d_modified.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t1_monolithic_d_d_modified.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t1_monolithic_d_d_modified.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t3_modular_d1_d.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t3_modular_d1_d.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/t3_modular_d1_d.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/yw.dot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/yw.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/yw.svg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PyPOFacets.iml" afterPath="$PROJECT_DIR$/.idea/PyPOFacets.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../diff3d/.idea/diff3d.iml" afterPath="$PROJECT_DIR$/../diff3d/.idea/diff3d.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../noworkflow/capture/noworkflow/now/persistence/models/graphs/dependency_graph.py" afterPath="$PROJECT_DIR$/../noworkflow/capture/noworkflow/now/persistence/models/graphs/dependency_graph.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -117,29 +319,70 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="PyPOFacets" />
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="yw_monolithic_pypofacets.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/yw_monolithic_pypofacets.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="143" column="22" lean-forward="false" selection-start-line="143" selection-start-column="22" selection-end-line="143" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>iri</find>
-      <find>vind</find>
-      <find>csv</find>
-      <find>ip</find>
-      <find>funcao</find>
-      <find>plotar_grafico_3d_modelo</find>
-      <find>calculate_angulos_globais_e_direcoes</find>
-      <find>input</find>
+      <find>file</find>
+      <find>ilum</find>
+      <find>rs</find>
+      <find>dels</find>
+      <find>e0_fi</find>
+      <find># @in  input_model  @as InputModel</find>
+      <find>input_mode</find>
+      <find>timest</find>
+      <find>node3</find>
+      <find>calculateincidentw</find>
       <find>rad</find>
+      <find>Ep</find>
+      <find>corr</find>
+      <find>delstd</find>
+      <find>nfcv</find>
+      <find>ifla</find>
+      <find>phr0</find>
+      <find>thr0</find>
       <find>D0</find>
-      <find>xpts</find>
-      <find>fix_value</find>
-      <find>Xa</find>
+      <find>sth</find>
+      <find>nverts</find>
+      <find>ntria</find>
+      <find>vind</find>
+      <find>now</find>
+      <find>com</find>
+      <find>R</find>
+      <find>input</find>
+      <find>inputpol</find>
+      <find>ipol</find>
+      <find>Points</find>
     </findStrings>
     <replaceStrings>
       <replace>function</replace>
       <replace>plot_3d_graph_model</replace>
       <replace>calculate_global_angles_and_directions</replace>
+      <replace>input_model</replace>
+      <replace>@</replace>
+      <replace>in</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -148,26 +391,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/decisiontree.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/nbayes.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/naivebayes2.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/naivebayesscikit.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/naivebayes.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/iris.data" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/teste.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/id3.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/teste_classifiers.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/teste_classifier_knn.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/teste_classifier_naive_bayes.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/testes.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/teste_cluster.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/teste_cluster2.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/others/naivebayes2.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/teste_classifier_decision_tree.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/others/id3.py" />
-        <option value="$PROJECT_DIR$/../DMTrabalho2PythonvsR/teste_classifiers_comparison.py" />
-        <option value="$PROJECT_DIR$/../arules/mlxtend_basket.py" />
-        <option value="$PROJECT_DIR$/../arules/spark_ml_fpgrowth.py" />
         <option value="$PROJECT_DIR$/../arules/spark_ml_fpgrowth4.py" />
         <option value="$PROJECT_DIR$/../arules/sqlite_reader.py" />
         <option value="$PROJECT_DIR$/../arules/sqlite_reader2.py" />
@@ -194,18 +417,39 @@
         <option value="$PROJECT_DIR$/myPOFacets1MonoEst20180222MonolithicEng.py" />
         <option value="$PROJECT_DIR$/lastCopies/PyPOFacetsMonolithicYW.py" />
         <option value="$PROJECT_DIR$/lastCopies/PyPOFacetsModular.py" />
-        <option value="$PROJECT_DIR$/../noworkflow/capture/noworkflow/now/persistence/models/graphs/dependency_graph.py" />
         <option value="$PROJECT_DIR$/testeescrita.py" />
         <option value="$PROJECT_DIR$/PyPOFacetsMonolithic.py" />
         <option value="$PROJECT_DIR$/lastCopies/PyPOFacetsMonolithic.py" />
+        <option value="$PROJECT_DIR$/old_codes/myPOFacets1Mono20171210Modular.py" />
+        <option value="$PROJECT_DIR$/old_codes/myPOFacets1Mono20171210ModularnoPrints.py" />
+        <option value="$PROJECT_DIR$/last_codes/input_data_file_001.dat" />
+        <option value="$PROJECT_DIR$/last_codes/dots/dots_Monolithic/dataflowpypofacetsmonolithic_t2_tracer_p_input_data_file_002.dot" />
+        <option value="$PROJECT_DIR$/../noworkflow/capture/noworkflow/now/cmd/cmd_dataflow.py" />
+        <option value="$PROJECT_DIR$/../noworkflow/capture/noworkflow/now/persistence/models/graphs/dependency_graph.py" />
+        <option value="$PROJECT_DIR$/last_codes/PyPOFacetsModularV2_10mar18.py" />
+        <option value="$PROJECT_DIR$/last_codes/PyPOFacetsModular.py" />
+        <option value="$PROJECT_DIR$/last_codes/PyPOFacetsMonolithic.py" />
+        <option value="$PROJECT_DIR$/last_codes/PyPOFacetsMonolithicYW.py" />
+        <option value="$PROJECT_DIR$/last_codes/PyPOFacetsMonolithicYWExperimentMode.py" />
+        <option value="$PROJECT_DIR$/last_codes/input_data_file_002.dat" />
+        <option value="$PROJECT_DIR$/last_codes/PyPOFacetsModularExperimentMode.py" />
+        <option value="$PROJECT_DIR$/last_codes/PyPOFacetsMonolithicExperimentMode.py" />
+        <option value="$PROJECT_DIR$/last_codes/PyPOFacetsMonolithicExperimentModeYW.py" />
+        <option value="$PROJECT_DIR$/experimentos_artigo_escience_clayton" />
+        <option value="$PROJECT_DIR$/DEVS/tips.txt" />
+        <option value="$PROJECT_DIR$/input_data_file_001.dat" />
+        <option value="$PROJECT_DIR$/monolithic_pypofacets.py" />
+        <option value="$PROJECT_DIR$/modular_pypofacets.py" />
+        <option value="$PROJECT_DIR$/yw.dot" />
+        <option value="$PROJECT_DIR$/yw_monolithic_pypofacets.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="683" />
-    <option name="y" value="26" />
-    <option name="width" value="683" />
-    <option name="height" value="742" />
+    <option name="x" value="-1" />
+    <option name="y" value="1079" />
+    <option name="width" value="1368" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -243,6 +487,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -254,23 +499,27 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../noworkflow/capture/noworkflow/now/persistence/models/graphs/dependency_graph.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/modular_pypofacets.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/last_codes/PyPOFacetsModular.py" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lastCopies/prev" />
-      <recent name="$PROJECT_DIR$/lastCopies" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/../arules" />
-      <recent name="$PROJECT_DIR$/../MineracaoDeDadosTrabalho2PythonVsR" />
+      <recent name="$PROJECT_DIR$/DEPOT/last_codes" />
+      <recent name="$PROJECT_DIR$/DEPOT/last_codes/prev" />
+      <recent name="$PROJECT_DIR$/last_codes" />
+      <recent name="$PROJECT_DIR$/last_codes/current_experiment_output" />
+      <recent name="$PROJECT_DIR$/old_codes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lastCopies" />
+      <recent name="$PROJECT_DIR$/outputs_run" />
+      <recent name="$PROJECT_DIR$/DEPOT" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/DEVS" />
+      <recent name="$PROJECT_DIR$/DEPOT/DidacticModeCodes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -285,72 +534,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PyPOFacetsMonolithic (1)">
-    <configuration name="PyPOFacetsModular" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.modular_pypofacets">
+    <configuration name="PyPOFacetsMonolithicPrev" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lastCopies" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DEPOT/last_codes/prev" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PyPOFacets" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lastCopies/PyPOFacetsModular.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="PyPOFacetsMonolithic (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PyPOFacets" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PyPOFacetsMonolithic.py" />
-      <option name="PARAMETERS" value="&quot;BOX&quot; &quot;input_data_file_001.dat&quot;" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="PyPOFacetsMonolithic" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lastCopies" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PyPOFacets" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lastCopies/PyPOFacetsMonolithic.py" />
-      <option name="PARAMETERS" value="&quot;BOX&quot; &quot;input_data_file_001.dat&quot;" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="PyPOFacetsMonolithicYW" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lastCopies" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PyPOFacets" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lastCopies/PyPOFacetsMonolithicYW.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DEPOT/last_codes/prev/PyPOFacetsMonolithicPrev.py" />
+      <option name="PARAMETERS" value="&quot;BOX&quot; &quot;input_data_file_002.dat&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
@@ -444,7 +642,7 @@
       <option name="_new_target" value="&quot;&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
-    <configuration name="testeescrita" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="modular_pypofacets" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -456,30 +654,84 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PyPOFacets" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testeescrita.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modular_pypofacets.py" />
+      <option name="PARAMETERS" value="&quot;BOX&quot; &quot;input_data_file_002.dat&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="monolithic_pypofacets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PyPOFacets" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/monolithic_pypofacets.py" />
+      <option name="PARAMETERS" value="&quot;BOX&quot; &quot;input_data_file_002.dat&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="myPOFacets1MonoEst20180222MonolithicEng" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DEPOT/old_codes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PyPOFacets" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DEPOT/old_codes/myPOFacets1MonoEst20180222MonolithicEng.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="yw_monolithic_pypofacets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PyPOFacets" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/yw_monolithic_pypofacets.py" />
+      <option name="PARAMETERS" value="&quot;BOX&quot; &quot;input_data_file_002.dat&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.PyPOFacetsModular" />
-      <item index="1" class="java.lang.String" itemvalue="Python.PyPOFacetsMonolithic" />
-      <item index="2" class="java.lang.String" itemvalue="Python.PyPOFacetsMonolithicYW" />
-      <item index="3" class="java.lang.String" itemvalue="Python.PyPOFacetsMonolithic (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.testeescrita" />
+      <item index="0" class="java.lang.String" itemvalue="Python.monolithic_pypofacets" />
+      <item index="1" class="java.lang.String" itemvalue="Python.yw_monolithic_pypofacets" />
+      <item index="2" class="java.lang.String" itemvalue="Python.modular_pypofacets" />
+      <item index="3" class="java.lang.String" itemvalue="Python.myPOFacets1MonoEst20180222MonolithicEng" />
+      <item index="4" class="java.lang.String" itemvalue="Python.PyPOFacetsMonolithicPrev" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.PyPOFacetsMonolithic (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.PyPOFacetsMonolithic" />
-        <item index="2" class="java.lang.String" itemvalue="Python.testeescrita" />
-        <item index="3" class="java.lang.String" itemvalue="Python.PyPOFacetsModular" />
-        <item index="4" class="java.lang.String" itemvalue="Python.PyPOFacetsMonolithicYW" />
+        <item index="0" class="java.lang.String" itemvalue="Python.modular_pypofacets" />
+        <item index="1" class="java.lang.String" itemvalue="Python.yw_monolithic_pypofacets" />
+        <item index="2" class="java.lang.String" itemvalue="Python.monolithic_pypofacets" />
+        <item index="3" class="java.lang.String" itemvalue="Python.PyPOFacetsMonolithicPrev" />
+        <item index="4" class="java.lang.String" itemvalue="Python.myPOFacets1MonoEst20180222MonolithicEng" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -492,25 +744,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="683" y="26" width="1442" height="879" extended-state="6" />
+    <frame x="-1" y="1079" width="1368" height="773" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22222222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35285506" sideWeight="0.49546045" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32814527" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32707354" sideWeight="0.50625" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270242" sideWeight="0.51875" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22222222" sideWeight="0.50453955" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39918116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.49375" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.48125" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -525,309 +777,108 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/miniconda3/lib/python3.6/site-packages/pyspark/sql/utils.py">
+    <entry file="file://$PROJECT_DIR$/teste.png" />
+    <entry file="file://$PROJECT_DIR$/DEPOT/last_codes/modular_pypofacets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../arules/sqlite_reader2_freqitems_mlxtend_apriori.py">
+    <entry file="file://$PROJECT_DIR$/DEPOT/last_codes/monolithic_pypofacets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="78" column="13" lean-forward="false" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+        <state relative-caret-position="-864">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../arules/renamescripts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/lib/python3.6/site-packages/mpl_toolkits/mplot3d/axes3d.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="1821" column="0" lean-forward="false" selection-start-line="1821" selection-start-column="0" selection-end-line="1821" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../arules/sqlite_reader2_freqitems_spark_fpgrowth2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="66" column="41" lean-forward="false" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Solver.py">
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323201350.png" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323201332.png" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323201429.png" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323201839.png" />
+    <entry file="file://$PROJECT_DIR$/DEPOT/YW/myPOFacets1MonoEst20180224MonolithicYW.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="150" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/mpl_toolkits/mplot3d/axes3d.py">
+    <entry file="file://$PROJECT_DIR$/DEPOT/last_codes/yw_monolithic_pypofacets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="1821" column="0" lean-forward="false" selection-start-line="1821" selection-start-column="0" selection-end-line="1821" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experimentos_artigo_escience_clayton">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-4428">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pics/diff_trial1_trial3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/lib/python3.6/site-packages/pyspark/ml/fpm.py">
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323214436.png" />
+    <entry file="file://$PROJECT_DIR$/R_yw_monolithic_pypofacets_20180323214436.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_yw_monolithic_pypofacets_20180323214436.dat" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323221416.png" />
+    <entry file="file://$PROJECT_DIR$/R_yw_monolithic_pypofacets_20180323221416.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_yw_monolithic_pypofacets_20180323221416.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_monolithic_pypofacets_20180323221402.dat" />
+    <entry file="file://$PROJECT_DIR$/R_monolithic_pypofacets_20180323221402.dat" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323221402.png" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323233349.png" />
+    <entry file="file://$PROJECT_DIR$/R_yw_monolithic_pypofacets_20180323233349.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_yw_monolithic_pypofacets_20180323233349.dat" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323234211.png" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323234231.png" />
+    <entry file="file://$PROJECT_DIR$/R_monolithic_pypofacets_20180323234211.dat" />
+    <entry file="file://$PROJECT_DIR$/R_yw_monolithic_pypofacets_20180323234231.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_yw_monolithic_pypofacets_20180323234231.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_monolithic_pypofacets_20180323234211.dat" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323234552.png" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323234612.png" />
+    <entry file="file://$PROJECT_DIR$/E0_yw_monolithic_pypofacets_20180323234612.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_modular_pypofacets_20180323234552.dat" />
+    <entry file="file://$PROJECT_DIR$/R_yw_monolithic_pypofacets_20180323234612.dat" />
+    <entry file="file://$PROJECT_DIR$/R_modular_pypofacets_20180323234552.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_modular_pypofacets_20180323234913.dat" />
+    <entry file="file://$PROJECT_DIR$/R_modular_pypofacets_20180323234913.dat" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323235237.png" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180323235255.png" />
+    <entry file="file://$PROJECT_DIR$/E0_modular_pypofacets_20180323235238.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_yw_monolithic_pypofacets_20180323235255.dat" />
+    <entry file="file://$PROJECT_DIR$/R_modular_pypofacets_20180323235238.dat" />
+    <entry file="file://$PROJECT_DIR$/R_yw_monolithic_pypofacets_20180323235255.dat" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180324000629.png" />
+    <entry file="file://$PROJECT_DIR$/plot_monolithic_pypofacets_20180324000803.png" />
+    <entry file="file://$PROJECT_DIR$/R_modular_pypofacets_20180324000803.dat" />
+    <entry file="file://$PROJECT_DIR$/R_yw_monolithic_pypofacets_20180324000742.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_yw_monolithic_pypofacets_20180324000718.dat" />
+    <entry file="file://$PROJECT_DIR$/E0_modular_pypofacets_20180324000803.dat" />
+    <entry file="file://$PROJECT_DIR$/monolithic_pypofacets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="219" column="8" lean-forward="false" selection-start-line="219" selection-start-column="8" selection-end-line="219" selection-end-column="8" />
+        <state relative-caret-position="1764">
+          <caret line="98" column="41" lean-forward="true" selection-start-line="98" selection-start-column="41" selection-end-line="98" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1Mono20170607.py">
+    <entry file="file://$PROJECT_DIR$/outputs_run/yw.dot">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="221" column="23" lean-forward="false" selection-start-line="221" selection-start-column="23" selection-end-line="221" selection-end-column="23" />
+        <state relative-caret-position="4068">
+          <caret line="226" column="0" lean-forward="false" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1Mono20170620.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3780">
-          <caret line="214" column="25" lean-forward="false" selection-start-line="214" selection-start-column="25" selection-end-line="214" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../arules/sqlite_reader2_freqitems_spark_fpgrowth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="100" column="58" lean-forward="false" selection-start-line="100" selection-start-column="58" selection-end-line="100" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documentos/input/runallscripts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../arules/runallscripts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1Mono20171114v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1Mono20171114.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacetsMono.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="true" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1Mono20171210ModularnoPrintsSliced.py">
+    <entry file="file://$PROJECT_DIR$/modular_pypofacets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="262" column="0" lean-forward="false" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
+          <caret line="88" column="29" lean-forward="false" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1Mono20171210ModularnoPrints.py">
+    <entry file="file://$PROJECT_DIR$/yw_monolithic_pypofacets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1Mono20171210Modular.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="886">
-          <caret line="288" column="0" lean-forward="false" selection-start-line="288" selection-start-column="0" selection-end-line="288" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MonolithicYW.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1MonoEst20180224ModularNoPrintsSlicedYW.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1MonoEst20180224MonolithicYW.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1770">
-          <caret line="895" column="0" lean-forward="false" selection-start-line="895" selection-start-column="0" selection-end-line="895" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastCopies/BOX/facets.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastCopies/PyPOFacetsModular.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="320" column="14" lean-forward="false" selection-start-line="320" selection-start-column="14" selection-end-line="320" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastCopies/PyPOFacetsMonolithicYW.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="304" column="30" lean-forward="false" selection-start-line="304" selection-start-column="30" selection-end-line="304" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1MonoEst20180222MonolithicEng.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastCopies/prev/PyPOFacetsMonolithicPrev.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastCopies/PLATE/facets.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastCopies/BOX/pencil1.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myPOFacets1MonoEst20180222ModularNoPrintsSlicedEng.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="310" column="29" lean-forward="true" selection-start-line="309" selection-start-column="4" selection-end-line="310" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lista.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lista.dat" />
-    <entry file="file://$PROJECT_DIR$/listaR.dat" />
-    <entry file="file://$PROJECT_DIR$/listaE0.dat" />
-    <entry file="file://$PROJECT_DIR$/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180306142440.dat" />
-    <entry file="file://$PROJECT_DIR$/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180306142440.dat" />
-    <entry file="file://$PROJECT_DIR$/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180306142722.dat" />
-    <entry file="file://$PROJECT_DIR$/input_data_file_001.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180306143546.dat" />
-    <entry file="file://$PROJECT_DIR$/R_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180306143822.dat" />
-    <entry file="file://$PROJECT_DIR$/E0_PyPOFacetsMonolithic_BOX_input_data_file_001.dat_20180306143822.dat" />
-    <entry file="file://$PROJECT_DIR$/testeescrita.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../noworkflow/capture/noworkflow/now/persistence/models/graphs/dependency_graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="377" column="0" lean-forward="false" selection-start-line="377" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PyPOFacetsMonolithic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="310" column="23" lean-forward="false" selection-start-line="310" selection-start-column="23" selection-end-line="310" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastCopies/input_data_file_001.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastCopies/PyPOFacetsMonolithic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="158" column="19" lean-forward="false" selection-start-line="158" selection-start-column="19" selection-end-line="158" selection-end-column="19" />
+        <state relative-caret-position="85">
+          <caret line="143" column="22" lean-forward="false" selection-start-line="143" selection-start-column="22" selection-end-line="143" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
