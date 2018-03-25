@@ -1,3 +1,10 @@
+PyPOFacets
+==========
+
+Copyright (c) 2018 Universidade Federal Fluminense (UFF).
+
+The PyPOFacets project provides three Python implementations of the Radar Cross Section simulation. Our implementations are Python translations of the original MATLAB [POFacets](https://www.mathworks.com/matlabcentral/fileexchange/35861-pofacets4-1) implementation.
+
 Monolithic implementation
 -------------------------
 
