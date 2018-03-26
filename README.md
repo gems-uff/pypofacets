@@ -27,7 +27,7 @@ Modular implementation
 Reproducibility instructions
 ----------------------
 
-Reproducibility instructions are available on the [PyPOFacets project wiki page](https://github.com/gems-uff/pypofacets/wiki)
+Reproducibility instructions are available on the [PyPOFacets project wiki page](https://github.com/gems-uff/pypofacets/wiki).
 
 Included Software
 -----------------
