@@ -1,4 +1,4 @@
-# 1 radar frequency
+# 1 radar frequency in Hz
 15000000
 # 2 correlation distance in meters
 0
@@ -17,4 +17,4 @@
 # 9 stop theta angle in degrees
 360
 # 10 theta increment (step) in degrees
-90
+45
