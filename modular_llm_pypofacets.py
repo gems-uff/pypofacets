@@ -19,7 +19,7 @@ def initialize_environment(argv):
     input_data_file = argv[2]
     
     if len(argv) < 4:
-        output_dir = os.path.join("output", "modular", str(time))
+        output_dir = os.path.join("output", "modular_llm", str(time))
     else:
         output_dir = argv[3]
         
