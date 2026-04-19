@@ -17,7 +17,7 @@ def read_args(argv):
     input_data_file = argv[2]
     input_model = argv[1]
     if len(argv) < 4:
-        output_dir = os.path.join("output", "modular", str(time))
+        output_dir = os.path.join("output", "modular_expert", str(time))
     else:
         output_dir = argv[3]
     if not os.path.exists(output_dir):
