@@ -23,7 +23,7 @@ ARGS = {  # intended inputs (arguments.txt order); FFT raised to 500 so the loop
 VERSIONS = {"expert": "{n}.py", "monolithic": "{n}_claude.py", "modular": "{n}_claude_modular.py"}
 AUX = {"heat_distribution_lu": ["model.py", "solver.py", "fatoracao_lu.py", "heat_map.py"]}
 PYPO = {"monolithic": "monolithic_pypofacets.py", "expert": "modular_pypofacets.py",
-        "gemini_v2": "modular_pypofacets_gemini_v2.py", "gemini": "modular_pypofacets_gemini.py"}
+        "gemini_v2": "modular_pypofacets_gemini_v2.py"}
 
 os.makedirs(WORK, exist_ok=True)
 rows = []
