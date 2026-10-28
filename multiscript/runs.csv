@@ -20,4 +20,3 @@ look_and_say,modular,look_and_say_claude_modular.py,5,1,9dc43e9b-dbd5-4115-8d7b-
 _pypofacets,monolithic,monolithic_pypofacets.py,BOX input_data_file_002.dat,1,97557867-4d77-41b9-84fc-09c0d6392ae5,0,3.2,dataflows/_pypofacets__monolithic.dot
 _pypofacets,expert,modular_pypofacets.py,BOX input_data_file_002.dat,1,5780f26e-ea8b-423c-9c37-a23e3a273a10,0,2.8,dataflows/_pypofacets__expert.dot
 _pypofacets,gemini_v2,modular_pypofacets_gemini_v2.py,BOX input_data_file_002.dat,1,42f8bb5b-405c-4f69-b502-8f16d5b98310,0,2.7,dataflows/_pypofacets__gemini_v2.dot
-_pypofacets,gemini,modular_pypofacets_gemini.py,BOX input_data_file_002.dat,1,03f527ef-4ae1-47a6-8d17-4d35b76b19f3,0,2.9,dataflows/_pypofacets__gemini.dot
