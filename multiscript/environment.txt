@@ -1,0 +1,11 @@
+date: 2026-10-21 18:02:47 -0300
+python: 3.13.16 (CPython)
+platform: Linux-6.18.44-fc-v140-x86_64-with-glibc2.39
+noworkflow: 2.1.1
+numpy: 2.5.4
+scipy: 1.18.1
+matplotlib: 3.11.2
+seaborn: 0.13.2
+imageio: 2.38.1
+export command: now export dataflow <trial> -d 1  (mode coarseGrain, accesses 1, evaluations 1)
+arguments: belief_propagation=20, cvar=50, fft=500, gauss_legendre_quadrature=50, heat_distribution_lu=1, look_and_say=5, _pypofacets=BOX input_data_file_002.dat

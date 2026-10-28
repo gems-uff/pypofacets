@@ -1,0 +1,46 @@
+==============================================================================================================
+SENTIDO: Gabarito -> IA (Referência: Gabarito)
+==============================================================================================================
+Função Origem (Gabarito)                 		         | Melhor Correspondência (IA)         | Similaridade
+--------------------------------------------------------------------------------------------------------------
+read_args                                		         | initialize_environment              | 0.9870
+read_data_file_input                     		         | load_parameters                     | 1.0000
+calculate_wavelength                     		         | calculate_physical_constants        | 0.4269
+calculate_incident_wave_polarization     		         | calculate_physical_constants        | 0.8481
+read_model_coordinates                   		         | load_geometry_data                  | 0.8179
+read_facets_model                        	 	         | load_geometry_data                  | 0.3710
+generate_transpose_matrix                	        	 | load_geometry_data                  | 0.5780
+generate_coordinates_points              		         | generate_model_plot                 | 0.2558
+plot_model                               		         | generate_model_plot                 | 0.8789
+calculate_refs_geometry_model            		         | setup_iteration_bounds              | 1.0000
+prepare_output                                           | initialize_output_files             | 0.6350
+calculate_global_angles_and_directions                   | compute_and_save_fields             | 0.6757
+calculate_spherical_coordinate_system_radial_unit_vector | initialize_output_files             | 0.4887
+calculate_incident_field_in_global_cartesian_coordinates | initialize_output_files             | 0.4743
+
+====================================================================================================
+SENTIDO: IA -> Gabarito (Referência: IA)
+=================================================================================================
+Função Origem (IA)                       | Melhor Correspondência (Gabarito)      | Similaridade
+-------------------------------------------------------------------------------------------------
+initialize_environment                   | read_args                              | 0.9870
+load_parameters                          | read_data_file_input                   | 1.0000
+calculate_physical_constants             | calculate_incident_wave_polarization   | 0.8481
+load_geometry_data                       | read_model_coordinates                 | 0.8179
+generate_model_plot                      | plot_model                             | 0.8789
+setup_iteration_bounds                   | calculate_refs_geometry_model          | 1.0000
+initialize_output_files                  | prepare_output                         | 0.6350
+compute_and_save_fields                  | calculate_global_angles_and_directions | 0.6757
+
+------------------------------------------------------------
+MÉTRICAS SOFT BIDIRECIONAIS (Matematicamente Correto)
+------------------------------------------------------------
+Total Gabarito : 14 funções originais
+Total IA       : 8 funções geradas
+
+Soft FN (Omissões/Erros da IA) : 4.56 (Baseado no Gabarito)
+Soft FP (Excesso/Alucinação)   : 1.16 (Baseado na IA)
+------------------------------------------------------------
+Soft Precision : 0.8553  (O quanto o código gerado é preciso)
+Soft Recall    : 0.6741  (O quanto o código original foi preservado)
+Soft F1-Score  : 0.7540

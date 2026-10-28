@@ -1,0 +1,17 @@
+gt_item,mapped_name,node_id,node_label
+Arguments,argv,e_21,16 argv
+CoordinatesFile,BOX/coordinates.m,a_2,BOX/coordinates.m
+InputDataFile,input_data_file_002.dat,a_1,input_data_file_002.dat
+FacetsFile,BOX/facets.m,a_3,BOX/facets.m
+R_Output,output/.../R.dat,a_14,output/monolithic/20261028014313/R.dat
+E0_Output,output/.../E0.dat,a_15,output/monolithic/20261028014313/E0.dat
+PlotOutput,output/.../plot.png,a_13,output/monolithic/20261028014313/plot.png
+Time,time,e_29,17 time
+InputDataFileName,input_data_file,e_37,19 input_data_file
+OutputDir,output_dir,e_60,22 output_dir
+XPoints,xpts,e_312,52 xpts
+Nverts,nverts,e_328,55 nverts
+Facets,facets,e_337,59 facets
+Node3,node3,e_355,64 node3
+IT,it,e_3029,101 it
+IP,ip,e_3040,102 ip

@@ -1,0 +1,14 @@
+$ /home/esc/venv-jidm/bin/python3 jidm_fix_agent/data/site_final/analysis/edges_compare.py jidm_fix_agent/data/site_final/mappings.xlsx jidm_fix_agent/data/site_final/output/provenance/modular_expert.dot jidm_fix_agent/data/site_final/modular_expert_pypofacets.py --version expert --export jidm_fix_agent/data/site_final/analysis/results/edges_expert.csv
+jidm_fix_agent/data/site_final/output/provenance/modular_expert.dot [expert]: ground-truth edges=95 (duplicated sheet rows ignored: 0); graph edges=110, comparable=93, not comparable=17
+one-to-one matching: TP=89  FN=6  FP=4  precision=0.957  recall=0.937  F=0.947
+  item not in sheet Nodes, data endpoint by the sheet Edges name: PlotFile ['a_13']
+  FN: ('INPUT', 'InputDelP', 'PrepareOutput') -> ('prepare_output', ['e_307'])
+  FN: ('INPUT', 'InputDelT', 'PrepareOutput') -> ('prepare_output', ['e_310'])
+  FN: ('INPUT', 'IT', 'CalculateSphericalCoordinateSystemRadialUnitVector') -> ('CalculateSphericalCoordinateSystemRadialUnitVector', ['e_3172'])
+  FN: ('INPUT', 'IP', 'CalculateSphericalCoordinateSystemRadialUnitVector') -> ('CalculateSphericalCoordinateSystemRadialUnitVector', ['e_3173'])
+  FN: ('INPUT', 'IT', 'CalculateIncidentFieldInGlobalCartesianCoordinates') -> ('CalculateIncidentFieldInGlobalCartesianCoordinates', ['e_3172'])
+  FN: ('INPUT', 'IP', 'CalculateIncidentFieldInGlobalCartesianCoordinates') -> ('CalculateIncidentFieldInGlobalCartesianCoordinates', ['e_3173'])
+  FP: ('e_3192', 'e_3174') prepare_output(time, prog ... rt, pstop, tstart, tstop) -> delp
+  FP: ('e_3192', 'e_3175') prepare_output(time, prog ... rt, pstop, tstart, tstop) -> delt
+  FP: ('e_569', 'a_13') plot_model(node1, node2,  ...  input_model, output_dir) -> output/modular_expert/20261028014153/plot.png
+  FP: ('e_569', 'e_100') plot_model(node1, node2,  ...  input_model, output_dir) -> input_model

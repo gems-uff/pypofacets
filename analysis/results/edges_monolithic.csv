@@ -1,0 +1,159 @@
+status,type,yw_from,yw_to,graph_edge,label_from,label_to
+FN,INPUT,Arguments,ReadArgs,,,
+FN,OUTPUT,ReadArgs,Time,,,
+FN,OUTPUT,ReadArgs,ProgramName,,,
+FN,OUTPUT,ReadArgs,InputDataFileName,,,
+FN,OUTPUT,ReadArgs,InputModel,,,
+FN,OUTPUT,ReadArgs,OutputDir,,,
+FN,INPUT,InputDataFileName,ReadDataFileInput,,,
+FN,INPUT,InputDataFile,ReadDataFileInput,,,
+FN,OUTPUT,ReadDataFileInput,Freq,,,
+FN,OUTPUT,ReadDataFileInput,Corr,,,
+FN,OUTPUT,ReadDataFileInput,Delstd,,,
+FN,OUTPUT,ReadDataFileInput,InputPolarization,,,
+FN,OUTPUT,ReadDataFileInput,PStart,,,
+FN,OUTPUT,ReadDataFileInput,PStop,,,
+FN,OUTPUT,ReadDataFileInput,InputDelP,,,
+FN,OUTPUT,ReadDataFileInput,TStart,,,
+FN,OUTPUT,ReadDataFileInput,TStop,,,
+FN,OUTPUT,ReadDataFileInput,InputDelT,,,
+FN,INPUT,Freq,CalculateWaveLength,,,
+FN,OUTPUT,CalculateWaveLength,WaveLength,,,
+FN,INPUT,InputPolarization,CalculateIncidentWavePolarization,,,
+FN,INPUT,WaveLength,CalculateIncidentWavePolarization,,,
+FN,OUTPUT,CalculateIncidentWavePolarization,Et,,,
+FN,OUTPUT,CalculateIncidentWavePolarization,Ep,,,
+FN,INPUT,InputModel,ReadModelCoordinates,,,
+FN,INPUT,CoordinatesFile,ReadModelCoordinates,,,
+FN,OUTPUT,ReadModelCoordinates,XPoints,,,
+FN,OUTPUT,ReadModelCoordinates,YPoints,,,
+FN,OUTPUT,ReadModelCoordinates,ZPoints,,,
+FN,OUTPUT,ReadModelCoordinates,Nverts,,,
+FN,INPUT,InputModel,ReadFacetsModel,,,
+FN,INPUT,FacetsFile,ReadFacetsModel,,,
+FN,OUTPUT,ReadFacetsModel,Facets,,,
+FN,INPUT,Facets,GenerateTransposeMatrix,,,
+FN,OUTPUT,GenerateTransposeMatrix,Node1,,,
+FN,OUTPUT,GenerateTransposeMatrix,Node2,,,
+FN,OUTPUT,GenerateTransposeMatrix,Node3,,,
+FN,INPUT,XPoints,GenerateCoordinatesPoints,,,
+FN,INPUT,YPoints,GenerateCoordinatesPoints,,,
+FN,INPUT,ZPoints,GenerateCoordinatesPoints,,,
+FN,INPUT,Nverts,GenerateCoordinatesPoints,,,
+FN,OUTPUT,GenerateCoordinatesPoints,Points,,,
+FN,INPUT,Node1,PlotModel,,,
+FN,INPUT,Node2,PlotModel,,,
+FN,INPUT,Node3,PlotModel,,,
+FN,INPUT,Points,PlotModel,,,
+FN,INPUT,OutputDir,PlotModel,,,
+FN,OUTPUT,PlotModel,PlotFile,,,
+FN,INPUT,PStart,CalculateRefsGeometryModel,,,
+FN,INPUT,PStop,CalculateRefsGeometryModel,,,
+FN,INPUT,InputDelP,CalculateRefsGeometryModel,,,
+FN,INPUT,TStart,CalculateRefsGeometryModel,,,
+FN,INPUT,TStop,CalculateRefsGeometryModel,,,
+FN,INPUT,InputDelT,CalculateRefsGeometryModel,,,
+FN,OUTPUT,CalculateRefsGeometryModel,IT,,,
+FN,OUTPUT,CalculateRefsGeometryModel,IP,,,
+FN,OUTPUT,CalculateRefsGeometryModel,DelP,,,
+FN,OUTPUT,CalculateRefsGeometryModel,DelT,,,
+FN,INPUT,Time,PrepareOutput,,,
+FN,INPUT,ProgramName,PrepareOutput,,,
+FN,INPUT,InputDataFileName,PrepareOutput,,,
+FN,INPUT,InputModel,PrepareOutput,,,
+FN,INPUT,OutputDir,PrepareOutput,,,
+FN,INPUT,Freq,PrepareOutput,,,
+FN,INPUT,Corr,PrepareOutput,,,
+FN,INPUT,Delstd,PrepareOutput,,,
+FN,INPUT,InputPolarization,PrepareOutput,,,
+FN,INPUT,PStart,PrepareOutput,,,
+FN,INPUT,PStop,PrepareOutput,,,
+FN,INPUT,InputDelP,PrepareOutput,,,
+FN,INPUT,TStart,PrepareOutput,,,
+FN,INPUT,TStop,PrepareOutput,,,
+FN,INPUT,InputDelT,PrepareOutput,,,
+FN,OUTPUT,PrepareOutput,E0_Output,,,
+FN,OUTPUT,PrepareOutput,R_Output,,,
+FN,INPUT,IP,CalculateGlobalAnglesAndDirections,,,
+FN,INPUT,IT,CalculateGlobalAnglesAndDirections,,,
+FN,INPUT,PStart,CalculateGlobalAnglesAndDirections,,,
+FN,INPUT,DelP,CalculateGlobalAnglesAndDirections,,,
+FN,INPUT,TStart,CalculateGlobalAnglesAndDirections,,,
+FN,INPUT,DelT,CalculateGlobalAnglesAndDirections,,,
+FN,OUTPUT,CalculateGlobalAnglesAndDirections,D0,,,
+FN,OUTPUT,CalculateGlobalAnglesAndDirections,E,,,
+FN,INPUT,D0,CalculateSphericalCoordinateSystemRadialUnitVector,,,
+FN,INPUT,OutputDir,CalculateSphericalCoordinateSystemRadialUnitVector,,,
+FN,INPUT,IT,CalculateSphericalCoordinateSystemRadialUnitVector,,,
+FN,INPUT,IP,CalculateSphericalCoordinateSystemRadialUnitVector,,,
+FN,OUTPUT,CalculateSphericalCoordinateSystemRadialUnitVector,R_Output,,,
+FN,INPUT,E,CalculateIncidentFieldInGlobalCartesianCoordinates,,,
+FN,INPUT,Et,CalculateIncidentFieldInGlobalCartesianCoordinates,,,
+FN,INPUT,Ep,CalculateIncidentFieldInGlobalCartesianCoordinates,,,
+FN,INPUT,OutputDir,CalculateIncidentFieldInGlobalCartesianCoordinates,,,
+FN,INPUT,IT,CalculateIncidentFieldInGlobalCartesianCoordinates,,,
+FN,INPUT,IP,CalculateIncidentFieldInGlobalCartesianCoordinates,,,
+FN,OUTPUT,CalculateIncidentFieldInGlobalCartesianCoordinates,E0_Output,,,
+FP,,,,"('a_13', 'e_2997')",output/monolithic/20261028014313/plot.png,"plt.savefig(os.path.join(output_dir, FILENAME_PLOT))"
+FP,,,,"('a_14', 'e_3076')",output/monolithic/20261028014313/R.dat,"open(os.path.join(output_dir, FILENAME_R), 'w')"
+FP,,,,"('a_15', 'e_3086')",output/monolithic/20261028014313/E0.dat,"open(os.path.join(output_dir, FILENAME_E0), 'w')"
+FP,,,,"('e_100', 'e_99')",param_list.append(int(line)),int(line)
+FP,,,,"('e_118', 'e_117')",param_list.append(int(line)),int(line)
+FP,,,,"('e_136', 'e_135')",param_list.append(int(line)),int(line)
+FP,,,,"('e_154', 'e_153')",param_list.append(int(line)),int(line)
+FP,,,,"('e_172', 'e_171')",param_list.append(int(line)),int(line)
+FP,,,,"('e_190', 'e_189')",param_list.append(int(line)),int(line)
+FP,,,,"('e_208', 'e_207')",param_list.append(int(line)),int(line)
+FP,,,,"('e_226', 'e_225')",param_list.append(int(line)),int(line)
+FP,,,,"('e_244', 'e_243')",param_list.append(int(line)),int(line)
+FP,,,,"('e_262', 'e_261')",param_list.append(int(line)),int(line)
+FP,,,,"('e_29', 'e_28')",time,"datetime.now().strftime(\""%Y%m%d%H%M%S\"")"
+FP,,,,"('e_2996', 'e_60')","os.path.join(output_dir, FILENAME_PLOT)",output_dir
+FP,,,,"('e_2997', 'a_13')","plt.savefig(os.path.join(output_dir, FILENAME_PLOT))",output/monolithic/20261028014313/plot.png
+FP,,,,"('e_2997', 'e_2996')","plt.savefig(os.path.join(output_dir, FILENAME_PLOT))","os.path.join(output_dir, FILENAME_PLOT)"
+FP,,,,"('e_302', 'a_2')",np.loadtxt(fname),BOX/coordinates.m
+FP,,,,"('e_3064', 'e_3063')","'\n'.join(map(str, r_data))","map(str, r_data)"
+FP,,,,"('e_3074', 'e_60')","os.path.join(output_dir, FILENAME_R)",output_dir
+FP,,,,"('e_3076', 'e_3074')","open(os.path.join(output_dir, FILENAME_R), 'w')","os.path.join(output_dir, FILENAME_R)"
+FP,,,,"('e_3084', 'e_60')","os.path.join(output_dir, FILENAME_E0)",output_dir
+FP,,,,"('e_3086', 'e_3084')","open(os.path.join(output_dir, FILENAME_E0), 'w')","os.path.join(output_dir, FILENAME_E0)"
+FP,,,,"('e_3108', 'e_3040')",int(ip),ip
+FP,,,,"('e_3109', 'e_3108')","range(0, int(ip))",int(ip)
+FP,,,,"('e_3115', 'e_3029')",int(it),it
+FP,,,,"('e_3116', 'e_3115')","range(0, int(it))",int(it)
+FP,,,,"('e_3196', 'e_3195')",fileR.write(str(i2)),str(i2)
+FP,,,,"('e_3209', 'e_3208')","fileR.write(str([u, v, w]))","str([u, v, w])"
+FP,,,,"('e_3225', 'e_3224')",fileE0.write(str(i2)),str(i2)
+FP,,,,"('e_3252', 'e_3251')","fileE0.write(str([(uu * e ...  + cp * ep), (ww * et)]))","str([(uu * et - sp * ep), ... t + cp * ep), (ww * et)])"
+FP,,,,"('e_327', 'e_312')",len(xpts),xpts
+FP,,,,"('e_328', 'e_327')",nverts,len(xpts)
+FP,,,,"('e_3336', 'e_3335')",fileR.write(str(i2)),str(i2)
+FP,,,,"('e_3349', 'e_3348')","fileR.write(str([u, v, w]))","str([u, v, w])"
+FP,,,,"('e_336', 'a_3')",np.loadtxt(fname2),BOX/facets.m
+FP,,,,"('e_3365', 'e_3364')",fileE0.write(str(i2)),str(i2)
+FP,,,,"('e_337', 'e_336')",facets,np.loadtxt(fname2)
+FP,,,,"('e_3392', 'e_3391')","fileE0.write(str([(uu * e ...  + cp * ep), (ww * et)]))","str([(uu * et - sp * ep), ... t + cp * ep), (ww * et)])"
+FP,,,,"('e_3476', 'e_3475')",fileR.write(str(i2)),str(i2)
+FP,,,,"('e_3489', 'e_3488')","fileR.write(str([u, v, w]))","str([u, v, w])"
+FP,,,,"('e_3505', 'e_3504')",fileE0.write(str(i2)),str(i2)
+FP,,,,"('e_3532', 'e_3531')","fileE0.write(str([(uu * e ...  + cp * ep), (ww * et)]))","str([(uu * et - sp * ep), ... t + cp * ep), (ww * et)])"
+FP,,,,"('e_355', 'e_337')",node3,facets
+FP,,,,"('e_3616', 'e_3615')",fileR.write(str(i2)),str(i2)
+FP,,,,"('e_3629', 'e_3628')","fileR.write(str([u, v, w]))","str([u, v, w])"
+FP,,,,"('e_3645', 'e_3644')",fileE0.write(str(i2)),str(i2)
+FP,,,,"('e_365', 'e_328')",range(nverts),nverts
+FP,,,,"('e_3672', 'e_3671')","fileE0.write(str([(uu * e ...  + cp * ep), (ww * et)]))","str([(uu * et - sp * ep), ... t + cp * ep), (ww * et)])"
+FP,,,,"('e_37', 'e_21')",input_data_file,argv
+FP,,,,"('e_3756', 'e_3755')",fileR.write(str(i2)),str(i2)
+FP,,,,"('e_3769', 'e_3768')","fileR.write(str([u, v, w]))","str([u, v, w])"
+FP,,,,"('e_3785', 'e_3784')",fileE0.write(str(i2)),str(i2)
+FP,,,,"('e_3812', 'e_3811')","fileE0.write(str([(uu * e ...  + cp * ep), (ww * et)]))","str([(uu * et - sp * ep), ... t + cp * ep), (ww * et)])"
+FP,,,,"('e_45', 'e_21')",len(argv),argv
+FP,,,,"('e_459', 'e_355')",len(node3),node3
+FP,,,,"('e_58', 'e_29')",str(time),time
+FP,,,,"('e_59', 'e_58')","os.path.join(\""output\"", \""monolithic\"", str(time))",str(time)
+FP,,,,"('e_60', 'e_59')",output_dir,"os.path.join(\""output\"", \""monolithic\"", str(time))"
+FP,,,,"('e_65', 'e_60')",os.path.exists(output_dir),output_dir
+FP,,,,"('e_70', 'e_60')",os.makedirs(output_dir),output_dir
+FP,,,,"('e_76', 'a_1')","open(input_data_file, 'r')",input_data_file_002.dat
+FP,,,,"('e_76', 'e_37')","open(input_data_file, 'r')",input_data_file

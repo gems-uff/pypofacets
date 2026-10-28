@@ -1,0 +1,28 @@
+$ python jidm_fix_agent/tools/sim_per_script.py experiments-jidm
+
+== belief_propagation: |G|=2 |AI|=6  P=0.45 R=0.38 F=0.42   (one-to-one optimal: P=0.13 R=0.38 F=0.19)
+   belief_propagation                       -> initialize_beliefs                  0.48
+   main                                     -> main                                0.29
+
+== cvar: |G|=2 |AI|=6  P=0.42 R=0.45 F=0.43   (one-to-one optimal: P=0.15 R=0.45 F=0.23)
+   get_empirical_CVaR                       -> extract_tail_subset                 0.73
+   main                                     -> sort_rewards_descending             0.18
+
+== fft: |G|=2 |AI|=6  P=0.51 R=0.75 F=0.61   (one-to-one optimal: P=0.25 R=0.75 F=0.37)
+   compute_FFT                              -> compute_FFT                         0.49
+   main                                     -> main                                1.00
+
+== gauss_legendre_quadrature: |G|=4 |AI|=6  P=0.39 R=0.40 F=0.39   (one-to-one optimal: P=0.26 R=0.40 F=0.32)
+   integrand                                -> evaluate_integrand                  0.49
+   cached_leggauss                          -> compute_leggauss                    0.44
+   compute_quadrature                       -> define_integration_bounds           0.45
+   main                                     -> main                                0.21
+
+== heat_distribution_lu: |G|=1 |AI|=5  P=0.49 R=0.70 F=0.58   (one-to-one optimal: P=0.14 R=0.70 F=0.23)
+   main                                     -> main                                0.70
+
+== look_and_say: |G|=2 |AI|=4  P=0.50 R=0.58 F=0.54   (one-to-one optimal: P=0.29 R=0.58 F=0.39)
+   look_and_say_sequence                    -> apply_look_and_say                  0.88
+   main                                     -> main                                0.28
+
+written sim_per_script.csv

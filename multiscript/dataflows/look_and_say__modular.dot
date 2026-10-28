@@ -1,0 +1,38 @@
+digraph e_1 {
+    rankdir=RL;
+    node[fontsize=20]
+    e_21 [label="40 len(sys.argv)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_14 [label="-1 len" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_19 [label="40 sys.argv" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_24 [label="40 len(sys.argv) < 2" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_31 [label="46 int(sys.argv[1])" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_25 [label="-1 int" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_30 [label="46 sys.argv[1]" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_32 [label="46 N" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_35 [label="47 time.perf_counter()" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_34 [label="47 time.perf_counter" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_37 [label="47 t0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_40 [label="48 main(N)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_7 [label="33 main" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_920 [label="49 time.perf_counter()" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_919 [label="49 time.perf_counter" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_922 [label="49 time.perf_counter() - t0" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_923 [label="49 print(time.perf_counter() - t0)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_916 [label="-1 print" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_21 -> e_14 ;
+    e_21 -> e_19 ;
+    e_24 -> e_21 ;
+    e_31 -> e_25 ;
+    e_31 -> e_30 ;
+    e_32 -> e_31 [arrowhead="empty"];
+    e_35 -> e_34 ;
+    e_37 -> e_35 [arrowhead="empty"];
+    e_40 -> e_7 ;
+    e_40 -> e_32 [arrowhead="empty" style="dashed"];
+    e_40 -> e_14 [arrowhead="empty" style="dashed"];
+    e_920 -> e_919 ;
+    e_922 -> e_920 ;
+    e_922 -> e_37 [arrowhead="empty" style="dashed"];
+    e_923 -> e_916 ;
+    e_923 -> e_922 ;
+    }

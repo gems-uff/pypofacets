@@ -1,0 +1,36 @@
+$ python -I /tmp/claude-1000/-home-esc-jidm-fechamento/d64ec21b-3a65-49ae-8708-a1f71b5008b3/scratchpad/site_zip/multiscript/table3_variables.py /tmp/claude-1000/-home-esc-jidm-fechamento/d64ec21b-3a65-49ae-8708-a1f71b5008b3/scratchpad/robust  (bancos: jidm_fix_agent/data/fase1/inputs/db/{expert_site,gemini,monolithic}.sqlite)
+|V_G| (expert data nodes) = 37: ['D0', 'E', 'FILENAME_E0', 'FILENAME_PLOT', 'FILENAME_R', 'RAD', 'argv', 'corr', 'delp', 'delstd', 'delt', 'ep', 'et', 'facets', 'freq', 'i2s', 'input_data_file', 'input_model', 'ip', 'ipol', 'it', 'node1', 'node2', 'node3', 'nverts', 'output_dir', 'points', 'program_name', 'pstart', 'pstop', 'time', 'tstart', 'tstop', 'waveL', 'xpts', 'ypts', 'zpts']
+
+== gemini_v2: |V_X| = 34
+   name matches        : 29  (FN_name = 8, FP_name = 5)
+   strict matches      : 20  (FN = 17, FP = 14)
+   run-dependent values: ['output_dir', 'program_name']
+   value mismatches    : ['delp', 'node1', 'node2', 'node3', 'xpts', 'ypts', 'zpts']
+      delp: expert='1' | gemini_v2='0'
+      node1: expert='array([1, 7, 4, 8, 6, 7, 1, 8, 8, 7, 8, 2])' | gemini_v2='array([1., 7., 4., 8., 6., 7., 1., 8., 8., 7., 8.,'
+      node2: expert='array([2, 3, 1, 2, 1, 4, 6, 5, 1, 6, 6, 8])' | gemini_v2='array([2., 3., 1., 2., 1., 4., 6., 5., 1., 6., 6.,'
+      node3: expert='array([3, 2, 3, 1, 4, 3, 5, 6, 5, 4, 7, 7])' | gemini_v2='array([3., 2., 3., 1., 4., 3., 5., 6., 5., 4., 7.,'
+      xpts: expert='array([100,   0,   0, 100, 100, 100,   0,   0])' | gemini_v2='array([100.,   0.,   0., 100., 100., 100.,   0.,  '
+      ypts: expert='array([  0,   0,   0,   0, 100, 100, 100, 100])' | gemini_v2='array([  0.,   0.,   0.,   0., 100., 100., 100., 1'
+   expert-only (FN)    : ['D0', 'E', 'argv', 'facets', 'i2s', 'points', 'time', 'waveL']
+   gemini_v2-only (FP)     : ['adj_delp', 'adj_delt', 'fileE0', 'fileR', 'param_list']
+
+== monolithic: |V_X| = 78
+   name matches        : 35  (FN_name = 2, FP_name = 43)
+   strict matches      : 22  (FN = 15, FP = 56)
+   run-dependent values: ['output_dir', 'program_name', 'time']
+   value mismatches    : ['D0', 'E', 'argv', 'facets', 'node1', 'node2', 'node3', 'xpts', 'ypts', 'zpts']
+      D0: expert='[[0.0, 0.0, 1.0], [1.0, 0.0, 6.123233995736766e-17' | monolithic='[-2.4492935982947064e-16, -0.0, 1.0]'
+      E: expert='[[1.0, 0.0, -0.0, 0.0, 1.0], [6.123233995736766e-1' | monolithic='[1.0, 0.0, 2.4492935982947064e-16, 0.0, 1.0]'
+      argv: expert="['modular_expert_pypofacets.py', 'BOX', 'input_dat" | monolithic="['monolithic_pypofacets.py', 'BOX', 'input_data_fi"
+      facets: expert='array([[ 1,  1,  2,  3,  1,  0],\n       [ 2,  7,  ' | monolithic='array([[ 1.,  1.,  2.,  3.,  1.,  0.],\n       [ 2.'
+      node1: expert='array([1, 7, 4, 8, 6, 7, 1, 8, 8, 7, 8, 2])' | monolithic='array([1., 7., 4., 8., 6., 7., 1., 8., 8., 7., 8.,'
+      node2: expert='array([2, 3, 1, 2, 1, 4, 6, 5, 1, 6, 6, 8])' | monolithic='array([2., 3., 1., 2., 1., 4., 6., 5., 1., 6., 6.,'
+   expert-only (FN)    : ['i2s', 'points']
+   monolithic-only (FP)     : ['R', 'Xa', 'Ya', 'Za', 'ax', 'c', 'coordinates', 'cp', 'ct', 'e0', 'fig1', 'fileE0', 'fileR', 'fname', 'fname2', 'header', 'i', 'i1', 'i2', 'line', 'now', 'ntria', 'param_list', 'params', 'phi', 'phr', 'phr0', 'r', 'r_data', 'sp', 'st', 'theta', 'thr', 'u', 'uu', 'v', 'vind', 'vv', 'w', 'ww'] ...
+
+
+== SP/SR/SF (live functional component; universe = top-level writes, no ports)
+monolithic  TP=22 FP=56 FN=15  SP=0.282 SR=0.431 SF=0.341
+gemini_v2   TP=20 FP=14 FN=17  SP=0.639 SR=0.577 SF=0.606
+expert      TP=37 FP=0 FN=0  SP=1.000 SR=1.000 SF=1.000

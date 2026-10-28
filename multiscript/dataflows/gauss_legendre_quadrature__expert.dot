@@ -1,0 +1,35 @@
+digraph e_1 {
+    rankdir=RL;
+    node[fontsize=20]
+    e_22 [label="25 int(sys.argv[1])" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_14 [label="-1 int" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_20 [label="25 1" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_60 [label="19 1" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_21 [label="25 sys.argv[1]" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_23 [label="25 order" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_27 [label="26 time.perf_counter()" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_25 [label="26 time.perf_counter" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_29 [label="26 dti" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_32 [label="27 main(order)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_7 [label="22 main" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_96 [label="28 time.perf_counter()" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_95 [label="28 time.perf_counter" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_98 [label="28 time.perf_counter() - dti" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_99 [label="28 print(time.perf_counter() - dti)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_92 [label="-1 print" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_20 -> e_14 [label=".__class__"];
+    e_21 -> e_20 ;
+    e_22 -> e_14 [label=".__class__"];
+    e_22 -> e_21 ;
+    e_23 -> e_22 [arrowhead="empty"];
+    e_27 -> e_25 ;
+    e_29 -> e_27 [arrowhead="empty"];
+    e_32 -> e_7 ;
+    e_32 -> e_23 ;
+    e_96 -> e_95 ;
+    e_98 -> e_96 ;
+    e_98 -> e_29 [style="dashed" arrowhead="empty"];
+    e_99 -> e_92 ;
+    e_99 -> e_98 ;
+    e_60 -> e_14 [label=".__class__"];
+    }

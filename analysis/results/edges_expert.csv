@@ -1,0 +1,100 @@
+status,type,yw_from,yw_to,graph_edge,label_from,label_to
+TP,INPUT,Arguments,ReadArgs,"('e_39', 'e_36')",read_args(argv),argv
+TP,OUTPUT,ReadArgs,Time,"('e_97', 'e_39')",time,read_args(argv)
+TP,OUTPUT,ReadArgs,ProgramName,"('e_98', 'e_39')",program_name,read_args(argv)
+TP,OUTPUT,ReadArgs,InputDataFileName,"('e_99', 'e_39')",input_data_file,read_args(argv)
+TP,OUTPUT,ReadArgs,InputModel,"('e_100', 'e_39')",input_model,read_args(argv)
+TP,OUTPUT,ReadArgs,OutputDir,"('e_101', 'e_39')",output_dir,read_args(argv)
+TP,INPUT,InputDataFileName,ReadDataFileInput,"('e_104', 'e_99')",read_data_file_input(input_data_file),input_data_file
+TP,INPUT,InputDataFile,ReadDataFileInput,"('e_104', 'a_1')",read_data_file_input(input_data_file),input_data_file_002.dat
+TP,OUTPUT,ReadDataFileInput,Freq,"('e_301', 'e_104')",freq,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,Corr,"('e_302', 'e_104')",corr,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,Delstd,"('e_303', 'e_104')",delstd,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,InputPolarization,"('e_304', 'e_104')",ipol,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,PStart,"('e_305', 'e_104')",pstart,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,PStop,"('e_306', 'e_104')",pstop,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,InputDelP,"('e_307', 'e_104')",delp,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,TStart,"('e_308', 'e_104')",tstart,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,TStop,"('e_309', 'e_104')",tstop,read_data_file_input(input_data_file)
+TP,OUTPUT,ReadDataFileInput,InputDelT,"('e_310', 'e_104')",delt,read_data_file_input(input_data_file)
+TP,INPUT,Freq,CalculateWaveLength,"('e_313', 'e_301')",calculate_wavelength(freq),freq
+TP,OUTPUT,CalculateWaveLength,WaveLength,"('e_322', 'e_313')",waveL,calculate_wavelength(freq)
+TP,INPUT,InputPolarization,CalculateIncidentWavePolarization,"('e_326', 'e_304')","calculate_incident_wave_polarization(ipol, waveL)",ipol
+TP,INPUT,WaveLength,CalculateIncidentWavePolarization,"('e_326', 'e_322')","calculate_incident_wave_polarization(ipol, waveL)",waveL
+TP,OUTPUT,CalculateIncidentWavePolarization,Et,"('e_344', 'e_326')",et,"calculate_incident_wave_polarization(ipol, waveL)"
+TP,OUTPUT,CalculateIncidentWavePolarization,Ep,"('e_345', 'e_326')",ep,"calculate_incident_wave_polarization(ipol, waveL)"
+TP,INPUT,InputModel,ReadModelCoordinates,"('e_348', 'e_100')",read_model_coordinates(input_model),input_model
+TP,INPUT,CoordinatesFile,ReadModelCoordinates,"('e_348', 'a_2')",read_model_coordinates(input_model),BOX/coordinates.m
+TP,OUTPUT,ReadModelCoordinates,XPoints,"('e_395', 'e_348')",xpts,read_model_coordinates(input_model)
+TP,OUTPUT,ReadModelCoordinates,YPoints,"('e_396', 'e_348')",ypts,read_model_coordinates(input_model)
+TP,OUTPUT,ReadModelCoordinates,ZPoints,"('e_397', 'e_348')",zpts,read_model_coordinates(input_model)
+TP,OUTPUT,ReadModelCoordinates,Nverts,"('e_398', 'e_348')",nverts,read_model_coordinates(input_model)
+TP,INPUT,InputModel,ReadFacetsModel,"('e_401', 'e_100')",read_facets_model(input_model),input_model
+TP,INPUT,FacetsFile,ReadFacetsModel,"('e_401', 'a_3')",read_facets_model(input_model),BOX/facets.m
+TP,OUTPUT,ReadFacetsModel,Facets,"('e_419', 'e_401')",facets,read_facets_model(input_model)
+TP,INPUT,Facets,GenerateTransposeMatrix,"('e_422', 'e_419')",generate_transpose_matrix(facets),facets
+TP,OUTPUT,GenerateTransposeMatrix,Node1,"('e_446', 'e_422')",node1,generate_transpose_matrix(facets)
+TP,OUTPUT,GenerateTransposeMatrix,Node2,"('e_447', 'e_422')",node2,generate_transpose_matrix(facets)
+TP,OUTPUT,GenerateTransposeMatrix,Node3,"('e_448', 'e_422')",node3,generate_transpose_matrix(facets)
+TP,INPUT,XPoints,GenerateCoordinatesPoints,"('e_454', 'e_395')","generate_coordinates_points(xpts, ypts, zpts, nverts)",xpts
+TP,INPUT,YPoints,GenerateCoordinatesPoints,"('e_454', 'e_396')","generate_coordinates_points(xpts, ypts, zpts, nverts)",ypts
+TP,INPUT,ZPoints,GenerateCoordinatesPoints,"('e_454', 'e_397')","generate_coordinates_points(xpts, ypts, zpts, nverts)",zpts
+TP,INPUT,Nverts,GenerateCoordinatesPoints,"('e_454', 'e_398')","generate_coordinates_points(xpts, ypts, zpts, nverts)",nverts
+TP,OUTPUT,GenerateCoordinatesPoints,Points,"('e_561', 'e_454')",points,"generate_coordinates_points(xpts, ypts, zpts, nverts)"
+TP,INPUT,Node1,PlotModel,"('e_569', 'e_446')","plot_model(node1, node2,  ...  input_model, output_dir)",node1
+TP,INPUT,Node2,PlotModel,"('e_569', 'e_447')","plot_model(node1, node2,  ...  input_model, output_dir)",node2
+TP,INPUT,Node3,PlotModel,"('e_569', 'e_448')","plot_model(node1, node2,  ...  input_model, output_dir)",node3
+TP,INPUT,Points,PlotModel,"('e_569', 'e_561')","plot_model(node1, node2,  ...  input_model, output_dir)",points
+TP,INPUT,OutputDir,PlotModel,"('e_569', 'e_101')","plot_model(node1, node2,  ...  input_model, output_dir)",output_dir
+TP,OUTPUT,PlotModel,PlotFile,"('a_13', 'e_569')",output/modular_expert/20261028014153/plot.png,"plot_model(node1, node2,  ...  input_model, output_dir)"
+TP,INPUT,PStart,CalculateRefsGeometryModel,"('e_3120', 'e_305')","calculate_refs_geometry_m ... elp, tstart, tstop, delt)",pstart
+TP,INPUT,PStop,CalculateRefsGeometryModel,"('e_3120', 'e_306')","calculate_refs_geometry_m ... elp, tstart, tstop, delt)",pstop
+TP,INPUT,InputDelP,CalculateRefsGeometryModel,"('e_3120', 'e_307')","calculate_refs_geometry_m ... elp, tstart, tstop, delt)",delp
+TP,INPUT,TStart,CalculateRefsGeometryModel,"('e_3120', 'e_308')","calculate_refs_geometry_m ... elp, tstart, tstop, delt)",tstart
+TP,INPUT,TStop,CalculateRefsGeometryModel,"('e_3120', 'e_309')","calculate_refs_geometry_m ... elp, tstart, tstop, delt)",tstop
+TP,INPUT,InputDelT,CalculateRefsGeometryModel,"('e_3120', 'e_310')","calculate_refs_geometry_m ... elp, tstart, tstop, delt)",delt
+TP,OUTPUT,CalculateRefsGeometryModel,IT,"('e_3172', 'e_3120')",it,"calculate_refs_geometry_m ... elp, tstart, tstop, delt)"
+TP,OUTPUT,CalculateRefsGeometryModel,IP,"('e_3173', 'e_3120')",ip,"calculate_refs_geometry_m ... elp, tstart, tstop, delt)"
+TP,OUTPUT,CalculateRefsGeometryModel,DelP,"('e_3174', 'e_3120')",delp,"calculate_refs_geometry_m ... elp, tstart, tstop, delt)"
+TP,OUTPUT,CalculateRefsGeometryModel,DelT,"('e_3175', 'e_3120')",delt,"calculate_refs_geometry_m ... elp, tstart, tstop, delt)"
+TP,INPUT,Time,PrepareOutput,"('e_3192', 'e_97')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",time
+TP,INPUT,ProgramName,PrepareOutput,"('e_3192', 'e_98')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",program_name
+TP,INPUT,InputDataFileName,PrepareOutput,"('e_3192', 'e_99')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",input_data_file
+TP,INPUT,InputModel,PrepareOutput,"('e_3192', 'e_100')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",input_model
+TP,INPUT,OutputDir,PrepareOutput,"('e_3192', 'e_101')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",output_dir
+TP,INPUT,Freq,PrepareOutput,"('e_3192', 'e_301')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",freq
+TP,INPUT,Corr,PrepareOutput,"('e_3192', 'e_302')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",corr
+TP,INPUT,Delstd,PrepareOutput,"('e_3192', 'e_303')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",delstd
+TP,INPUT,InputPolarization,PrepareOutput,"('e_3192', 'e_304')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",ipol
+TP,INPUT,PStart,PrepareOutput,"('e_3192', 'e_305')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",pstart
+TP,INPUT,PStop,PrepareOutput,"('e_3192', 'e_306')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",pstop
+TP,INPUT,TStart,PrepareOutput,"('e_3192', 'e_308')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",tstart
+TP,INPUT,TStop,PrepareOutput,"('e_3192', 'e_309')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",tstop
+TP,OUTPUT,PrepareOutput,E0_Output,"('a_14', 'e_3192')",output/modular_expert/20261028014153/E0.dat,"prepare_output(time, prog ... rt, pstop, tstart, tstop)"
+TP,OUTPUT,PrepareOutput,R_Output,"('a_15', 'e_3192')",output/modular_expert/20261028014153/R.dat,"prepare_output(time, prog ... rt, pstop, tstart, tstop)"
+TP,INPUT,IP,CalculateGlobalAnglesAndDirections,"('e_3276', 'e_3173')","calculate_global_angles_a ... tart, delp, tstart, delt)",ip
+TP,INPUT,IT,CalculateGlobalAnglesAndDirections,"('e_3276', 'e_3172')","calculate_global_angles_a ... tart, delp, tstart, delt)",it
+TP,INPUT,PStart,CalculateGlobalAnglesAndDirections,"('e_3276', 'e_305')","calculate_global_angles_a ... tart, delp, tstart, delt)",pstart
+TP,INPUT,DelP,CalculateGlobalAnglesAndDirections,"('e_3276', 'e_3174')","calculate_global_angles_a ... tart, delp, tstart, delt)",delp
+TP,INPUT,TStart,CalculateGlobalAnglesAndDirections,"('e_3276', 'e_308')","calculate_global_angles_a ... tart, delp, tstart, delt)",tstart
+TP,INPUT,DelT,CalculateGlobalAnglesAndDirections,"('e_3276', 'e_3175')","calculate_global_angles_a ... tart, delp, tstart, delt)",delt
+TP,OUTPUT,CalculateGlobalAnglesAndDirections,D0,"('e_3759', 'e_3276')",D0,"calculate_global_angles_a ... tart, delp, tstart, delt)"
+TP,OUTPUT,CalculateGlobalAnglesAndDirections,E,"('e_3760', 'e_3276')",E,"calculate_global_angles_a ... tart, delp, tstart, delt)"
+TP,INPUT,D0,CalculateSphericalCoordinateSystemRadialUnitVector,"('e_3765', 'e_3759')","calculate_spherical_coord ... ctor(i2s, D0, output_dir)",D0
+TP,INPUT,OutputDir,CalculateSphericalCoordinateSystemRadialUnitVector,"('e_3765', 'e_101')","calculate_spherical_coord ... ctor(i2s, D0, output_dir)",output_dir
+TP,OUTPUT,CalculateSphericalCoordinateSystemRadialUnitVector,R_Output,"('a_15', 'e_3765')",output/modular_expert/20261028014153/R.dat,"calculate_spherical_coord ... ctor(i2s, D0, output_dir)"
+TP,INPUT,E,CalculateIncidentFieldInGlobalCartesianCoordinates,"('e_3928', 'e_3760')","calculate_incident_field_ ... s, E, et, ep, output_dir)",E
+TP,INPUT,Et,CalculateIncidentFieldInGlobalCartesianCoordinates,"('e_3928', 'e_344')","calculate_incident_field_ ... s, E, et, ep, output_dir)",et
+TP,INPUT,Ep,CalculateIncidentFieldInGlobalCartesianCoordinates,"('e_3928', 'e_345')","calculate_incident_field_ ... s, E, et, ep, output_dir)",ep
+TP,INPUT,OutputDir,CalculateIncidentFieldInGlobalCartesianCoordinates,"('e_3928', 'e_101')","calculate_incident_field_ ... s, E, et, ep, output_dir)",output_dir
+TP,OUTPUT,CalculateIncidentFieldInGlobalCartesianCoordinates,E0_Output,"('a_14', 'e_3928')",output/modular_expert/20261028014153/E0.dat,"calculate_incident_field_ ... s, E, et, ep, output_dir)"
+FN,INPUT,InputDelP,PrepareOutput,,,
+FN,INPUT,InputDelT,PrepareOutput,,,
+FN,INPUT,IT,CalculateSphericalCoordinateSystemRadialUnitVector,,,
+FN,INPUT,IP,CalculateSphericalCoordinateSystemRadialUnitVector,,,
+FN,INPUT,IT,CalculateIncidentFieldInGlobalCartesianCoordinates,,,
+FN,INPUT,IP,CalculateIncidentFieldInGlobalCartesianCoordinates,,,
+FP,,,,"('e_3192', 'e_3174')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",delp
+FP,,,,"('e_3192', 'e_3175')","prepare_output(time, prog ... rt, pstop, tstart, tstop)",delt
+FP,,,,"('e_569', 'a_13')","plot_model(node1, node2,  ...  input_model, output_dir)",output/modular_expert/20261028014153/plot.png
+FP,,,,"('e_569', 'e_100')","plot_model(node1, node2,  ...  input_model, output_dir)",input_model

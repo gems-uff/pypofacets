@@ -84,7 +84,7 @@ def generate_coordinates_points(xpts, ypts, zpts, nverts):
     return r
 
 
-def plot_model(node1, node2, node3, r, output_dir):
+def plot_model(node1, node2, node3, r, input_model, output_dir):
     from mpl_toolkits.mplot3d import Axes3D
     import matplotlib.pyplot as plt
     ntria = len(node3)
@@ -201,7 +201,7 @@ node1, node2, node3 = generate_transpose_matrix(facets)
 
 points = generate_coordinates_points(xpts, ypts, zpts, nverts)
 
-plot_model(node1, node2, node3, points, output_dir)
+plot_model(node1, node2, node3, points, input_model, output_dir)
 
 it, ip, delp, delt = calculate_refs_geometry_model(pstart, pstop, delp, tstart, tstop, delt)
 

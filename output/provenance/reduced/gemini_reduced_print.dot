@@ -1,0 +1,38 @@
+digraph reduced {
+  rankdir=BT; ranksep=0.6; nodesep=0.15;
+  node [fontname=Helvetica fontsize=13];
+  edge [arrowsize=0.6];
+  e_36 [label="initialize_environment" shape=box style=filled fillcolor="#3A85B9" fontcolor=white];
+  e_98 [label="load_parameters" shape=box style=filled fillcolor="#3A85B9" fontcolor=white];
+  a_1 [label="input_data_file_002.dat" shape=box style="rounded,filled" fillcolor=white];
+  e_310 [label="calculate_physical_\nconstants" shape=box style=filled fillcolor="#3A85B9" fontcolor=white];
+  e_338 [label="load_geometry_data" shape=box style=filled fillcolor="#3A85B9" fontcolor=white];
+  a_2 [label="BOX/coordinates.m" shape=box style="rounded,filled" fillcolor=white];
+  a_3 [label="BOX/facets.m" shape=box style="rounded,filled" fillcolor=white];
+  e_425 [label="generate_model_plot" shape=box style=filled fillcolor="#3A85B9" fontcolor=white];
+  a_13 [label="plot.png" shape=box style="rounded,filled" fillcolor=white];
+  e_3074 [label="setup_iteration_bounds" shape=box style=filled fillcolor="#3A85B9" fontcolor=white];
+  e_3136 [label="initialize_output_files" shape=box style=filled fillcolor="#3A85B9" fontcolor=white];
+  a_14 [label="R.dat" shape=box style="rounded,filled" fillcolor=white];
+  a_15 [label="E0.dat" shape=box style="rounded,filled" fillcolor=white];
+  e_3212 [label="compute_and_save_fields" shape=box style=filled fillcolor="#3A85B9" fontcolor=white];
+  e_98 -> e_36;
+  e_98 -> a_1 [style=dashed];
+  e_310 -> e_98;
+  e_338 -> e_36;
+  e_338 -> a_3 [style=dashed];
+  e_338 -> a_2 [style=dashed];
+  e_425 -> e_338;
+  e_425 -> e_36;
+  e_425 -> a_13 [style=dashed];
+  a_13 -> e_425 [style=dashed];
+  e_3074 -> e_98;
+  e_3136 -> e_98;
+  e_3136 -> e_36;
+  a_14 -> e_3136 [style=dashed];
+  a_15 -> e_3136 [style=dashed];
+  e_3212 -> e_310;
+  e_3212 -> e_3074;
+  e_3212 -> e_98;
+  e_3212 -> e_3136;
+}

@@ -1,0 +1,23 @@
+folder,version,script,argument,trial,trial_uuid,returncode,seconds,dot
+belief_propagation,expert,belief_propagation.py,20,1,9546382c-d4c7-4fba-ac0a-95df95490d01,0,1.7,dataflows/belief_propagation__expert.dot
+belief_propagation,monolithic,belief_propagation_claude.py,20,1,0d6b554a-0870-4836-915f-6f3f9f33c75b,0,1.8,dataflows/belief_propagation__monolithic.dot
+belief_propagation,modular,belief_propagation_claude_modular.py,20,1,764ff3b7-f7d5-4c4f-9d44-a11d84f4e5d7,0,1.8,dataflows/belief_propagation__modular.dot
+cvar,expert,cvar.py,50,1,8d4be375-1c33-469b-9623-54356f872327,0,1.4,dataflows/cvar__expert.dot
+cvar,monolithic,cvar_claude.py,50,1,439ba0eb-1bfa-483d-812e-84b556975a73,0,1.4,dataflows/cvar__monolithic.dot
+cvar,modular,cvar_claude_modular.py,50,1,5b8ec00b-1255-4137-8477-2649034566bc,0,1.3,dataflows/cvar__modular.dot
+fft,expert,fft.py,500,1,4326ceaf-d5b1-4c40-9c25-b5da5ccfc112,0,1.5,dataflows/fft__expert.dot
+fft,monolithic,fft_claude.py,500,1,b7023f05-f7f2-43c8-a519-86a446be94e9,0,1.4,dataflows/fft__monolithic.dot
+fft,modular,fft_claude_modular.py,500,1,35f3f42b-e403-4137-acca-66f328b0269f,0,1.4,dataflows/fft__modular.dot
+gauss_legendre_quadrature,expert,gauss_legendre_quadrature.py,50,1,8d0e1097-0281-4441-b0f1-a79eaa7999d9,0,1.4,dataflows/gauss_legendre_quadrature__expert.dot
+gauss_legendre_quadrature,monolithic,gauss_legendre_quadrature_claude.py,50,1,31ceb9bb-c0dd-4b95-a4a7-a7a37d1d2109,0,1.5,dataflows/gauss_legendre_quadrature__monolithic.dot
+gauss_legendre_quadrature,modular,gauss_legendre_quadrature_claude_modular.py,50,1,0756aabb-b28a-473a-a45c-0929ab7ae882,0,1.3,dataflows/gauss_legendre_quadrature__modular.dot
+heat_distribution_lu,expert,heat_distribution_lu.py,1,1,bcda7e62-3014-480c-9b89-bd6bdd654949,0,11.9,dataflows/heat_distribution_lu__expert.dot
+heat_distribution_lu,monolithic,heat_distribution_lu_claude.py,1,1,560388a4-ae35-4f5a-be8e-709fb42e171d,0,12.0,dataflows/heat_distribution_lu__monolithic.dot
+heat_distribution_lu,modular,heat_distribution_lu_claude_modular.py,1,1,def02b99-da8c-492c-85a5-5c587fe82328,0,13.1,dataflows/heat_distribution_lu__modular.dot
+look_and_say,expert,look_and_say.py,5,1,b7bc937b-6a95-4225-b6bd-ac4887eb8959,0,1.0,dataflows/look_and_say__expert.dot
+look_and_say,monolithic,look_and_say_claude.py,5,1,86736b03-39df-4a01-bfb0-af7ce08954b9,0,1.1,dataflows/look_and_say__monolithic.dot
+look_and_say,modular,look_and_say_claude_modular.py,5,1,9dc43e9b-dbd5-4115-8d7b-1af5e40aa8bb,0,1.1,dataflows/look_and_say__modular.dot
+_pypofacets,monolithic,monolithic_pypofacets.py,BOX input_data_file_002.dat,1,97557867-4d77-41b9-84fc-09c0d6392ae5,0,3.2,dataflows/_pypofacets__monolithic.dot
+_pypofacets,expert,modular_pypofacets.py,BOX input_data_file_002.dat,1,5780f26e-ea8b-423c-9c37-a23e3a273a10,0,2.8,dataflows/_pypofacets__expert.dot
+_pypofacets,gemini_v2,modular_pypofacets_gemini_v2.py,BOX input_data_file_002.dat,1,42f8bb5b-405c-4f69-b502-8f16d5b98310,0,2.7,dataflows/_pypofacets__gemini_v2.dot
+_pypofacets,gemini,modular_pypofacets_gemini.py,BOX input_data_file_002.dat,1,03f527ef-4ae1-47a6-8d17-4d35b76b19f3,0,2.9,dataflows/_pypofacets__gemini.dot

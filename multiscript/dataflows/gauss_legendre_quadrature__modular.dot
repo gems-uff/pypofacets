@@ -1,0 +1,35 @@
+digraph e_1 {
+    rankdir=RL;
+    node[fontsize=20]
+    e_24 [label="36 int(sys.argv[1])" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_16 [label="-1 int" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_22 [label="36 1" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_79 [label="16 1" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_23 [label="36 sys.argv[1]" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_25 [label="36 order" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_29 [label="37 time.perf_counter()" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_27 [label="37 time.perf_counter" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_31 [label="37 dti" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_34 [label="38 main(order)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_9 [label="27 main" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_133 [label="39 time.perf_counter()" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_132 [label="39 time.perf_counter" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_135 [label="39 time.perf_counter() - dti" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_136 [label="39 print(time.perf_counter() - dti)" fillcolor="#3A85B9" fontcolor="white" shape="box" style="filled"];
+    e_129 [label="-1 print" fillcolor="#85CBD0" fontcolor="black" shape="box" style="rounded,filled"];
+    e_22 -> e_16 [label=".__class__"];
+    e_23 -> e_22 ;
+    e_24 -> e_16 [label=".__class__"];
+    e_24 -> e_23 ;
+    e_25 -> e_24 [arrowhead="empty"];
+    e_29 -> e_27 ;
+    e_31 -> e_29 [arrowhead="empty"];
+    e_34 -> e_9 ;
+    e_34 -> e_25 ;
+    e_133 -> e_132 ;
+    e_135 -> e_133 ;
+    e_135 -> e_31 [style="dashed" arrowhead="empty"];
+    e_136 -> e_129 ;
+    e_136 -> e_135 ;
+    e_79 -> e_16 [label=".__class__"];
+    }
