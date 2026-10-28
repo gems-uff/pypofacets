@@ -1,0 +1,28 @@
+--- candidates/m5_gemini.py
++++ m5/m5_gemini.py
+@@ -19,7 +19,7 @@
+     input_data_file = argv[2]
+     
+     if len(argv) < 4:
+-        output_dir = os.path.join("output", "monolithic", str(time))
++        output_dir = os.path.join("output", "m5_gemini", str(time))
+     else:
+         output_dir = argv[3]
+         
+@@ -173,7 +173,7 @@
+     fileE0.close()
+ 
+ 
+-def main():
++if __name__ == "__main__":
+     argv = sys.argv
+     program_name, input_model, input_data_file, output_dir = setup_environment(argv)
+     
+@@ -195,7 +195,3 @@
+     header = generate_header(now, program_name, input_data_file, input_model, freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt)
+     
+     calculate_and_write_fields(output_dir, header, ip, it, pstart, delp, tstart, delt, et, ep)
+-
+-
+-if __name__ == "__main__":
+-    main()

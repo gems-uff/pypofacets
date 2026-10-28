@@ -1,0 +1,5 @@
+date: 2026-10-28 16:57:23 -0300
+python: 3.13.18
+noworkflow: 2.1.1
+numpy: 2.5.4
+matplotlib: 3.11.2

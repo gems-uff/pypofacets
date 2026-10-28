@@ -1,0 +1,5 @@
+script,dot,LOC,NFuncs,nodes_all,edges_all,nodes_eval,edges_eval,n_user_call,n_lib_call,n_def_ref,n_expr,n_file,is_dag_all,cycles_all,components_all,components_eval,longest_all,width_all,parallelism_all,backedges_removed_all,longest_eval,width_eval,parallelism_eval,backedges_removed_eval
+m5_chatgpt.py,m5_chatgpt.dot,189,24,79,118,73,111,17,0,17,39,6,False,1,1,1,13,13,5.64,1,13,12,5.21,0
+m5_gemini.py,m5_gemini.dot,143,10,58,88,52,81,10,2,10,30,6,False,1,1,1,10,11,5.27,1,9,13,5.2,0
+m5_copilot.py,m5_copilot.dot,183,20,82,124,76,117,17,0,17,42,6,False,1,1,1,17,13,4.56,1,17,12,4.22,0
+modular_llm_pypofacets.py,modular_llm.dot,123,8,55,82,49,75,8,2,8,31,6,False,1,1,1,8,18,6.11,1,8,17,5.44,0

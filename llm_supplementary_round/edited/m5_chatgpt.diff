@@ -1,0 +1,30 @@
+--- candidates/m5_chatgpt.py
++++ m5/m5_chatgpt.py
+@@ -19,7 +19,7 @@
+     input_data_file = argv[2]
+     input_model = argv[1]
+     if len(argv) < 4:
+-        output_dir = os.path.join("output", "monolithic", str(time))
++        output_dir = os.path.join("output", "m5_chatgpt", str(time))
+     else:
+         output_dir = argv[3]
+     return time, program_name, input_data_file, input_model, output_dir
+@@ -220,8 +220,8 @@
+     fileE0.close()
+ 
+ 
+-def main(argv):
+-    time, program_name, input_data_file, input_model, output_dir = read_arguments(argv)
++if __name__ == "__main__":
++    time, program_name, input_data_file, input_model, output_dir = read_arguments(sys.argv)
+     create_output_directory(output_dir)
+     freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = read_parameters(input_data_file)
+     waveL = calculate_wavelength(freq)
+@@ -241,7 +241,3 @@
+     generate_output_records(fileR, fileE0, ip, it, pstart, delp, tstart,
+                             delt, et, ep)
+     close_output_files(fileR, fileE0)
+-
+-
+-if __name__ == "__main__":
+-    main(sys.argv)

@@ -1,0 +1,71 @@
+--- candidates/m5_copilot.py
++++ m5/m5_copilot.py
+@@ -19,7 +19,7 @@
+     input_data_file = argv[2]
+     input_model = argv[1]
+     if len(argv) < 4:
+-        output_dir = os.path.join("output", "monolithic", str(time))
++        output_dir = os.path.join("output", "m5_copilot", str(time))
+     else:
+         output_dir = argv[3]
+     if not os.path.exists(output_dir):
+@@ -200,33 +200,29 @@
+     fileE0.close()
+ 
+ 
+-def main():
+-    argv = sys.argv
+-    time, program_name, input_data_file, input_model, output_dir = read_command_line(argv)
+-    freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = read_parameters(input_data_file)
+-    waveL = calculate_wavelength(freq)
+-    et, ep = select_polarization(ipol)
+-    coordinates = load_coordinates(input_model)
+-    xpts, ypts, zpts = extract_coordinate_columns(coordinates)
+-    nverts = count_vertices(xpts)
+-    facets = load_facets(input_model)
+-    node1, node2, node3 = extract_facet_columns(facets)
+-    x = xpts
+-    y = ypts
+-    z = zpts
+-    r = build_vertex_list(x, y, z, nverts)
+-    ntria, vind = build_facet_list(node1, node2, node3)
+-    now = create_model_plot(r, vind, ntria, input_model, output_dir)
+-    delp, delt = normalize_angle_steps(delp, pstart, pstop, delt, tstart, tstop)
+-    it, ip = calculate_iteration_counts(tstart, tstop, delt, pstart, pstop, delp)
+-    header = build_header(
+-        now, program_name, input_data_file, input_model, freq, corr, delstd,
+-        ipol, pstart, pstop, delp, tstart, tstop, delt
+-    )
+-    fileR, fileE0 = open_output_files(output_dir, header)
+-    calculate_and_write_scan(
+-        fileR, fileE0, pstart, delp, tstart, delt, ip, it, et, ep
+-    )
+-
+-
+-main()
++argv = sys.argv
++time, program_name, input_data_file, input_model, output_dir = read_command_line(argv)
++freq, corr, delstd, ipol, pstart, pstop, delp, tstart, tstop, delt = read_parameters(input_data_file)
++waveL = calculate_wavelength(freq)
++et, ep = select_polarization(ipol)
++coordinates = load_coordinates(input_model)
++xpts, ypts, zpts = extract_coordinate_columns(coordinates)
++nverts = count_vertices(xpts)
++facets = load_facets(input_model)
++node1, node2, node3 = extract_facet_columns(facets)
++x = xpts
++y = ypts
++z = zpts
++r = build_vertex_list(x, y, z, nverts)
++ntria, vind = build_facet_list(node1, node2, node3)
++now = create_model_plot(r, vind, ntria, input_model, output_dir)
++delp, delt = normalize_angle_steps(delp, pstart, pstop, delt, tstart, tstop)
++it, ip = calculate_iteration_counts(tstart, tstop, delt, pstart, pstop, delp)
++header = build_header(
++    now, program_name, input_data_file, input_model, freq, corr, delstd,
++    ipol, pstart, pstop, delp, tstart, tstop, delt
++)
++fileR, fileE0 = open_output_files(output_dir, header)
++calculate_and_write_scan(
++    fileR, fileE0, pstart, delp, tstart, delt, ip, it, et, ep
++)

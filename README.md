@@ -37,6 +37,11 @@ Prompts
 * [Prompt used to obtain the LLM-modularized PyPOFacets script](https://github.com/gems-uff/pypofacets/blob/master/prompts/pypofacets_llm_refactoring_prompt.md). The same prompt was given to ChatGPT, Gemini, and GitHub Copilot in February 2026; the Gemini version was selected for the paper (Section 4.5).
 * [Prompts of the multi-script evaluation](https://github.com/gems-uff/pypofacets/blob/master/prompts/): demodularization (expert script to monolithic baseline) and remodularization (monolithic baseline to LLM-modularized version), both run with Claude Opus 4.6 through GitHub Copilot Chat in Visual Studio Code (Section 7).
 
+Supplementary LLM round (Section 9, Table 10)
+---------------------------------------------
+
+* [llm_supplementary_round/](https://github.com/gems-uff/pypofacets/tree/master/llm_supplementary_round): on 28 October 2026, the prompt above was sent again, once to ChatGPT, Gemini, and GitHub Copilot Chat, and all three outputs were evaluated without selection. The folder records the configuration each interface presented at the time and contains the outputs as generated, the evaluated copies with their two edits (the same as for the Gemini version), and their provenance graphs; the results are in [analysis/results](https://github.com/gems-uff/pypofacets/tree/master/analysis/results) (files `llm_round_*`).
+
 Comparison with the ground truth (Sections 4.6.1 and 4.6.2)
 ------------------------------------------------------------
 
@@ -47,6 +52,7 @@ Comparison with the ground truth (Sections 4.6.1 and 4.6.2)
   * Edge comparison: `edges_expert.txt`/`.csv` (95 ground-truth edges, 89 matched, one-to-one, orientation ignored) and `edges_monolithic.txt`/`.csv` (none matched).
   * Functional alignment per script of the multi-script evaluation (Section 7): `sim_per_script.txt`/`.csv`.
   * Robustness check of Section 9: `robustness_table3_variables.txt`.
+  * Supplementary LLM round of Section 9 (Table 10): files `llm_round_*` (see [llm_supplementary_round/](https://github.com/gems-uff/pypofacets/tree/master/llm_supplementary_round)).
   Node identifiers (`e_N`, `a_N`) are specific to each execution; the trails refer to the graphs in `output/provenance`.
 * [compare_functions.py](https://github.com/gems-uff/pypofacets/blob/master/analysis/compare_functions.py) and [similarity.txt](https://github.com/gems-uff/pypofacets/blob/master/analysis/similarity.txt): the functional-structure equivalence of the first submission (Jaccard similarity over tokenized lines, bidirectional matching); the functional component of Table 3 is now computed by `table3_recompute.py` with the same metric.
 

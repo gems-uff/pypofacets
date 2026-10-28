@@ -1,0 +1,4 @@
+model,script,argument,trial,trial_uuid,returncode,seconds,export_returncode,dot,dot_bytes,outputs
+chatgpt,m5_chatgpt.py,BOX input_data_file_002.dat,1,0a3c5a14-b24e-4300-a0c3-20db15bb1b61,0,5.6,0,dataflows/m5_chatgpt.dot,13265,output/m5_chatgpt/20261028165655/E0.dat output/m5_chatgpt/20261028165655/R.dat output/m5_chatgpt/20261028165655/plot.png
+gemini,m5_gemini.py,BOX input_data_file_002.dat,1,6d554f97-83ab-4c06-957e-d6ad13fec189,0,5.2,0,dataflows/m5_gemini.dot,9800,output/m5_gemini/20261028165706/E0.dat output/m5_gemini/20261028165706/R.dat output/m5_gemini/20261028165706/plot.png
+copilot,m5_copilot.py,BOX input_data_file_002.dat,1,6993b1be-6bcd-48c3-866d-85c95d6b0897,0,4.8,0,dataflows/m5_copilot.dot,13987,output/m5_copilot/20261028165716/E0.dat output/m5_copilot/20261028165716/R.dat output/m5_copilot/20261028165716/plot.png

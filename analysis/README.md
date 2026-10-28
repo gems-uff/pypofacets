@@ -6,7 +6,7 @@ Comparison with the ground truth (Sections 4.6.1, 4.6.2, 7 and 9)
 * `edges_compare.py`: edge comparison of Section 4.6.1 (one-to-one, orientation ignored).
 * `sim_per_script.py`: functional alignment per script of Section 7.
 * `reduced_view.py`: derived views of Figures 6 and 7.
-* `results/`: outputs used in the paper (see the main README).
+* `results/`: outputs used in the paper (see the main README); the files `llm_round_*` belong to the supplementary LLM round of Section 9 (see `../llm_supplementary_round/README.md`).
 
 First submission
 ----------------

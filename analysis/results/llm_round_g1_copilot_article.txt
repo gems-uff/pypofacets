@@ -1,0 +1,28 @@
+monolithic rc=0 
+expert     rc=0 
+llm        rc=0 
+
+1) full files (expected to differ in the timestamp line 1 and the program-name line 2):
+   R.dat {'monolithic': '71a86a5140ad (261 bytes)', 'expert': '32236427829f (265 bytes)', 'llm': 'ecf9cc9e29da (262 bytes)'}
+   E0.dat {'monolithic': 'a3ef9c68bdae (293 bytes)', 'expert': '621461df569c (297 bytes)', 'llm': 'cddb7faf243e (294 bytes)'}
+   plot.png {'monolithic': '9ec2f6ecdf91 (2397 bytes)', 'expert': '9ec2f6ecdf91 (2397 bytes)', 'llm': '9ec2f6ecdf91 (2397 bytes)'}
+
+2) .dat without the two transient header lines (timestamp, program name); every other header line, including delp/delt, is kept:
+   R.dat {'monolithic': '6fe10b457b8c (220 bytes)', 'expert': '6fe10b457b8c (220 bytes)', 'llm': '6fe10b457b8c (220 bytes)'}
+      expert vs monolithic: identical
+      expert vs llm: identical
+   E0.dat {'monolithic': 'd28c566ba805 (252 bytes)', 'expert': 'd28c566ba805 (252 bytes)', 'llm': 'd28c566ba805 (252 bytes)'}
+      expert vs monolithic: identical
+      expert vs llm: identical
+
+3) numerical rows only (lines after the header block, i.e., from the first line that starts with a digit followed by a space):
+      monolithic: 5 numerical rows of 19 lines
+      expert: 5 numerical rows of 19 lines
+      llm: 5 numerical rows of 19 lines
+   R.dat {'monolithic': 'ee85cb140150 (170 bytes)', 'expert': 'ee85cb140150 (170 bytes)', 'llm': 'ee85cb140150 (170 bytes)'}
+      monolithic: 5 numerical rows of 19 lines
+      expert: 5 numerical rows of 19 lines
+      llm: 5 numerical rows of 19 lines
+   E0.dat {'monolithic': 'e156cf2ccefe (202 bytes)', 'expert': 'e156cf2ccefe (202 bytes)', 'llm': 'e156cf2ccefe (202 bytes)'}
+
+work dir: /tmp/g1_nphk6f5k

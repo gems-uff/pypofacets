@@ -1,0 +1,6 @@
+
+=== gemini_moncol [A automatic]: pypofacets/output/provenance/modular_llm.dot: 55 nodes, 10 call nodes, 8 definition-reference nodes, universe (data) 37
+TP_var=29  FN_var=18 (incl. 7 ports)  FP_var=8   TP_func AI->G=6.83 G->AI=9.43 |AI|=8 FP_func=1.17 FN_func=4.57  [computed from pypofacets/modular_expert_pypofacets.py x pypofacets/modular_llm_pypofacets.py]
+SP=0.796  SR=0.630  SF=0.703
+matched (auto) : CoordinatesFile->BOX/coordinates.m [a_2], InputDataFile->input_data_file_002.dat [a_1], FacetsFile->BOX/facets.m [a_3], R_Output->output/.../R.dat [a_14], E0_Output->output/.../E0.dat [a_15], PlotOutput->output/.../plot.png [a_13], ProgramName->program_name [e_92], InputDataFileName->input_data_file [e_94], InputModel->input_model [e_93], OutputDir->output_dir [e_95], Freq->freq [e_297], InputPolarization->ipol [e_300], PStart->pstart [e_301], PStop->pstop [e_302], InputDelP->delp [e_303], TStart->tstart [e_304], TStop->tstop [e_305], InputDelT->delt [e_306], Et->et [e_334], Ep->ep [e_335], XPoints->xpts [e_408], YPoints->ypts [e_409], ZPoints->zpts [e_410], Nverts->nverts [e_411], Node1->node1 [e_412], Node2->node2 [e_413], Node3->node3 [e_414], IT->it [e_3127], IP->ip [e_3126]
+unmatched      : Arguments->argv, Time->time, Corr->corr, Delstd->delstd, WaveLength->waveL, Facets->facets, Points->r, DelP->delp, DelT->delt, D0->D0, E->E

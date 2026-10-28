@@ -1,0 +1,4 @@
+m5_chatgpt.dot                                LOC=189 F=24 nodes=   79/   73 edges=  118/  111 uc=17 lc=  0 def=17 ex=  39 file=6 dag=False cyc=1 LP=13/13 W=13/12 par=5.64
+m5_gemini.dot                                 LOC=143 F=10 nodes=   58/   52 edges=   88/   81 uc=10 lc=  2 def=10 ex=  30 file=6 dag=False cyc=1 LP=10/9 W=11/13 par=5.27
+m5_copilot.dot                                LOC=183 F=20 nodes=   82/   76 edges=  124/  117 uc=17 lc=  0 def=17 ex=  42 file=6 dag=False cyc=1 LP=17/17 W=13/12 par=4.56
+modular_llm.dot                               LOC=123 F=8 nodes=   55/   49 edges=   82/   75 uc= 8 lc=  2 def= 8 ex=  31 file=6 dag=False cyc=1 LP=8/8 W=18/17 par=6.11
